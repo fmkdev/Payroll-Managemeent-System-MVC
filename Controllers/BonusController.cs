@@ -18,13 +18,13 @@ namespace PayxApi.Controllers
         [HttpPost("{employeeId}")]
         public async Task<IActionResult> CreateBonus(int employeeId, CreateBonusRequestModel model)
         {
-            return Ok(await _bonusService.CreateAsync(employeeId, model));
+            return View(await _bonusService.CreateAsync(employeeId, model));
         }
 
         [HttpPost("{employeeId}")]
         public async Task<IActionResult> GetEmployeeBonusByMonth(int employeeId, DateTime month)
         {
-            return Ok(await _bonusService.GetAsync(employeeId, month.Month));
+            return View(await _bonusService.GetAsync(employeeId, month.Month));
         }
     }
 }

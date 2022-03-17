@@ -15619,8 +15619,18 @@
   "RootNamespace": "PayxApi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Index.cshtml",
+      "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Allowance\\CreateAllowance.cshtml",
       "TargetPath": "Views\\Allowance\\CreateAllowance.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_PayxLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_PayxLayout.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15631,6 +15641,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Department\\CreateDepartment.cshtml",
       "TargetPath": "Views\\Department\\CreateDepartment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Role\\CreateRole.cshtml",
+      "TargetPath": "Views\\Role\\CreateRole.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15656,6 +15671,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Position\\CreatePosition.cshtml",
+      "TargetPath": "Views\\Position\\CreatePosition.cshtml",
       "FileKind": "mvc"
     },
     {

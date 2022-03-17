@@ -14,16 +14,21 @@ namespace PayxApi.Controllers
             _roleService = roleService;
         }
 
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateRoleRequestModel model)
         {
-            return Ok(await _roleService.CreateAsync(model));
+            return View(await _roleService.CreateAsync(model));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllRole()
         {
-            return Ok(await _roleService.GetAsync());
+            return View(await _roleService.GetAsync());
         }
     }
 }

@@ -17,6 +17,11 @@ namespace PayxApi.Controllers
             _jwtAuthenticationManager = jwtAuthenticationManager;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetASync(FindUserRequestModel model)
         {
@@ -49,7 +54,7 @@ namespace PayxApi.Controllers
                 Data = response.Data,
                 Token = token
             };
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "User");
         }
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetUser(int userId)

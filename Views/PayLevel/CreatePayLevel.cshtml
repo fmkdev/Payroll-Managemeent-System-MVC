@@ -1,4 +1,7 @@
 @model PayxApi.DTOs.CreatePayLevelRequestModel
+@{
+    Layout = "_PayxLayout";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="~/styles/register.css">
 </head>
 <body>
     <div class="container">
         <div class="form-body">
-            <div class="upper">CREATE ALLOWANCE</div>
+            <div class="upper">CREATE PAY LEVEL</div>
             <div class="lower">
                 <form asp-action="CreatePayLevel">
                         <div class="row">
@@ -49,6 +52,6 @@
             </div>
         </div>
     </div>
-    <script src="./scripts/register.js"></script>
+    <script src="~/scripts/register.js"></script>
 </body>
 </html>
