@@ -72,3 +72,5 @@ C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Department\
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\PayLevel\CreatePayLevel.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Position\CreatePosition.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Role\CreateRole.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Shared\_PayxLayout.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
