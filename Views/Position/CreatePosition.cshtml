@@ -1,4 +1,4 @@
-@model PayxApi.DTOs.CreateDepartmentRequestModel
+@model PayxApi.DTOs.CreatePositionRequestModel
 @{
     Layout = null;
 }
@@ -14,17 +14,27 @@
 <body>
     <div class="container">
         <div class="form-body">
-            <div class="upper">CREATE DEPARTMENT</div>
+            <div class="upper">CREATE POSITION</div>
             <div class="lower">
-                <form asp-action="CreateDepartment">
+                <form asp-action="CreatePosition">
                         <div class="row">
                             <div class="input">
-                                <div><label for="">Dpartment Name: </label></div>
-                                <div><input asp-for="Name" id="allowance-name" class="tInput" required></div>
+                                <div><label for="">Position Name: </label></div>
+                                <div><input asp-for="PositionName" id="allowance-name" class="tInput" required></div>
                             </div>
                             <div class="input">
                                 <div><label for="">Description: </label></div>
                                 <div><input asp-for="Description" id="amount" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Maximum Request Days Per Annum: </label></div>
+                                <div><input asp-for="MaxRequestDaysPerAnnum" id="allowance-name" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Allowance: </label></div>
+                                <div><select asp-for="Allowances" asp-items="ViewBag.Allowance" id="amount" class="tInput" required></select></div>
                             </div>
                         </div>
                         <div class="submit"><input type="submit" value="Register"></div>
