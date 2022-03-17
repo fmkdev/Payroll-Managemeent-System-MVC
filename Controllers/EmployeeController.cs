@@ -49,19 +49,20 @@ namespace PayxApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeRequestModel model)
         {
-            return Ok(await _employeeService.CreateAsync(model));
+            var employee = await _employeeService.CreateAsync(model);
+            return View(employee.Message);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await _employeeService.GetAsync(id));
+            return View(await _employeeService.GetAsync(id));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _employeeService.GetAsync());
+            return View(await _employeeService.GetAsync());
         }
     }
 }

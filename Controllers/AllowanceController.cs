@@ -22,13 +22,13 @@ namespace PayxApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAllowance(CreateAllowanceRequestModel model)
         {
-            return Ok(await _allowanceService.CreateAsync(model));
+            return View(await _allowanceService.CreateAsync(model));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAllowance()
         {
-            return Ok(await _allowanceService.GetAsync());
+            return View(await _allowanceService.GetAsync());
         }
     }
 }
