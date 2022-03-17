@@ -1,0 +1,38 @@
+@{
+    Layout = null;
+}
+@model PayxApi.DTOs.UserDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-body">
+            <div class="upper">LOGIN</div>
+            <div class="lower">
+                <form asp-action="Login">
+                    <div class="input">
+                        <div><label>Email/Card Id: </label></div>
+                        <div><input type="text" name="userEmailOrCardId" placeholder="User Id..." required></div>
+                    </div>
+                    <div class="input">
+                        <div><label for="">Password: </label></div>
+                        <div><input type="password" name="Password" placeholder="password..." required></div>
+                    </div>
+                    <div class="input">
+                        <div class="submit"><input type="submit" value="LOGIN"></div>
+                        <div class="forget-password"><a href="">forget password</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
