@@ -15,16 +15,21 @@ namespace PayxApi.Controllers
             _departmentService = departmentService;
         }
 
+        public IActionResult CreateDepartment()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Create(CreateDepartmentRequestModel model)
+        public async Task<IActionResult> CreateDepartment(CreateDepartmentRequestModel model)
         { 
-            return Ok(await _departmentService.CreateAsync(model));
+            return View(await _departmentService.CreateAsync(model));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllDepartment()
         {
-            return Ok(await _departmentService.GetAsync());
+            return View(await _departmentService.GetAsync());
         }
     }
 }

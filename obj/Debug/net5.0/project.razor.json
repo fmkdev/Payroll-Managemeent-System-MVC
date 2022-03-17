@@ -15619,8 +15619,28 @@
   "RootNamespace": "PayxApi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Allowance\\CreateAllowance.cshtml",
+      "TargetPath": "Views\\Allowance\\CreateAllowance.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Appointment\\CreateAppointment.cshtml",
+      "TargetPath": "Views\\Appointment\\CreateAppointment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Department\\CreateDepartment.cshtml",
+      "TargetPath": "Views\\Department\\CreateDepartment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\PayLevel\\CreatePayLevel.cshtml",
+      "TargetPath": "Views\\PayLevel\\CreatePayLevel.cshtml",
       "FileKind": "mvc"
     },
     {

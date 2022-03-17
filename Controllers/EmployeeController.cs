@@ -29,8 +29,19 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateEmployee()
         {
             var department = await _departmentService.GetAsync();
-            ViewData["Departments"] = new SelectList(department.Data, "Id", "Name");
-            var appointment = await _appointmentService.
+            ViewData["Department"] = new SelectList(department.Data, "Id", "Name");
+
+            var appointment = await _appointmentService.GetAsync();
+            ViewData["Appointment"] = new SelectList(appointment.Data, "Id", "AppointmentName");
+
+            var position = await _positionService.GetAsync();
+            ViewData["Position"] = new SelectList(position.Data, "Id", "Name");
+
+            var payLevel = await _payLevelService.GetAsync();
+            ViewData["PayLevel"] = new SelectList(payLevel.Data, "Id", "LevelName");
+
+            var role = await _roleService.GetAsync();
+            ViewData["RoleIds"] = new SelectList(role.Data, "Id", "Name");
 
             return View();
         }

@@ -14,10 +14,15 @@ namespace PayxApi.Controllers
             _appointmentService = appointmentService;
         }
 
+        public IActionResult CreateAppointment()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Create(CreateAppointmentRequestModel model)
+        public async Task<IActionResult> CreateAppointment(CreateAppointmentRequestModel model)
         { 
-            return Ok(await _appointmentService.CreateAsync(model));
+            return View(await _appointmentService.CreateAsync(model));
         }
     }
 }

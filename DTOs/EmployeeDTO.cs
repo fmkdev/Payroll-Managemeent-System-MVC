@@ -67,6 +67,8 @@ namespace PayxApi.DTOs
 
         public string Password { get; set; }
 
+        public string ConfirmPassword { get; set; }
+
         public int DepartmentId { get; set; }
 
         public int PositionId { get; set; }

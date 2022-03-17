@@ -14,6 +14,11 @@ namespace PayxApi.Controllers
             _allowanceService = allowanceService;
         }
 
+        public IActionResult CreateAllowance()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateAllowance(CreateAllowanceRequestModel model)
         {
