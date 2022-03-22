@@ -28,6 +28,7 @@ namespace PayxApi.Auth
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.FullName),
+                new Claim(ClaimTypes.GivenName, user.EmployeeCardId),
             };
             foreach(var role in user.UserRoles)
             {

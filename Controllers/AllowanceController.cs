@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PayxApi.DTOs;
 using PayxApi.Interfaces.Services;
@@ -19,16 +20,20 @@ namespace PayxApi.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateAllowance(CreateAllowanceRequestModel model)
         {
-            return View(await _allowanceService.CreateAsync(model));
+            var allow = await _allowanceService.CreateAsync(model);
+            return View();
         }
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAllAllowance()
         {
-            return View(await _allowanceService.GetAsync());
+            var allow = await _allowanceService.GetAsync();
+            return View();
         }
     }
 }

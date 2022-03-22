@@ -14,22 +14,27 @@ namespace PayxApi.Controllers
         {
             _departmentService = departmentService;
         }
-
+        
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateDepartment()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateDepartment(CreateDepartmentRequestModel model)
         { 
-            return View(await _departmentService.CreateAsync(model));
+            var dept = await _departmentService.CreateAsync(model);
+            return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllDepartment()
         {
-            return View(await _departmentService.GetAsync());
+            var dept = await _departmentService.GetAsync();
+            return View(dept.Data);
         }
     }
 }

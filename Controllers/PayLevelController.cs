@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PayxApi.DTOs;
@@ -17,6 +18,7 @@ namespace PayxApi.Controllers
             _allowanceService =allowanceService;
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePayLevel()
         {
             var allowance = await _allowanceService.GetAsync();
@@ -26,15 +28,19 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePayLevel(CreatePayLevelRequestModel model)
         {
-            return View(await _payLevelService.CreateAsync(model));
+            var pl = await _payLevelService.CreateAsync(model);
+            return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPayLevel()
         {
-            return View(await _payLevelService.GetAsync());
+            var pl = await _payLevelService.GetAsync();
+            return View(pl.Data);
         }
     }
 }

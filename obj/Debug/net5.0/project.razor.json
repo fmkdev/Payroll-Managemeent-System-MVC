@@ -15619,6 +15619,21 @@
   "RootNamespace": "PayxApi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\ViewMyCalendar.cshtml",
+      "TargetPath": "Views\\WorkingDays\\ViewMyCalendar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\AccountDetails\\UpdateAccountDetails.cshtml",
+      "TargetPath": "Views\\AccountDetails\\UpdateAccountDetails.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetAllEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\GetAllEmployee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Index.cshtml",
       "TargetPath": "Views\\User\\Index.cshtml",
       "FileKind": "mvc"
@@ -15634,8 +15649,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\TodaysAttendance.cshtml",
+      "TargetPath": "Views\\WorkingDays\\TodaysAttendance.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Appointment\\CreateAppointment.cshtml",
       "TargetPath": "Views\\Appointment\\CreateAppointment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\UpdateEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\UpdateEmployee.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15656,6 +15681,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\PayLevel\\CreatePayLevel.cshtml",
       "TargetPath": "Views\\PayLevel\\CreatePayLevel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Profile.cshtml",
+      "TargetPath": "Views\\User\\Profile.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15684,6 +15714,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\SignOrSignOut.cshtml",
+      "TargetPath": "Views\\WorkingDays\\SignOrSignOut.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\ViewAllRequest.cshtml",
+      "TargetPath": "Views\\WorkingDays\\ViewAllRequest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15691,6 +15731,16 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\MakeRequest.cshtml",
+      "TargetPath": "Views\\WorkingDays\\MakeRequest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Address\\UpdateAddress.cshtml",
+      "TargetPath": "Views\\Address\\UpdateAddress.cshtml",
       "FileKind": "mvc"
     },
     {

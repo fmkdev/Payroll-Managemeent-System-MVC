@@ -5,6 +5,7 @@ namespace PayxApi.Interfaces.Services
 {
     public interface IAddressService
     {
-        //Task<BaseResponse<AddressDTO>> CreateAsync(CreateAddressRequestModel model);
+        Task<BaseResponse<bool>> UpdateAsync(int id, UpdateAddressRequestModel model);
+        Task<BaseResponse<AddressDTO>> GetAsync(int id);
     }
 }

@@ -19,10 +19,12 @@ namespace PayxApi.Interfaces.Repositories
 
         Task<WorkingDays> GetAsync(string cardId, DateTime date);
 
-        Task<IEnumerable<WorkingDays>> GetInitializedApprovalStatusAsync(string cardId);
+        Task<IEnumerable<WorkingDaysDTO>> GetAllRequestAsync();
 
         Task<IEnumerable<WorkingDays>> GetAsync(string cardId);
 
         Task<IEnumerable<WorkingDaysDTO>> GetAsync(DateTime date);
+
+        Task<DateTime> GetLastCalendarDate();
     }
 }

@@ -94,16 +94,80 @@ namespace PayxApi.Implementations.Repositories
             return await _context.Employees
             .Include(a => a.Position)
             .Include(d => d.Department)
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment)
             .Where(e => e.IsDeleted == false).Select( employee => new EmployeeDTO
             {
+                Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
                 PhoneNumber = employee.PhoneNumber,
                 Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
                 PositionName = employee.Position.Name,
-                DepartmentName = employee.Department.Name
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
             }).ToListAsync();
            
+        }
+
+        public async Task<EmployeeDTO> GetAsync(string UserCardId)
+        {
+            var employee = await _context.Employees
+            .Include(a => a.Position)
+            .Include(d => d.Department)
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment)
+            .SingleOrDefaultAsync(e => e.CardId == UserCardId && e.IsDeleted == false);
+            
+            return new EmployeeDTO
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
+                PositionName = employee.Position.Name,
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
+            };
         }
     }
 }

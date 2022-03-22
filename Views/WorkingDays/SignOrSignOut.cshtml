@@ -1,0 +1,215 @@
+@{
+    Layout = "_PayxLayout";
+}
+@model PayxApi.DTOs.SignRequestModel
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/style1.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Supermercado+One&display=swap"
+        rel="stylesheet"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="up"></div>
+        <div id="register-form" class="hidden">
+            <div class="real">
+                <div class="header">
+                    <span><svg class="icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                            clip-rule="evenodd"></path>
+                    </svg></span>
+                <span id="pay">PayX</span> <span id="wallet">Wallet</span>
+                </div>
+                <div class="form-body">
+                    <form asp-action="SignOut">
+
+                        <div class="form-column">
+                            <div id="input" class="asd">
+                                <label for="">Card Id: </label><br>
+                                <input asp-for="UserCardId" type="text" class="tInput" required>
+                            </div>
+                        </div>
+                        @* <div class="form-row">
+                            <div id="input1" class="asd">
+                                <label for="">Wallet-Id: </label><br>
+                                <input type="text" class="tInput" required>
+                            </div>
+                            @* <div id="input1" class="asd1">
+                                <label for="">Password: </label><br>
+                                <input type="password" class="tInput" required>
+                            </div> 
+                        </div> *@
+                        @* <div class="form-row">
+                            <div id="input1" class="asd">
+                                <label for="">Wallet-Id: </label><br>
+                                <input type="text" class="tInput" required>
+                            </div>
+                            <div id="input1" class="asd1">
+                                <label for="">Password: </label><br>
+                                <input type="password" class="tInput" required>
+                            </div>
+                        </div> *@
+                        @* <div class="form-row">
+                            <div id="input1" class="asd">
+                                <label for="">Wallet-Id: </label><br>
+                                <input type="text" class="tInput" required>
+                            </div>
+                            <div id="input1" class="asd1">
+                                <label for="">Password: </label><br>
+                                <input type="password" class="tInput" required>
+                            </div>
+                        </div> *@
+                        @* <div class="form-row">
+                            <div id="input1" class="asd">
+                                <label for="">Wallet-Id: </label><br>
+                                <input type="text" class="tInput" required>
+                            </div>
+                            <div id="input1" class="asd1">
+                                <label for="">Password: </label><br>
+                                <input type="password" class="tInput" required>
+                            </div>
+                        </div> *@
+                        <div>
+                            <input class="btn-sbt btn" type="submit" value="Sign Out">
+                        </div>
+                    </form>
+                </div>
+                <div class="footer">
+                    <button id="login-btn" class="btn">Click to Sign In</button>
+                </div>
+            </div>
+        </div>
+        
+            <!--Login page-->
+            <div id="login-form" class="">
+            <div class="real">
+                <div class="header">
+                    <span><svg class="icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                            clip-rule="evenodd"></path>
+                    </svg></span>
+                <span id="pay">PayX</span> <span id="wallet">Wallet</span>
+                </div>
+                <div class="form-body">
+                    <form asp-action="SignIn">
+                        <div class="form-column">
+                            <div id="input" class="asd">
+                                <label for="">Card Id: </label><br>
+                                <input asp-for="UserCardId" type="text" class="tInput" required>
+                            </div>
+                        </div>
+                        @* <div class="form-column">
+                            <div id="input" class="asd1">
+                                <label for="">Password: </label><br>
+                                <input type="password" class="tInput" required>
+                            </div>
+                        </div> *@
+                        <div>
+                            <input class="btn-sbt btn" type="submit" value="Sign In">
+                        </div>
+                    </form>
+                </div>
+                <div class="footer">
+                    <button id="register-btn" class="btn">Click to Sign Out</button>
+                </div>
+            </div>
+        </div>
+        <div class="down"></div>
+        <!-- <div class="form-inputs shadowed" id="login-form">
+            <h1 class="header-text">SignIn</h1>
+            <form autocomplete="off" action="">
+                <div id="input">
+                    <label for="">Wallet-Id: </label><br>
+                    <input type="text" class="tInput" required>
+                </div>
+                <div id="input1">
+                    <label for="">Password: </label><br>
+                    <input type="password" class="tInput" required>
+                </div>
+                <button id="sign-in" class="btn">Sign-In</button>
+            </form>
+            <div class="register">
+                <h6>Don't Have an Account?</h6>
+                <button class="btn" id="register-btn">Register</button>
+            </div>
+            
+        </div>
+
+        <div class="form-inputs shadowed hidden" id="register-form">
+            <h1 class="header-text">SignUp</h1>
+            <form autocomplete="off" action="" id="form">
+                <div class="row">
+                    <div class="input">
+                        <label for="">First Name: </label><br>
+                        <input type="text" class="tInput" required>
+                    </div>
+                    <div  class="input">
+                        <label for="">Last Name: </label><br>
+                        <input type="password" class="tInput" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <label for="">First Name: </label><br>
+                        <input type="text" class="tInput" required>
+                    </div>
+                    <div  class="input">
+                        <label for="">Last Name: </label><br>
+                        <input type="password" class="tInput" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <label for="">First Name: </label><br>
+                        <input type="text" class="tInput" required>
+                    </div>
+                    <div  class="input">
+                        <label for="">Last Name: </label><br>
+                        <input type="password" class="tInput" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <label for="">First Name: </label><br>
+                        <input type="text" class="tInput" required>
+                    </div>
+                    <div  class="input">
+                        <label for="">Last Name: </label><br>
+                        <input type="password" class="tInput" required>
+                    </div>
+                </div>
+                <button id="sign-in" class="btn">Register</button>
+            </form>
+            <div class="row">
+            <div class="register">
+                <h6>Already Have an Account?</h6>
+                <button class="btn" id="login-btn">Login</button>
+            </div>
+            </div>
+            
+        </div> -->
+    </div>
+    <script src="~/scriptss/login.js"></script>
+</body>
+</html>

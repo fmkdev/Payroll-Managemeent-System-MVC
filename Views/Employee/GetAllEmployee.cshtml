@@ -1,0 +1,176 @@
+@{
+    Layout = "_PayxLayout";
+}
+@model IEnumerable<PayxApi.DTOs.EmployeeDTO>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Card-Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+            @foreach (var employee in Model)
+            {
+                
+            
+                  <tr>
+                    <th scope="row">@Html.DisplayFor(e => employee.Id)</th>
+                    <th scope="row">@Html.DisplayFor(e => employee.EmployeeCardId)</th>
+                    <td>@Html.DisplayFor(e => employee.FullName)</td>
+                    <td>@Html.DisplayFor(e => employee.DepartmentName)</td>
+                    <td>@Html.DisplayFor(e => employee.PositionName)</td>
+                    <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                Details
+                            </button>
+                            <div class="modal fade" id="verticalycentered" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <h5 class="card-title"></h5>
+
+                                          <!-- List group with active and disabled items -->
+                                          <ul class="list-group">
+                                            <li class="list-group-item active" aria-current="true">PERSONAL DETAILS</li>
+                                            <li class="list-group-item"><b>FIRST NAME: </b> @Html.DisplayFor(e => employee.FirstName)</li>
+                                            <li class="list-group-item"><b>LAST NAME: </b> @Html.DisplayFor(e => employee.LastName)</li>
+                                            <li class="list-group-item"><b>GENDER: </b> @Html.DisplayFor(e => employee.Gender)</li>
+                                            <li class="list-group-item"><b>MARITAL STATUS: </b> @Html.DisplayFor(e => employee.MaritalStatus)</li>
+                                            <li class="list-group-item"><b>EMAIL: </b> @Html.DisplayFor(e => employee.Email)</li>
+                                            <li class="list-group-item"><b>PHONE NUMBER: </b> @Html.DisplayFor(e => employee.PhoneNumber)</li>
+                                            <li class="list-group-item"><b>POSITION: </b> @Html.DisplayFor(e => employee.PositionName)</li>
+                                            <li class="list-group-item"><b>DEPARTMENT: </b> @Html.DisplayFor(e => employee.DepartmentName)</li>
+                                            <li class="list-group-item"><b>APPOINTMENT: </b> @Html.DisplayFor(e => employee.AppointmentName)</li>
+                                            <li class="list-group-item"><b>PAY LEVEL: </b> @Html.DisplayFor(e => employee.PayLevelName)</li>
+                                            <li class="list-group-item"><b>PAYMENT TYPE: </b> @Html.DisplayFor(e => employee.PaymentType)</li>
+                                            <li class="list-group-item" aria-disabled="true">
+                                              <a asp-action="UpdateEmployee" asp-controller="Employee" asp-route-employeeId="@employee.Id" class="btn btn-primary">Update</a>
+                                            </li>
+                                          </ul><!-- End ist group with active and disabled items -->
+
+                                        </div>
+                                      </div>
+
+
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <h5 class="card-title"></h5>
+
+                                          <!-- List group with active and disabled items -->
+                                          <ul class="list-group">
+                                            <li class="list-group-item active" aria-current="true">ADDRESS</li>
+                                            <li class="list-group-item"><b>HOUSE NUMBER: </b> @Html.DisplayFor(e => employee.HouseNumber)</li>
+                                            <li class="list-group-item"><b>STREET NAME: </b> @Html.DisplayFor(e => employee.StreetName)</li>
+                                            <li class="list-group-item"><b>L/G: </b> @Html.DisplayFor(e => employee.LocalGovernment)</li>
+                                            <li class="list-group-item"><b>CITY: </b> @Html.DisplayFor(e => employee.City)</li>
+                                            <li class="list-group-item"><b>STATE: </b> @Html.DisplayFor(e => employee.State)</li>
+                                            <li class="list-group-item"><b>NATIONALITY: </b> @Html.DisplayFor(e => employee.Nationality)</li>
+                                            <li class="list-group-item"><b>HOME NUMBER: </b> @Html.DisplayFor(e => employee.HomeNumber)</li>
+                                            <li class="list-group-item" aria-disabled="true">
+                                              <a asp-action="UpdateAddress" asp-controller="Address" asp-route-employeeId="@employee.Id" class="btn btn-primary">Update</a>
+                                            </li>
+                                          </ul><!-- End ist group with active and disabled items -->
+
+                                        </div>
+                                      </div>
+                                    
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                          <h5 class="card-title"></h5>
+
+                                          <!-- List group with active and disabled items -->
+                                          <ul class="list-group">
+                                            <li class="list-group-item active" aria-current="true">ADDRESS</li>
+                                            <li class="list-group-item"><b>ACCOUNT NUMBER: </b> @Html.DisplayFor(e => employee.AccountNumber)</li>
+                                            <li class="list-group-item"><b>BANK NAME: </b> @Html.DisplayFor(e => employee.BankName)</li>
+                                            <li class="list-group-item" aria-disabled="true">
+                                              <a asp-action="UpdateAccountDetails" asp-controller="AccountDetails" asp-route-employeeId="@employee.Id" class="btn btn-primary">Update</a>
+                                            </li>
+                                          </ul><!-- End ist group with active and disabled items -->
+
+                                        </div>
+                                      </div>
+                                </div>
+                                </div>
+                            </div><!-- End Vertically centered Modal-->
+                    </td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                  </tr>
+            }
+                  @* <tr>
+                    <th scope="row">2</th>
+                    <td>Bridie Kessler</td>
+                    <td>Developer</td>
+                    <td>35</td>
+                    <td>2014-12-05</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Ashleigh Langosh</td>
+                    <td>Finance</td>
+                    <td>45</td>
+                    <td>2011-08-12</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Angus Grady</td>
+                    <td>HR</td>
+                    <td>34</td>
+                    <td>2012-06-11</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td>2011-04-19</td>
+                  </tr> *@
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->

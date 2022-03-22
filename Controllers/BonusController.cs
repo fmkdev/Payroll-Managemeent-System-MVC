@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PayxApi.DTOs;
 using PayxApi.Interfaces.Services;
@@ -16,12 +17,14 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost("{employeeId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateBonus(int employeeId, CreateBonusRequestModel model)
         {
             return View(await _bonusService.CreateAsync(employeeId, model));
         }
 
         [HttpPost("{employeeId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEmployeeBonusByMonth(int employeeId, DateTime month)
         {
             return View(await _bonusService.GetAsync(employeeId, month.Month));

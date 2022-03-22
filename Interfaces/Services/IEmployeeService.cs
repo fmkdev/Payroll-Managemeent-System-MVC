@@ -13,6 +13,8 @@ namespace PayxApi.Interfaces.Services
         void DeleteAsync(int id);
 
         Task<BaseResponse<EmployeeDTO>> GetAsync(int id);
+
+        Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId);
         
         Task<IEnumerable<EmployeeDTO>> GetAsync();
     }

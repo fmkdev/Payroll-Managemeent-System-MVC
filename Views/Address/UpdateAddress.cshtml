@@ -1,0 +1,191 @@
+@{
+    Layout = "_PayxLayout";
+}
+@model PayxApi.DTOs.AddressDTO
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/styles/register.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-body">
+            <div class="upper">REGISTER EMPLOYEE</div>
+            <div class="lower">
+                <form asp-action="UpdateAddress">
+                    @*<div id="first-section">
+                         <div class="row">
+                            <div class="input">
+                                <div><label for="">First Name: </label></div>
+                                <div><input type="text" id="first-name" asp-for="FirstName" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Last Name: </label></div>
+                                <div><input type="text" id="last-name" asp-for="LastName" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Email: </label></div>
+                                <div><input type="text" id="email" asp-for="Email" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Phone Number: </label></div>
+                                <div><input type="text" id="phone-number" asp-for="PhoneNumber" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Gender: </label></div>
+                                <div><select asp-for="Gender" asp-items="@Html.GetEnumSelectList(typeof(Gender))" required>
+                                </select></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Marital Status: </label></div>
+                                <div><select asp-for="MaritalStatus" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))" id="marital-status" required>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Department: </label></div>
+                                <div>
+                                    <select asp-for="DepartmentId" asp-items="ViewBag.Department" id="department" required></select>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Position: </label></div>
+                                <div>
+                                    <select asp-for="PositionId" asp-items="ViewBag.Position" id="position" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Payment Type: </label></div>
+                                <div>
+                                    <select asp-for="PaymentType" asp-items="@Html.GetEnumSelectList(typeof(PaymentType))" id="payment-type" required></select>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Resumption Date: </label></div>
+                                <div><input asp-for="ResumptionDate" type="date" id="resumption-date" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Pay Level: </label></div>
+                                <div>
+                                    <select asp-for="PayLevelId" asp-items="ViewBag.PayLevel" id="pay-level" required></select>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Appointment Type: </label></div>
+                                <div><select asp-for="AppointmentId" asp-items="ViewBag.Appointment" id="appointment-type" required>
+                                </select></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Role Type: </label></div>
+                                <div><select asp-for="RoleIds" asp-items="ViewBag.RoleIds" id="Role-Type" required>
+                                </select></div>
+                            </div>
+                            <!-- <div class="input">
+                                <div><label for="">Appointment Type: </label></div>
+                                <div><select name="" id="appointment-type" required>
+                                    <option value="">--Select Appointment Type--</option>
+                                </select></div>
+                            </div> -->
+                        </div>
+                        <button id="first-next" class="next first-btn">Next</button>
+                    </div> *@
+
+
+                    <div id="second-section" class="">
+                        <div class="row">
+                            <div class="input">
+                                <label for="">House No: </label><br>
+                                <input asp-for="HouseNumber" id="house-no" class="tInput" required>
+                            </div>
+                            <div class="input">
+                                <label for="">Street Name: </label><br>
+                                <input asp-for="StreetName" id="street-name" class="tInput" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <label for="">City: </label><br>
+                                <input asp-for="City" id="city" class="tInput" required>
+                            </div>
+                            <div class="input">
+                                <label for="">State: </label><br>
+                                <input asp-for="State" id="state" class="tInput" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <label for="">Nationality: </label><br>
+                                <input asp-for="Nationality" id="nationality" class="tInput" required>
+                            </div>
+                            <div class="input">
+                                <label for="">Local Government: </label><br>
+                                <input asp-for="LocalGovernment" id="local-government" class="tInput" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <label for="">Home Phone: </label><br>
+                                <input asp-for="HomeNumber" id="home-number" class="tInput" required>
+                            </div>
+                            <!-- <div  class="input">
+                                <label for="">Local Government: </label><br>
+                                <input type="text" class="tInput" required>
+                            </div> -->
+                        </div>
+                        @* <div class="middle-btn">
+                            <button id="first-previous" class="next">Previous</button>
+                            <button id="second-next" class="next">Next</button>
+                        </div>
+                    </div>
+                    <div id="third-section" class="hidden">
+                        <p id="span-error-message" class="hidden"></p>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Account Number: </label></div>
+                                <div><input asp-for="AccountNumber" id="acc-number" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Bank Name: </label></div>
+                                <div><input asp-for="BankName" id="bank-number" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Password: </label></div>
+                                <div><input asp-for="Password" id="password" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Confirm Password: </label></div>
+                                <div><input asp-for="ConfirmPassword" id="confirm-password" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <button id="last-previous" class="last-previous">Previous</button> *@
+                        <div class="submit"><input id="register-btn" type="submit" value="Register"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/register.js"></script>
+</body>
+
+</html>

@@ -181,11 +181,21 @@ namespace PayxApi.Implementations.Services
             return await _employeeRepository.GetAsync();
         }
 
+        public async Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId)
+        {
+            var employee = await _employeeRepository.GetAsync(UserCardId);
+            return new BaseResponse<EmployeeDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = employee
+            };
+        }
+
         public async Task<BaseResponse<bool>> UpdateAsync(int id, UpdateEmployeeRequestModel model)
         {
-            var user = await _userRepository.GetAsync(id);
-
-            if (user == null)
+            if(model.FirstName == null || model.LastName == null || model.PayLevelId == 0 || model.PhoneNumber == null ||
+            model.DepartmentId == 0 || model.Email == null || model.AppointmentId == 0 || model.PositionId == 0)
             {
                 return new BaseResponse<bool>
                 {
@@ -194,18 +204,40 @@ namespace PayxApi.Implementations.Services
                     Data = false
                 };
             }
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
-            user.PhoneNumber = model.PhoneNumber;
-            user.Modified = DateTime.UtcNow;
-            user.ModifiedBy = model.FirstName;
+            var employee = await _employeeRepository.GetAsync(id);
 
-            var employee = await _employeeRepository.GetAsync(user.Employee.Id);
+            if (employee == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Successfull",
+                    Data = false
+                };
+            }
             employee.FirstName = model.FirstName;
             employee.LastName = model.LastName;
             employee.PhoneNumber = model.PhoneNumber;
+            employee.Gender = model.Gender;
+            employee.MaritalStatus = model.MaritalStatus;
+            employee.Email = model.Email;
+            employee.AppointmentId = model.AppointmentId;
+            employee.DepartmentId = model.DepartmentId;
+            employee.PositionId = model.PositionId;
+            employee.PaymentType = model.PaymentType;
+            employee.PayLevelId = model.PayLevelId;
+            
             employee.Modified = DateTime.UtcNow;
             employee.ModifiedBy = model.FirstName;
+
+            var user = await _userRepository.GetAsync(employee.UserId);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+            user.Modified = DateTime.UtcNow;
+            user.ModifiedBy = model.FirstName;
 
             await _userRepository.UpdateAsync(user);
             await _employeeRepository.UpdateAsync(employee);

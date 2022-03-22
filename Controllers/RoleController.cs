@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PayxApi.DTOs;
 using PayxApi.Interfaces.Services;
@@ -20,15 +21,19 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateRoleRequestModel model)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateRole(CreateRoleRequestModel model)
         {
-            return View(await _roleService.CreateAsync(model));
+            var role = await _roleService.CreateAsync(model);
+            return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllRole()
         {
-            return View(await _roleService.GetAsync());
+            var role = await _roleService.GetAsync();
+            return View(role.Data);
         }
     }
 }

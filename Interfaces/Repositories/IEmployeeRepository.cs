@@ -16,6 +16,8 @@ namespace PayxApi.Interfaces.Repositories
 
         Task<EmployeeDTO> GetDtoAsync(int id);
 
+        Task<EmployeeDTO> GetAsync(string UserCardId);
+
         Task<Employee> GetAsync(int id);
 
         Task<IEnumerable<EmployeeDTO>> GetAsync();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace PayxApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+            
             services.AddControllersWithViews();
             services.AddHostedService<PayXBackgroundTasks>();
             
@@ -86,29 +89,14 @@ namespace PayxApi
             services.AddScoped<ITaxService, TaxService>();
 
 
-            var key = "PayX is an App build for managing Financial life of an Employee";
-
-            services.AddSingleton<IJwtAuthenticationManager>(new JwtAuthenticationManager(key));
-
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(x =>
-               {
-                   x.RequireHttpsMetadata = false;
-                   x.SaveToken = true;
-                   x.TokenValidationParameters = new TokenValidationParameters
-                   {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                   };
-
-               });
-
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(config =>
+                {
+                    config.LoginPath = "/User/login";
+                    config.Cookie.Name = "PayX";
+                    config.LogoutPath = "/User/logout";
+                });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
