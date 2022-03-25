@@ -23,7 +23,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<AccountDetails> GetAsync(int Id)
         {
-            return await _context.AccountDetails.SingleOrDefaultAsync();
+            return await _context.AccountDetails.SingleOrDefaultAsync(b => b.EmployeeId == Id);
         }
 
         public async Task<bool> UpdateAsync(AccountDetails accountDetails)

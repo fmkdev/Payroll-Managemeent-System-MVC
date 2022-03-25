@@ -8,6 +8,7 @@ namespace PayxApi.Interfaces.Repositories
     public interface IPayrollRepository
     {
         Task<bool> CreateAsync(Payroll payroll);
+
         Task<IEnumerable<Payroll>> GetAsync(DateTime month);
     }
 }

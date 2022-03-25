@@ -7,6 +7,8 @@ namespace PayxApi.DTOs
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public int NumberOfEmployees { get; set; }
     }
     public class CreateDepartmentRequestModel
     {

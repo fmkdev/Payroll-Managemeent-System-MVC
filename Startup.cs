@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PayxApi.Auth;
+using PayxApi.BackgroundTasks;
+using PayxApi.Configuration;
 using PayxApi.ContextDb;
 using PayxApi.Implementations.Repositories;
 using PayxApi.Implementations.Services;
@@ -35,9 +37,11 @@ namespace PayxApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
+
+            services.Configure<PayxPayrollConfig>(Configuration.GetSection("PayxPayrollConfig"));
+            services.AddHostedService<WeeklyGenerator>();
             
             services.AddControllersWithViews();
-            services.AddHostedService<PayXBackgroundTasks>();
             
             services.AddDbContext<ContextApp>(options => 
             options.UseMySQL(Configuration.GetConnectionString("ContextApp")));

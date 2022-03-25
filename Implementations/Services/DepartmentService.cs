@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using PayxApi.DTOs;
 using PayxApi.Interfaces.Repositories;
@@ -47,6 +48,17 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Success",
                 Data = department
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<DepartmentDTO>>> GetEmployeeByDepartmentAsync()
+        {
+            var departmetEmployee = await _departmentRepository.GetEmployeeByDepartmentAsync();
+            return new BaseResponse<IEnumerable<DepartmentDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = departmetEmployee
             };
         }
     }

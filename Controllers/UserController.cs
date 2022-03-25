@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -16,15 +17,49 @@ namespace PayxApi.Controllers
     {
         private readonly IUserService _userService;
         private readonly IEmployeeService _employeeService;
-        public UserController(IUserService userService, IEmployeeService employeeService)
+        private readonly IDepartmentService _departmentService;
+        
+        public UserController(IUserService userService, IEmployeeService employeeService, 
+        IDepartmentService departmentService)
         {
             _userService = userService;
             _employeeService = employeeService;
+            _departmentService = departmentService;
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var weekly = await _employeeService.GetWeeklyReinbursement();
+            var biweek = await _employeeService.GetBiWeeklyReinbursement();
+            var month = await _employeeService.GetMonthlyReinbursement();
+            var employees = await _employeeService.GetAllNumberOfEmployeeAsync();
+
+            var deptemp = await _departmentService.GetEmployeeByDepartmentAsync();
+
+            var numbrofdepartment = deptemp.Data.Count();
+            List<string> deptNames = new List<string>();
+            List<int> empNumbers = new List<int>();
+
+            foreach(var item in deptemp.Data)
+            {
+                deptNames.Add(item.Name);
+                empNumbers.Add(item.NumberOfEmployees);
+            }
+            var dpN = deptNames;
+            var epnum = empNumbers;
+            
+            ViewBag.DEPARTMENTNAMES = dpN;
+            ViewBag.EMPLOYEENUMBERS = empNumbers;
+            
+
+            
+
+
+            ViewBag.WEEKLY = weekly.Data;
+            ViewBag.BIWEEK = biweek.Data;
+            ViewBag.MONTHLY = month.Data;
+            ViewBag.EMPLOYEES = employees.Data;
             return View();
         }
 
@@ -110,5 +145,8 @@ namespace PayxApi.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+    
+     
+    
     }
 }

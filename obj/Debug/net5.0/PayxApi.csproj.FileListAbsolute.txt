@@ -84,3 +84,4 @@ C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\ref\PayxApi.dll
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\PayxApi.pdb
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\PayxApi.genruntimeconfig.cache
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\WorkingDays\ViewMyCalendar.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\bin\Debug\net5.0\NCrontab.Signed.dll

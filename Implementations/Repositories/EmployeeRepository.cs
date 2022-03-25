@@ -98,7 +98,7 @@ namespace PayxApi.Implementations.Repositories
             .Include(c => c.Address)
             .Include(e => e.PayLevel)
             .Include(f => f.Appointment)
-            .Where(e => e.IsDeleted == false).Select( employee => new EmployeeDTO
+            .Where(e => e.IsDeleted == false).Select(employee => new EmployeeDTO
             {
                 Id = employee.Id,
                 FirstName = employee.FirstName,
@@ -126,7 +126,7 @@ namespace PayxApi.Implementations.Repositories
                 HomeNumber = employee.Address.HomeNumber,
                 LocalGovernment = employee.Address.LocalGovernment
             }).ToListAsync();
-           
+
         }
 
         public async Task<EmployeeDTO> GetAsync(string UserCardId)
@@ -139,7 +139,7 @@ namespace PayxApi.Implementations.Repositories
             .Include(e => e.PayLevel)
             .Include(f => f.Appointment)
             .SingleOrDefaultAsync(e => e.CardId == UserCardId && e.IsDeleted == false);
-            
+
             return new EmployeeDTO
             {
                 Id = employee.Id,
@@ -168,6 +168,69 @@ namespace PayxApi.Implementations.Repositories
                 HomeNumber = employee.Address.HomeNumber,
                 LocalGovernment = employee.Address.LocalGovernment
             };
+        }
+
+        public async Task<int> GetAllNumberOfEmployeeAsync()
+        {
+            return await _context.Employees.CountAsync();
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastBiWeekReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.BiWeekly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.BiWeekly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
+
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastWeekReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.weekly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.weekly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastMonthReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.Monthly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+            
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.Monthly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
         }
     }
 }

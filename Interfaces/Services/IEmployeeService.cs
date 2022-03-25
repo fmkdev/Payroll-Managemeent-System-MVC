@@ -17,5 +17,13 @@ namespace PayxApi.Interfaces.Services
         Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId);
         
         Task<IEnumerable<EmployeeDTO>> GetAsync();
+
+        Task<BaseResponse<int>> GetAllNumberOfEmployeeAsync();
+
+        Task<BaseResponse<decimal>> GetBiWeeklyReinbursement();
+
+        Task<BaseResponse<decimal>> GetWeeklyReinbursement();
+        
+        Task<BaseResponse<decimal>> GetMonthlyReinbursement();
     }
 }

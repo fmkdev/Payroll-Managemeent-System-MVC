@@ -23,7 +23,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<Address> GetAsync(int Id)
         {
-            return await _context.Addresses.SingleOrDefaultAsync();
+            return await _context.Addresses.SingleOrDefaultAsync(b => b.EmployeeId == Id);
         }
 
         public async Task<bool> UpdateAsync(Address address)

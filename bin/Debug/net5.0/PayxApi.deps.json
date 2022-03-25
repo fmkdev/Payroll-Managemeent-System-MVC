@@ -26,10 +26,12 @@
       "PayxApi/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
+          "Chart.js": "2.9.3",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.10",
           "MySql.EntityFrameworkCore": "5.0.10",
+          "NCrontab.Signed": "3.3.2",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -341,6 +343,7 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "Chart.js/2.9.3": {},
       "Google.Protobuf/3.14.0": {
         "dependencies": {
           "System.Memory": "4.5.4",
@@ -660,6 +663,17 @@
         },
         "compile": {
           "lib/netstandard2.1/MySql.EntityFrameworkCore.dll": {}
+        }
+      },
+      "NCrontab.Signed/3.3.2": {
+        "runtime": {
+          "lib/netstandard2.0/NCrontab.Signed.dll": {
+            "assemblyVersion": "3.3.2.0",
+            "fileVersion": "3.3.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NCrontab.Signed.dll": {}
         }
       },
       "System.Buffers/4.5.1": {},
@@ -2473,6 +2487,13 @@
       "path": "bouncycastle.netcore/1.8.5",
       "hashPath": "bouncycastle.netcore.1.8.5.nupkg.sha512"
     },
+    "Chart.js/2.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "path": "chart.js/2.9.3",
+      "hashPath": "chart.js.2.9.3.nupkg.sha512"
+    },
     "Google.Protobuf/3.14.0": {
       "type": "package",
       "serviceable": true,
@@ -2689,6 +2710,13 @@
       "sha512": "sha512-RET0ydaQZmPcZf9KJGZVniB6m8gDgZBn7z3nMWzvlkLKpWaRITcWGDFtBOI1jer2WuFnHJ1ReTMu/DRxNNWKNw==",
       "path": "mysql.entityframeworkcore/5.0.10",
       "hashPath": "mysql.entityframeworkcore.5.0.10.nupkg.sha512"
+    },
+    "NCrontab.Signed/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ef9nJs/iIkM3hAcAEDD5dZy0cDFfmmPlhRAt/IPYcsWdMUHZ6MQLuqv5oA6TZrpvO6Sj8lq/B5njbJUMnxedLg==",
+      "path": "ncrontab.signed/3.3.2",
+      "hashPath": "ncrontab.signed.3.3.2.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

@@ -6,6 +6,7 @@ using PayxApi.Models;
 using System.Threading.Tasks;
 using System;
 using BCrypt.Net;
+using System.Linq;
 
 namespace PayxApi.Implementations.Services
 {
@@ -150,6 +151,17 @@ namespace PayxApi.Implementations.Services
             throw new System.NotImplementedException();
         }
 
+        public async Task<BaseResponse<int>> GetAllNumberOfEmployeeAsync()
+        {
+            var num = await _employeeRepository.GetAllNumberOfEmployeeAsync();
+            return new BaseResponse<int>
+            {
+                IsSuccess = true,
+                Message = "success",
+                Data = num
+            };
+        }
+
         public async Task<BaseResponse<EmployeeDTO>> GetAsync(int id)
         {
             var employee = await _employeeRepository.GetAsync(id);
@@ -189,6 +201,72 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Success",
                 Data = employee
+            };
+        }
+
+        public async Task<BaseResponse<decimal>> GetBiWeeklyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastBiWeekReinBursement();
+            if(biweek == null)
+            {
+                var amt = 0;
+                return new BaseResponse<decimal>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = amt
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<decimal>> GetMonthlyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastMonthReinBursement();
+            if(biweek == null)
+            {
+                var amt = 0;
+                return new BaseResponse<decimal>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = amt
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<decimal>> GetWeeklyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastWeekReinBursement();
+            if(biweek == null)
+            {
+                var amt = 0;
+                return new BaseResponse<decimal>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = amt
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
             };
         }
 

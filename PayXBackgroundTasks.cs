@@ -22,8 +22,8 @@ namespace PayxApi
                 using(var scope = _serviceProvider.CreateScope())
                 {
                     var payrollService = scope.ServiceProvider.GetRequiredService<IPayrollService>();
-                    await payrollService.GeneratePayrollForWeeklyPayee();
-                    await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
+                    await payrollService.GeneratePayrollForBiWeeklyPayee();
+                    await Task.Delay(TimeSpan.FromHours(2), stoppingToken);
                 }
             }
         }

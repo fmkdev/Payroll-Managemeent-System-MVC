@@ -57,6 +57,10 @@ namespace PayxApi.DTOs
 
         public decimal Bonus { get; set; }
 
+        public int TotalEmployee { get; set; }
+
+        public decimal BiWeeklyReinbursementAmount { get; set; }
+
         public decimal PositionAllowance { get; set; }
 
         public double EmployeeTaxPercentage { get; set; }

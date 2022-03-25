@@ -8,7 +8,9 @@ namespace PayxApi.Interfaces.Services
     public interface IPayrollService
     {
         Task<BaseResponse<bool>> GeneratePayrollForBiWeeklyPayee();
+        
         Task<BaseResponse<bool>> GeneratePayrollForWeeklyPayee();
+
         Task<BaseResponse<bool>> GeneratePayrollForMonthlyPayee();
     }
 }

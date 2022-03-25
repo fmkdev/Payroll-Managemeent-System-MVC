@@ -10,9 +10,14 @@ namespace PayxApi.Implementations.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IDepartmentRepository _departmentRepository;
+        public UserService(IUserRepository userRepository, IEmployeeRepository employeeRepository,
+        IDepartmentRepository departmentRepository)
         {
             _userRepository = userRepository;
+            _employeeRepository = employeeRepository;
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<BaseResponse<bool>> DeleteAsync(int userId)
@@ -36,6 +41,28 @@ namespace PayxApi.Implementations.Services
                 Data = true
             };
         }
+
+        // public async Task<BaseResponse<Datas<IEnumerable<DepartmentDTO>>>> FetchDatas()
+        // {
+        //     var emps = await _employeeRepository.GetLastBiWeekReinBursement();
+        //     var amount = emps.Sum(s => s.BiWeeklyReinbursementAmount);
+
+        //     var employess = await _employeeRepository.GetAllNumberOfEmployeeAsync();
+
+        //     var deptemp = await _departmentRepository.GetEmployeeByDepartmentAsync();
+
+        //     return new BaseResponse<Datas<IEnumerable<DepartmentDTO>>>
+        //     {
+        //         IsSuccess = true,
+        //         Message = "Success",
+        //         Data = new Datas<IEnumerable<DepartmentDTO>>
+        //         {
+        //             TotalBiWeekly = amount,
+        //             TotalEmployee = employess,
+        //             Act = deptemp
+        //         }
+        //     };
+        // }
 
         public async Task<BaseResponse<UserDTO>> GetAsync(FindUserRequestModel model)
         {
@@ -76,6 +103,19 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Success",
                 Data = user
+            };
+        }
+
+        public async Task<BaseResponse<decimal>> GetBiWeeklyReinbursement()
+        {
+            var emps = await _employeeRepository.GetLastBiWeekReinBursement();
+
+            var amount = emps.Sum(s => s.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
             };
         }
 
