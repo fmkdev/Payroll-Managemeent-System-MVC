@@ -30,7 +30,7 @@ namespace PayxApi.BackgroundTasks
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
+            while (stoppingToken.IsCancellationRequested)
             {
                 var now = DateTime.UtcNow;
                 try

@@ -18,12 +18,12 @@ namespace PayxApi.Implementations.Services
             _employeeRepository = employeeRepository;
             _bonusRepository = bonusRepository;
         }
-        public async Task<BaseResponse<bool>> CreateAsync(int employeeId, CreateBonusRequestModel model)
+        public async Task<BaseResponse<bool>> CreateAsync(int Id, CreateBonusRequestModel model)
         {
-            var employee = await _employeeRepository.GetAsync(employeeId);
+            var employee = await _employeeRepository.GetAsync(Id);
             var bonus = new Bonus
             {
-                EmployeeId = employeeId,
+                EmployeeId = Id,
                 Employee = employee,
                 BonusName = model.BonusName,
                 Amount = model.Amount,

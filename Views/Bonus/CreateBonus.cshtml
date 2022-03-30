@@ -1,0 +1,38 @@
+@model PayxApi.DTOs.BonusDTO
+@{
+    Layout = "_PayxLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/styles/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-body">
+            <div class="upper">GIVE BONUS</div>
+            <div class="lower">
+                <form asp-action="CreateBonus">
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Bonus Name: </label></div>
+                                <div><input asp-for="BonusName" id="allowance-name" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Amount: </label></div>
+                                <div><input asp-for="Amount" id="amount" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="submit"><input type="submit" value="Register"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/register.js"></script>
+</body>
+</html>

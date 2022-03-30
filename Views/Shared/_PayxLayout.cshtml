@@ -278,7 +278,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " asp-action="Index" asp-controller="User">
+        <a class="nav-link " asp-action="EmployeeIndex" asp-controller="User">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -302,6 +302,16 @@
           <li>
             <a asp-action="ViewAllRequest" asp-controller="WorkingDays">
               <i class="bi bi-circle"></i><span>Employee Requests</span>
+            </a>
+          </li>
+          <li>
+            <a asp-action="AllEmployee" asp-controller="Bonus">
+              <i class="bi bi-circle"></i><span>Give Deduction</span>
+            </a>
+          </li>
+          <li>
+            <a asp-action="AllEmployee" asp-controller="OtherDeduction">
+              <i class="bi bi-circle"></i><span>Give Bonus</span>
             </a>
           </li>
           @* <li>

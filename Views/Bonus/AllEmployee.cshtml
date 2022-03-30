@@ -1,7 +1,8 @@
+@model IEnumerable<PayxApi.DTOs.EmployeeDTO>
 @{
     Layout = "_PayxLayout";
 }
-@model IEnumerable<PayxApi.DTOs.EmployeeDTO>
+
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -33,26 +34,19 @@
                     <th scope="col">Name</th>
                     <th scope="col">Department</th>
                     <th scope="col">Position</th>
-                    <th scope="col">Details</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Give Bonus</th>
                   </tr>
                 </thead>
                 <tbody>
             @foreach (var employee in Model)
             {
-                
-            
                   <tr>
                     <th scope="row">@Html.DisplayFor(e => employee.Id)</th>
                     <th scope="row">@Html.DisplayFor(e => employee.EmployeeCardId)</th>
                     <td>@Html.DisplayFor(e => employee.FullName)</td>
                     <td>@Html.DisplayFor(e => employee.DepartmentName)</td>
                     <td>@Html.DisplayFor(e => employee.PositionName)</td>
-                    <td><a asp-action="UpdateEmployee" asp-controller="Employee" asp-route-employeeId="@employee.Id" class="btn btn-primary">Personal Details</a></td>
-                    <td><a asp-action="UpdateAddress" asp-controller="Address" asp-route-id="@employee.Id" class="btn btn-primary">Address</a></td>
-                    <td><a asp-action="UpdateAccountDetails" asp-controller="AccountDetails" asp-route-employeeId="@employee.Id" class="btn btn-primary">Bank</a></td>
-                    
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                    <td><a asp-action="CreateBonus" asp-controller="Bonus" asp-route-employeeId="@employee.Id" type="button" class="btn btn-success">Give Bonus</a></td>
                   </tr>
             }
                 </tbody>

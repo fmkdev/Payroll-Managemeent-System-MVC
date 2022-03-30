@@ -15619,8 +15619,18 @@
   "RootNamespace": "PayxApi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\EmployeeIndex.cshtml",
+      "TargetPath": "Views\\User\\EmployeeIndex.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\ViewMyCalendar.cshtml",
       "TargetPath": "Views\\WorkingDays\\ViewMyCalendar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Bonus\\CreateBonus.cshtml",
+      "TargetPath": "Views\\Bonus\\CreateBonus.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15669,8 +15679,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\OtherDeduction\\CreateOtherDeduction.cshtml",
+      "TargetPath": "Views\\OtherDeduction\\CreateOtherDeduction.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Role\\CreateRole.cshtml",
       "TargetPath": "Views\\Role\\CreateRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Bonus\\AllEmployee.cshtml",
+      "TargetPath": "Views\\Bonus\\AllEmployee.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15701,6 +15721,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\OtherDeduction\\AllEmployee.cshtml",
+      "TargetPath": "Views\\OtherDeduction\\AllEmployee.cshtml",
       "FileKind": "mvc"
     },
     {

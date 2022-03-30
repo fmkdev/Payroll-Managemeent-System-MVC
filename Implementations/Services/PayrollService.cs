@@ -35,7 +35,7 @@ namespace PayxApi.Implementations.Services
 
                 var payroll = new Payroll
                 {
-                    TransactionId = $"EmpPay{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
+                    TransactionId = $"EMP-PAY-{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
                     EmployeeId = emp.Id,
                     EmployeeCardId = emp.CardId,
                     EmployeeBasicPay = employee.BasicPay,

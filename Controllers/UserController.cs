@@ -27,7 +27,7 @@ namespace PayxApi.Controllers
             _departmentService = departmentService;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var weekly = await _employeeService.GetWeeklyReinbursement();
@@ -51,15 +51,17 @@ namespace PayxApi.Controllers
             
             ViewBag.DEPARTMENTNAMES = dpN;
             ViewBag.EMPLOYEENUMBERS = empNumbers;
-            
-
-            
-
-
+                    
             ViewBag.WEEKLY = weekly.Data;
             ViewBag.BIWEEK = biweek.Data;
             ViewBag.MONTHLY = month.Data;
             ViewBag.EMPLOYEES = employees.Data;
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult EmployeesIndex()
+        {
             return View();
         }
 

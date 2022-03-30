@@ -39,7 +39,11 @@ namespace PayxApi
             services.AddHttpContextAccessor();
 
             services.Configure<PayxPayrollConfig>(Configuration.GetSection("PayxPayrollConfig"));
+            services.Configure<PayxPayrollConfig1>(Configuration.GetSection("PayxPayrollConfig1"));
+            services.Configure<PayxPayrollConfig2>(Configuration.GetSection("PayxPayrollConfig2"));
             services.AddHostedService<WeeklyGenerator>();
+            services.AddHostedService<BiWeeklyGenerator>();
+            services.AddHostedService<MonthlyGenerator>();
             
             services.AddControllersWithViews();
             

@@ -7,7 +7,7 @@ namespace PayxApi.Interfaces.Services
 {
     public interface IBonusService
     {
-        Task<BaseResponse<bool>> CreateAsync(int employeeId, CreateBonusRequestModel model);
+        Task<BaseResponse<bool>> CreateAsync(int Id, CreateBonusRequestModel model);
 
         Task<BaseResponse<IEnumerable<BonusDTO>>> GetAsync(int EmployeeId, int month);
     }

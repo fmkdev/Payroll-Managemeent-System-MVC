@@ -85,3 +85,8 @@ C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\PayxApi.pdb
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\PayxApi.genruntimeconfig.cache
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\WorkingDays\ViewMyCalendar.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\bin\Debug\net5.0\NCrontab.Signed.dll
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Bonus\AllEmployee.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Bonus\CreateBonus.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\OtherDeduction\AllEmployee.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\OtherDeduction\CreateOtherDeduction.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\User\EmployeeIndex.cshtml.g.cs

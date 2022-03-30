@@ -16,6 +16,7 @@ namespace PayxApi.DTOs
     }
     public class CreateBonusRequestModel
     {
+        
         public string  BonusName { get; set; }
 
         public decimal Amount { get; set; }
