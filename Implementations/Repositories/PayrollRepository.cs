@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PayxApi.ContextDb;
+using PayxApi.DTOs;
 using PayxApi.Interfaces.Repositories;
 using PayxApi.Models;
 
@@ -24,11 +25,44 @@ namespace PayxApi.Implementations.Repositories
             return true;
         }
 
-        public Task<IEnumerable<Payroll>> GetAsync(DateTime month)
+        public Task<IEnumerable<PayrollDTO>> GetAsync(DateTime month)
         {
            return null;
         }
 
-        
+        public async Task<IEnumerable<PayrollDTO>> GetAsync()
+        { 
+            var month = DateTime.UtcNow.Month;
+            return await _context.Payrolls.Where(b => b.Month == month).Select(payroll => new PayrollDTO
+            {
+                Id = payroll.Id,
+                TransactionId = payroll.TransactionId,
+                EmployeeCardId = payroll.EmployeeCardId,
+                EmployeeBasicPay = payroll.EmployeeBasicPay,
+                OtherDeduction = payroll.OtherDeduction,
+                Tax = payroll.Tax,
+                TotalAllowance = payroll.TotalAllowance,
+                TotalBonus = payroll.TotalBonus,
+                GrossPay = payroll.GrossPay,
+                ReinbursementDate = payroll.ReinbursementDate  
+            }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<PayrollDTO>> GetAsync(string EmployeeCardId)
+        {
+            return await _context.Payrolls.Where(b => b.EmployeeCardId == EmployeeCardId).Select(payroll => new PayrollDTO
+            {
+                Id = payroll.Id,
+                TransactionId = payroll.TransactionId,
+                EmployeeCardId = payroll.EmployeeCardId,
+                EmployeeBasicPay = payroll.EmployeeBasicPay,
+                OtherDeduction = payroll.OtherDeduction,
+                Tax = payroll.Tax,
+                TotalAllowance = payroll.TotalAllowance,
+                TotalBonus = payroll.TotalBonus,
+                GrossPay = payroll.GrossPay,
+                ReinbursementDate = payroll.ReinbursementDate  
+            }).ToListAsync();
+        }
     }
 }

@@ -90,3 +90,6 @@ C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Bonus\Creat
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\OtherDeduction\AllEmployee.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\OtherDeduction\CreateOtherDeduction.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\User\EmployeeIndex.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Payroll\PresentMonthPayroll.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Payroll\ViewMyPayrolls.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Employee\GetDeletedEmployee.cshtml.g.cs

@@ -146,9 +146,20 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public void DeleteAsync(int id)
+        public async Task<BaseResponse<bool>> DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var emp = await _employeeRepository.GetAsync(id);
+            var user = await _userRepository.GetAsync(emp.UserId);
+            emp.IsDeleted = true;
+            user.IsDeleted = true;
+            await _employeeRepository.UpdateAsync(emp);
+            await _userRepository.UpdateAsync(user);
+            return new BaseResponse<bool>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = true
+            };
         }
 
         public async Task<BaseResponse<int>> GetAllNumberOfEmployeeAsync()
@@ -223,6 +234,17 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Success",
                 Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetDeletedAsync()
+        {
+            var emp = await _employeeRepository.GetDeletedEmployee();
+            return new BaseResponse<IEnumerable<EmployeeDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = emp
             };
         }
 

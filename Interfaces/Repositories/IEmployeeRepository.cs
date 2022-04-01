@@ -31,5 +31,7 @@ namespace PayxApi.Interfaces.Repositories
         Task<IEnumerable<EmployeeDTO>> GetLastWeekReinBursement();
         
         Task<IEnumerable<EmployeeDTO>> GetLastMonthReinBursement();
+
+        Task<IEnumerable<EmployeeDTO>> GetDeletedEmployee();
     }
 }

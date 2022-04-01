@@ -16,7 +16,7 @@ namespace PayxApi.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet]
+        [HttpGet("UpdateAddress/{employeeId}")]
         public async Task<IActionResult> UpdateAddress(int employeeId)
         {
             var emp = await _addressService.GetAsync(employeeId);
@@ -24,10 +24,10 @@ namespace PayxApi.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public async Task<IActionResult> UpdateAddress(int id, UpdateAddressRequestModel model)
+        [HttpPost("UpdateAddress/{employeeId}")]
+        public async Task<IActionResult> UpdateAddress(int employeeId, UpdateAddressRequestModel model)
         {
-            var acc = await _addressService.UpdateAsync(id, model);
+            var acc = await _addressService.UpdateAsync(employeeId, model);
             return RedirectToAction("GetAllEmployee", "Employee");
         }
     }

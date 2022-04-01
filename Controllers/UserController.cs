@@ -36,16 +36,20 @@ namespace PayxApi.Controllers
             var employees = await _employeeService.GetAllNumberOfEmployeeAsync();
 
             var deptemp = await _departmentService.GetEmployeeByDepartmentAsync();
+            var depts = await _departmentService.GetAsync();
 
             var numbrofdepartment = deptemp.Data.Count();
             List<string> deptNames = new List<string>();
             List<int> empNumbers = new List<int>();
+
+            var num = depts.Data.Count();
 
             foreach(var item in deptemp.Data)
             {
                 deptNames.Add(item.Name);
                 empNumbers.Add(item.NumberOfEmployees);
             }
+            
             var dpN = deptNames;
             var epnum = empNumbers;
             
@@ -56,6 +60,7 @@ namespace PayxApi.Controllers
             ViewBag.BIWEEK = biweek.Data;
             ViewBag.MONTHLY = month.Data;
             ViewBag.EMPLOYEES = employees.Data;
+            ViewBag.DEPARTMENT = num;
             return View();
         }
 

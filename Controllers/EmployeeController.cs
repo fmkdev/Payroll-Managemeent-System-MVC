@@ -71,7 +71,7 @@ namespace PayxApi.Controllers
             return View(emp);
         }
     
-        [HttpGet]
+        [HttpGet("UpdateEmployee/{employeeId}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEmployee(int employeeId)
         {
@@ -94,12 +94,30 @@ namespace PayxApi.Controllers
 
             return View(employee.Data);
         }
-        [HttpPost]
+        [HttpPost("UpdateEmployee/{employeeId}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEmployee(int employeeId, UpdateEmployeeRequestModel model)
         {
             var acc = await _employeeService.UpdateAsync(employeeId, model);
             return Redirect("GetAllEmployee");
         }
+
+        [HttpPost("Delete/{employeeId}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int employeeId)
+        {
+            var emp = await _employeeService.DeleteAsync(employeeId);
+            ViewBag.Success = "Successfully Deleted";
+            return RedirectToAction("GetAllEmployee");
+        }
+    
+        [HttpGet("GetDeletedEmployee")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetDeletedEmployee()
+        {
+            var emp = await _employeeService.GetDeletedAsync();
+            return View(emp.Data);
+        }
+    
     }
 }

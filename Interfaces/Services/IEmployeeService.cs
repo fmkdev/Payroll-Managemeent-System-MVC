@@ -10,13 +10,15 @@ namespace PayxApi.Interfaces.Services
 
         Task<BaseResponse<bool>> UpdateAsync(int id, UpdateEmployeeRequestModel model);
 
-        void DeleteAsync(int id);
+        Task<BaseResponse<bool>> DeleteAsync(int id);
 
         Task<BaseResponse<EmployeeDTO>> GetAsync(int id);
 
         Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId);
         
         Task<IEnumerable<EmployeeDTO>> GetAsync();
+
+        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetDeletedAsync();
 
         Task<BaseResponse<int>> GetAllNumberOfEmployeeAsync();
 

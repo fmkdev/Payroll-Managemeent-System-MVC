@@ -42,28 +42,6 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        // public async Task<BaseResponse<Datas<IEnumerable<DepartmentDTO>>>> FetchDatas()
-        // {
-        //     var emps = await _employeeRepository.GetLastBiWeekReinBursement();
-        //     var amount = emps.Sum(s => s.BiWeeklyReinbursementAmount);
-
-        //     var employess = await _employeeRepository.GetAllNumberOfEmployeeAsync();
-
-        //     var deptemp = await _departmentRepository.GetEmployeeByDepartmentAsync();
-
-        //     return new BaseResponse<Datas<IEnumerable<DepartmentDTO>>>
-        //     {
-        //         IsSuccess = true,
-        //         Message = "Success",
-        //         Data = new Datas<IEnumerable<DepartmentDTO>>
-        //         {
-        //             TotalBiWeekly = amount,
-        //             TotalEmployee = employess,
-        //             Act = deptemp
-        //         }
-        //     };
-        // }
-
         public async Task<BaseResponse<UserDTO>> GetAsync(FindUserRequestModel model)
         {
             var user = await _userRepository.GetAsync(model.UserEmailOrCardId);

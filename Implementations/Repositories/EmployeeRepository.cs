@@ -232,5 +232,21 @@ namespace PayxApi.Implementations.Repositories
             }
             return null;
         }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetDeletedEmployee()
+        {
+            return await _context.Employees.Where(b => b.IsDeleted == true)
+            .Select(employee => new EmployeeDTO
+            {
+                Id = employee.Id,
+                EmployeeCardId = employee.CardId,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.Email,
+                PositionName = employee.Position.Name,
+                DepartmentName = employee.Department.Name
+            }).ToListAsync();
+        }
     }
 }

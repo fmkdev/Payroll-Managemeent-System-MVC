@@ -15704,6 +15704,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Payroll\\PresentMonthPayroll.cshtml",
+      "TargetPath": "Views\\Payroll\\PresentMonthPayroll.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Profile.cshtml",
       "TargetPath": "Views\\User\\Profile.cshtml",
       "FileKind": "mvc"
@@ -15721,6 +15726,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Payroll\\ViewMyPayrolls.cshtml",
+      "TargetPath": "Views\\Payroll\\ViewMyPayrolls.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15771,6 +15781,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetDeletedEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\GetDeletedEmployee.cshtml",
       "FileKind": "mvc"
     }
   ],
