@@ -52,6 +52,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateEmployee(CreateEmployeeRequestModel model)
         {
             var employee = await _employeeService.CreateAsync(model);
+            if(employee.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
 
@@ -99,10 +104,10 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> UpdateEmployee(int employeeId, UpdateEmployeeRequestModel model)
         {
             var acc = await _employeeService.UpdateAsync(employeeId, model);
-            return Redirect("GetAllEmployee");
+            return RedirectToAction("GetAllEmployee");
         }
 
-        [HttpPost("Delete/{employeeId}")]
+        [HttpGet("Delete/{employeeId}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int employeeId)
         {
@@ -110,12 +115,29 @@ namespace PayxApi.Controllers
             ViewBag.Success = "Successfully Deleted";
             return RedirectToAction("GetAllEmployee");
         }
+
+        [HttpGet("UnDelete/{employeeId}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UnDelete(int employeeId)
+        {
+            var emp = await _employeeService.UnDeleteAsync(employeeId);
+            ViewBag.Success = "Successfully";
+            return RedirectToAction("GetDeletedEmployee");
+        }
     
         [HttpGet("GetDeletedEmployee")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDeletedEmployee()
         {
             var emp = await _employeeService.GetDeletedAsync();
+            return View(emp.Data);
+        }
+
+        [HttpGet("Details/{employeeId}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Details(int employeeId)
+        {
+            var emp = await _employeeService.GetAsync(employeeId);
             return View(emp.Data);
         }
     

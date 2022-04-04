@@ -84,18 +84,6 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public async Task<BaseResponse<decimal>> GetBiWeeklyReinbursement()
-        {
-            var emps = await _employeeRepository.GetLastBiWeekReinBursement();
-
-            var amount = emps.Sum(s => s.BiWeeklyReinbursementAmount);
-            return new BaseResponse<decimal>
-            {
-                IsSuccess = true,
-                Message = "Success",
-                Data = amount
-            };
-        }
 
         public async Task<BaseResponse<UserDTO>> LoginAsync(LoginUserRequestModel model)
             {

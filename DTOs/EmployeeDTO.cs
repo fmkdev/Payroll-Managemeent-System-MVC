@@ -59,7 +59,7 @@ namespace PayxApi.DTOs
 
         public int TotalEmployee { get; set; }
 
-        public decimal BiWeeklyReinbursementAmount { get; set; }
+        public decimal? BiWeeklyReinbursementAmount { get; set; }
 
         public decimal PositionAllowance { get; set; }
 

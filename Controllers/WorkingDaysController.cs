@@ -29,14 +29,14 @@ namespace PayxApi.Controllers
             var user = await _workingDaysService.MakeRequestAsync(userCardId, model);
             return RedirectToAction("Index", "User");
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Attendant")]
         public IActionResult SignOrSignOut()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Attendant")]
         public async Task<IActionResult> SignIn(SignRequestModel model)
         {
 
@@ -44,7 +44,7 @@ namespace PayxApi.Controllers
         }
         
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Attendant")]
         public async Task<IActionResult> SignOut(SignRequestModel model)
         {
 

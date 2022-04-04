@@ -37,7 +37,7 @@ namespace PayxApi.Implementations.Services
             }
 
             var biWeeklyPayee = employees.Where(e => e.PaymentType == PaymentType.BiWeekly);
-            if(biWeeklyPayee == null)
+            if(biWeeklyPayee.Count() == 0)
             {
                 return new BaseResponse<bool>
                 {

@@ -25,6 +25,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateAllowance(CreateAllowanceRequestModel model)
         {
             var allow = await _allowanceService.CreateAsync(model);
+            if(allow.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
         

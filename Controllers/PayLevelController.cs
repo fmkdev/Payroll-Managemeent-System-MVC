@@ -32,6 +32,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreatePayLevel(CreatePayLevelRequestModel model)
         {
             var pl = await _payLevelService.CreateAsync(model);
+            if(pl.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
 

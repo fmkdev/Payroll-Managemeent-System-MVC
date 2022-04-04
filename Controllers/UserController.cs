@@ -65,7 +65,7 @@ namespace PayxApi.Controllers
         }
 
         [Authorize]
-        public IActionResult EmployeesIndex()
+        public IActionResult EmployeeIndex()
         {
             return View();
         }
@@ -81,6 +81,7 @@ namespace PayxApi.Controllers
             }
             return View(user.Data);
         }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
@@ -89,6 +90,7 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> Login(LoginUserRequestModel model)
         {
             var response = await _userService.LoginAsync(model);
+            var checkRole = "";
             if (response.IsSuccess == true)
             {
                 var claims = new List<Claim>
@@ -102,12 +104,17 @@ namespace PayxApi.Controllers
                 foreach(var role in response.Data.UserRoles)
                 {
                     claims.Add(new Claim(ClaimTypes.Role, role.Name));
+                    checkRole = role.Name;
                 }
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authenticationProperties = new AuthenticationProperties();
                 var principal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authenticationProperties);
+                if(checkRole == "Staff" || checkRole == "Attendant")
+                {
+                    return RedirectToAction("EmployeeIndex", "User");
+                }
                 return RedirectToAction("Index", "User");
             }
             else

@@ -34,7 +34,7 @@
                     <th scope="col">Department</th>
                     <th scope="col">Position</th>
                     <th scope="col">Details</th>
-                    <th scope="col">Persnal Details</th>
+                    <th scope="col">Personal Details</th>
                     <th scope="col">Address</th>
                     <th scope="col">Bank</th>
                     <th scope="col">Delete</th>
@@ -51,6 +51,7 @@
                     <td>@Html.DisplayFor(e => employee.FullName)</td>
                     <td>@Html.DisplayFor(e => employee.DepartmentName)</td>
                     <td>@Html.DisplayFor(e => employee.PositionName)</td>
+                    <td><a asp-action="Details" asp-controller="Employee" asp-route-employeeId="@employee.Id" class="btn btn-primary">Details</a></td>
                     <td><a asp-action="UpdateEmployee" asp-controller="Employee" asp-route-employeeId="@employee.Id" class="btn btn-primary">Personal Details</a></td>
                     <td><a asp-action="UpdateAddress" asp-controller="Address" asp-route-employeeId="@employee.Id" class="btn btn-primary">Address</a></td>
                     <td><a asp-action="UpdateAccountDetails" asp-controller="AccountDetails" asp-route-employeeId="@employee.Id" class="btn btn-primary">Bank</a></td>

@@ -26,6 +26,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateDepartment(CreateDepartmentRequestModel model)
         { 
             var dept = await _departmentService.CreateAsync(model);
+            if(dept.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
 

@@ -29,7 +29,12 @@ namespace PayxApi.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateBonus(int employeeId, CreateBonusRequestModel model)
         {
-            await _bonusService.CreateAsync(employeeId, model);
+            var bonus = await _bonusService.CreateAsync(employeeId, model);
+            if(bonus.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return RedirectToAction("AllEmployee", "Bonus");
         }
 

@@ -30,6 +30,11 @@ namespace PayxApi
         public async Task<IActionResult> CreateOtherDeduction(int employeeId, CreateOtherDeductionRequestModel model)
         {
             var od = await _otherDeductionservice.CreateAsync(employeeId, model);
+            if(od.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return RedirectToAction("AllEmployee", "OtherDeduction");
         }
 

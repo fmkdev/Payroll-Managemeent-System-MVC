@@ -32,6 +32,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreatePosition(CreatePositionRequestModel model)
         { 
             var pos = await _positionService.CreateAsync(model);
+            if(pos.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
         [HttpGet]

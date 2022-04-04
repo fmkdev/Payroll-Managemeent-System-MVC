@@ -36,15 +36,38 @@ namespace PayxApi.Implementations.Repositories
             var employee = await _context.Employees
             .Include(a => a.Position)
             .Include(d => d.Department)
-            .SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment).SingleOrDefaultAsync(b => b.Id == id && b.IsDeleted == false);
+
             return new EmployeeDTO
             {
+                Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
                 PhoneNumber = employee.PhoneNumber,
                 Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
                 PositionName = employee.Position.Name,
-                DepartmentName = employee.Department.Name
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
             };
         }
 
@@ -87,6 +110,10 @@ namespace PayxApi.Implementations.Repositories
         public async Task<Employee> GetAsync(int id)
         {
             return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+        }
+        public async Task<Employee> GetDeletedAsync(int id)
+        {
+            return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == true);
         }
 
         public async Task<IEnumerable<EmployeeDTO>> GetAsync()

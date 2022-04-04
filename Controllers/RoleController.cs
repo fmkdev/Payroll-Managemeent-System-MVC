@@ -25,6 +25,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateRole(CreateRoleRequestModel model)
         {
             var role = await _roleService.CreateAsync(model);
+            if(role.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created";
             return View();
         }
 

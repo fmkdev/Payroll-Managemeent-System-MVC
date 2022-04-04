@@ -22,7 +22,7 @@ namespace PayxApi.DTOs
 
         public decimal OtherDeduction { get; set; }
 
-        public decimal GrossPay { get; set; }
+        public decimal? GrossPay { get; set; }
 
         public DateTime ReinbursementDate { get; set; }
 

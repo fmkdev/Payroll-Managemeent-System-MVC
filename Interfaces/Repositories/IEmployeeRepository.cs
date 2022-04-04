@@ -20,6 +20,8 @@ namespace PayxApi.Interfaces.Repositories
 
         Task<Employee> GetAsync(int id);
 
+        Task<Employee> GetDeletedAsync(int id);
+
         Task<IEnumerable<EmployeeDTO>> GetAsync();
 
         Task<int> GetAllNumberOfEmployeeAsync();

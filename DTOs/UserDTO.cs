@@ -15,6 +15,8 @@ namespace PayxApi.DTOs
 
         public string EmployeeCardId { get; set; }
 
+        public string userEmailOrCardId { get; set; }
+
         public string Password { get; set; }
 
         public string PositionName { get; set; }

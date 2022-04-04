@@ -26,6 +26,11 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> CreateAppointment(CreateAppointmentRequestModel model)
         { 
             var appo = await _appointmentService.CreateAsync(model);
+            if(appo.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
             return View();
         }
     }
