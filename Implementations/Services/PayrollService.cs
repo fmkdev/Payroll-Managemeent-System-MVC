@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PayxApi.DTOs;
@@ -25,8 +26,26 @@ namespace PayxApi.Implementations.Services
         public async Task<BaseResponse<bool>> GeneratePayrollForBiWeeklyPayee()
         {
             var employees = await _employeeRepository.GetAllPaysAsync();
+            if(employees == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
             var biWeeklyPayee = employees.Where(e => e.PaymentType == PaymentType.BiWeekly);
+            if(biWeeklyPayee.Count() == 0)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
             foreach (var employee in biWeeklyPayee)
             {
@@ -35,7 +54,7 @@ namespace PayxApi.Implementations.Services
 
                 var payroll = new Payroll
                 {
-                    TransactionId = $"EmpPay{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
+                    TransactionId = $"EMP-PAY-{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
                     EmployeeId = emp.Id,
                     EmployeeCardId = emp.CardId,
                     EmployeeBasicPay = employee.BasicPay,
@@ -79,8 +98,26 @@ namespace PayxApi.Implementations.Services
         public async Task<BaseResponse<bool>> GeneratePayrollForMonthlyPayee()
         {
             var employees = await _employeeRepository.GetAllPaysAsync();
+            if(employees == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
-            var monthlyPayee = employees.Where(e => e.PaymentType == PaymentType.BiWeekly);
+            var monthlyPayee = employees.Where(e => e.PaymentType == PaymentType.Monthly);
+            if(monthlyPayee == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
             foreach (var employee in monthlyPayee)
             {
@@ -89,7 +126,7 @@ namespace PayxApi.Implementations.Services
 
                 var payroll = new Payroll
                 {
-                    TransactionId = $"EmpPay{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
+                    TransactionId = $"EMP-PAY-{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
                     EmployeeId = emp.Id,
                     EmployeeCardId = emp.CardId,
                     EmployeeBasicPay = employee.BasicPay,
@@ -133,8 +170,26 @@ namespace PayxApi.Implementations.Services
         public async Task<BaseResponse<bool>> GeneratePayrollForWeeklyPayee()
         {
             var employees = await _employeeRepository.GetAllPaysAsync();
+            if(employees == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
             var weeklyPayee = employees.Where(e => e.PaymentType == PaymentType.weekly);
+            if(weeklyPayee == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Success",
+                    Data = false
+                };
+            }
 
             foreach (var employee in employees)
             {
@@ -143,7 +198,7 @@ namespace PayxApi.Implementations.Services
 
                 var payroll = new Payroll
                 {
-                    TransactionId = $"EmpPay{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
+                    TransactionId = $"EMP-PAY-{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
                     EmployeeId = emp.Id,
                     EmployeeCardId = emp.CardId,
                     EmployeeBasicPay = employee.BasicPay,
@@ -181,6 +236,28 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Generated Successfully",
                 Data = true
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync()
+        {
+            var pay = await _payrollRepository.GetAsync();
+            return new BaseResponse<IEnumerable<PayrollDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = pay
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync(string EmployeeCardId)
+        {
+            var pay = await _payrollRepository.GetAsync(EmployeeCardId);
+            return new BaseResponse<IEnumerable<PayrollDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = pay
             };
         }
     }

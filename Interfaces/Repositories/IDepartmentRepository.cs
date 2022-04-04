@@ -12,6 +12,8 @@ namespace PayxApi.Interfaces.Repositories
 
         Task<IEnumerable<DepartmentDTO>> GetAsync();
 
+        Task<IEnumerable<DepartmentDTO>> GetEmployeeByDepartmentAsync();
+
         Task<DepartmentDTO> GetAsync(int id);
         
         Task<DepartmentDTO> GetAsync(string name);

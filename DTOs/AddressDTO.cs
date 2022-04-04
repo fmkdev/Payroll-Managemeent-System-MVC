@@ -40,4 +40,20 @@ namespace PayxApi.DTOs
 
         public string HomeNumber { get; set; }
     }
+    public class UpdateAddressRequestModel
+    {
+        public string HouseNumber { get; set; }
+
+        public string StreetName { get; set; }
+
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        public string Nationality { get; set; }
+
+        public string LocalGovernment { get; set; }
+
+        public string HomeNumber { get; set; }
+    }
 }

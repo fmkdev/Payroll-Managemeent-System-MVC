@@ -22,4 +22,10 @@ namespace PayxApi.DTOs
 
         public int EmployeeId { get; set; }
     }
+    public class UpdateAccountDetailsRequestModel
+    {
+        public string AccountNumber { get; set; }
+
+        public string BankName { get; set; }
+    }
 }

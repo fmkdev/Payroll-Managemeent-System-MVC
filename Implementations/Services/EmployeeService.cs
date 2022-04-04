@@ -6,6 +6,7 @@ using PayxApi.Models;
 using System.Threading.Tasks;
 using System;
 using BCrypt.Net;
+using System.Linq;
 
 namespace PayxApi.Implementations.Services
 {
@@ -145,14 +146,36 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public void DeleteAsync(int id)
+        public async Task<BaseResponse<bool>> DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var emp = await _employeeRepository.GetAsync(id);
+            var user = await _userRepository.GetAsync(emp.UserId);
+            emp.IsDeleted = true;
+            user.IsDeleted = true;
+            await _employeeRepository.UpdateAsync(emp);
+            await _userRepository.UpdateAsync(user);
+            return new BaseResponse<bool>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = true
+            };
+        }
+
+        public async Task<BaseResponse<int>> GetAllNumberOfEmployeeAsync()
+        {
+            var num = await _employeeRepository.GetAllNumberOfEmployeeAsync();
+            return new BaseResponse<int>
+            {
+                IsSuccess = true,
+                Message = "success",
+                Data = num
+            };
         }
 
         public async Task<BaseResponse<EmployeeDTO>> GetAsync(int id)
         {
-            var employee = await _employeeRepository.GetAsync(id);
+            var employee = await _employeeRepository.GetDtoAsync(id);
             if (employee == null)
             {
                 return new BaseResponse<EmployeeDTO>
@@ -166,13 +189,7 @@ namespace PayxApi.Implementations.Services
             {
                 IsSuccess = true,
                 Message = "Success",
-                Data = new EmployeeDTO
-                {
-                    FirstName = employee.FirstName,
-                    LastName = employee.LastName,
-                    PhoneNumber = employee.PhoneNumber,
-                    Email = employee.Email,
-                }
+                Data = employee
             };
         }
 
@@ -181,11 +198,113 @@ namespace PayxApi.Implementations.Services
             return await _employeeRepository.GetAsync();
         }
 
+        public async Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId)
+        {
+            var employee = await _employeeRepository.GetAsync(UserCardId);
+            return new BaseResponse<EmployeeDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = employee
+            };
+        }
+
+        public async Task<BaseResponse<decimal?>> GetBiWeeklyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastBiWeekReinBursement();
+            if(biweek == null)
+            {
+                var amt = 0;
+                return new BaseResponse<decimal?>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = amt
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal?>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetDeletedAsync()
+        {
+            var emp = await _employeeRepository.GetDeletedEmployee();
+            return new BaseResponse<IEnumerable<EmployeeDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = emp
+            };
+        }
+
+        public async Task<BaseResponse<decimal?>> GetMonthlyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastMonthReinBursement();
+            if(biweek == null)
+            {
+                var amt = 0;
+                return new BaseResponse<decimal?>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = amt
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal?>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<decimal?>> GetWeeklyReinbursement()
+        {
+            var biweek = await _employeeRepository.GetLastWeekReinBursement();
+            if(biweek == null)
+            {
+                return new BaseResponse<decimal?>
+                {
+                    IsSuccess = false,
+                    Message = "No Data",
+                    Data = 0
+                };
+            }
+            var amount = biweek.Sum(e => e.BiWeeklyReinbursementAmount);
+            return new BaseResponse<decimal?>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = amount
+            };
+        }
+
+        public async Task<BaseResponse<bool>> UnDeleteAsync(int id)
+        {
+            var emp = await _employeeRepository.GetDeletedAsync(id);
+            var user = await _userRepository.GetAsync(emp.UserId);
+            emp.IsDeleted = false;
+            user.IsDeleted = false;
+            await _employeeRepository.UpdateAsync(emp);
+            await _userRepository.UpdateAsync(user);
+            return new BaseResponse<bool>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = true
+            };
+        }
+
         public async Task<BaseResponse<bool>> UpdateAsync(int id, UpdateEmployeeRequestModel model)
         {
-            var user = await _userRepository.GetAsync(id);
-
-            if (user == null)
+            if(model.FirstName == null || model.LastName == null || model.PayLevelId == 0 || model.PhoneNumber == null ||
+            model.DepartmentId == 0 || model.Email == null || model.AppointmentId == 0 || model.PositionId == 0)
             {
                 return new BaseResponse<bool>
                 {
@@ -194,18 +313,39 @@ namespace PayxApi.Implementations.Services
                     Data = false
                 };
             }
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
-            user.PhoneNumber = model.PhoneNumber;
-            user.Modified = DateTime.UtcNow;
-            user.ModifiedBy = model.FirstName;
+            var employee = await _employeeRepository.GetAsync(id);
 
-            var employee = await _employeeRepository.GetAsync(user.Employee.Id);
+            if (employee == null)
+            {
+                return new BaseResponse<bool>
+                {
+                    IsSuccess = false,
+                    Message = "Not Successfull",
+                    Data = false
+                };
+            }
             employee.FirstName = model.FirstName;
             employee.LastName = model.LastName;
             employee.PhoneNumber = model.PhoneNumber;
+            employee.Gender = model.Gender;
+            employee.MaritalStatus = model.MaritalStatus;
+            employee.Email = model.Email;
+            employee.AppointmentId = model.AppointmentId;
+            employee.DepartmentId = model.DepartmentId;
+            employee.PositionId = model.PositionId;
+            employee.PaymentType = model.PaymentType;
+            employee.PayLevelId = model.PayLevelId;
+            
             employee.Modified = DateTime.UtcNow;
             employee.ModifiedBy = model.FirstName;
+
+            var user = await _userRepository.GetAsync(employee.UserId);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.Modified = DateTime.UtcNow;
+            user.ModifiedBy = model.FirstName;
 
             await _userRepository.UpdateAsync(user);
             await _employeeRepository.UpdateAsync(employee);

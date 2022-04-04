@@ -14,6 +14,7 @@ namespace PayxApi.Implementations.Repositories
     public class WorkingDaysRepository : IWorkingDaysRepository
     {
         private readonly ContextApp _context;
+        private DateTime time { get; set; }
 
         public WorkingDaysRepository(ContextApp context)
         {
@@ -46,6 +47,7 @@ namespace PayxApi.Implementations.Repositories
             return await _context.workingDays.Where(c => c.WorkDate == date.Date && c.IsDeleted ==false)
             .Select(w => new WorkingDaysDTO
             {
+                Id = w.Id,
                 EmployeeFullName = w.EmployeeFullName,
                 EmployeeCardId = w.EmployeeCardId,
                 WorkDate = w.WorkDate,
@@ -58,10 +60,20 @@ namespace PayxApi.Implementations.Repositories
             }).ToListAsync();
         }
 
-        public async Task<IEnumerable<WorkingDays>> GetInitializedApprovalStatusAsync(string cardId)
+        public async Task<IEnumerable<WorkingDaysDTO>> GetAllRequestAsync()
         {
-            return await _context.workingDays.Where(e => e.EmployeeCardId == cardId && 
-            e.ApprovalStatus == ApprovalStatus.Initialized && e.IsDeleted == false).ToListAsync();
+            return await _context.workingDays.Where(e => (e.RequestStatus == RequestStatus.Permission 
+            || e.RequestStatus == RequestStatus.Leave) && (e.ApprovalStatus == ApprovalStatus.Initialized) && (e.IsDeleted == false)).Select(w => new WorkingDaysDTO
+            {
+                Id = w.Id,
+                WorkDate = w.WorkDate,
+                EmployeeFullName = w.EmployeeFullName,
+                EmployeeCardId = w.EmployeeCardId,
+                Request = w.Request,
+                RequestStatus = w.RequestStatus,
+                DayStatus = w.DayStatus,
+                EmployeeId = w.EmployeeId
+            }).ToListAsync();
         }
 
         public async Task<bool> UpdateAsync(WorkingDays workingDays)
@@ -76,6 +88,11 @@ namespace PayxApi.Implementations.Repositories
             _context.workingDays.UpdateRange(workingDays);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public Task<DateTime> GetLastCalendarDate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

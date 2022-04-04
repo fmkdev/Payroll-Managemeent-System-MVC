@@ -9,5 +9,7 @@ namespace PayxApi.Interfaces.Services
         Task<BaseResponse<bool>> CreateAsync(CreateDepartmentRequestModel model);
 
         Task<BaseResponse<IEnumerable<DepartmentDTO>>> GetAsync();
+
+        Task<BaseResponse<IEnumerable<DepartmentDTO>>> GetEmployeeByDepartmentAsync();
     }
 }

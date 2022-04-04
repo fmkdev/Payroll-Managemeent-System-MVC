@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PayxApi.DTOs;
@@ -17,6 +18,7 @@ namespace PayxApi.Controllers
             _allowanceService = allowanceService;
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePosition()
         {
             var allowance = await _allowanceService.GetAsync();
@@ -26,14 +28,23 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePosition(CreatePositionRequestModel model)
         { 
-            return View(await _positionService.CreateAsync(model));
+            var pos = await _positionService.CreateAsync(model);
+            if(pos.IsSuccess == true)
+            {
+                ViewBag.Success = " Created Successfully";
+            }
+            ViewBag.Success = "Not Created ";
+            return View();
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPosition()
         {
-            return View(await _positionService.GetAsync());
+            var pos = await _positionService.GetAsync();
+            return View(pos.Data);
         }
     }
 }

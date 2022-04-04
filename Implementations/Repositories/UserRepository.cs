@@ -47,6 +47,10 @@ namespace PayxApi.Implementations.Repositories
             return new UserDTO
             {
                 Id = user.Id,
+                FullName = $"{user.FirstName} {user.LastName}",
+                Password = user.Password,
+                Email = user.Email,
+                EmployeeCardId = user.EmployeeCardId,
                 Employee = new EmployeeDTO
                 {
                     FirstName = user.Employee.FirstName,
@@ -103,6 +107,8 @@ namespace PayxApi.Implementations.Repositories
                 Id = user.Id,
                 FullName = $"{user.FirstName} {user.LastName}",
                 Password = user.Password,
+                Email = user.Email,
+                EmployeeCardId = user.EmployeeCardId,
                 Employee = new EmployeeDTO
                 {
                     FirstName = user.Employee.FirstName,

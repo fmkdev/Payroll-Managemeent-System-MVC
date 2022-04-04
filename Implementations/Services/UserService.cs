@@ -10,9 +10,14 @@ namespace PayxApi.Implementations.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IDepartmentRepository _departmentRepository;
+        public UserService(IUserRepository userRepository, IEmployeeRepository employeeRepository,
+        IDepartmentRepository departmentRepository)
         {
             _userRepository = userRepository;
+            _employeeRepository = employeeRepository;
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<BaseResponse<bool>> DeleteAsync(int userId)
@@ -78,6 +83,7 @@ namespace PayxApi.Implementations.Services
                 Data = user
             };
         }
+
 
         public async Task<BaseResponse<UserDTO>> LoginAsync(LoginUserRequestModel model)
             {

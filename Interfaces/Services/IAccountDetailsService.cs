@@ -6,6 +6,7 @@ namespace PayxApi.Interfaces.Services
 {
     public interface IAccountDetailsService
     {
-        //Task<BaseResponse<AccountDetailsDTO>> CreateAsync(CreateAccountDetailsRequestModel model);
+        Task<BaseResponse<bool>> UpdateeAsync(int id, UpdateAccountDetailsRequestModel model);
+        Task<BaseResponse<AccountDetailsDTO>> GetAsync(int id);
     }
 }

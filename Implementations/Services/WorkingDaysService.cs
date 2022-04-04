@@ -19,53 +19,35 @@ namespace PayxApi.Implementations.Services
             _workingDaysRepository = workingDaysRepository;
         }
 
-        public async Task<BaseResponse<bool>> ApproveEmployeeRequestAsync(ApproveRequestModel model)
+        public async Task<BaseResponse<bool>> ApproveRequestAsync(int employeeId)
         {
-            if(model.ApprovalStatus == ApprovalStatus.Initialized)
-            {
-                return new BaseResponse<bool>
-                {
-                    IsSuccess = false,
-                    Message = "Accept Request or Reject",
-                    Data = false
-                };
-            }
-            var workingDays = await _workingDaysRepository.GetInitializedApprovalStatusAsync(model.UserCardId);
+            var workingDays = await _workingDaysRepository.GetAsync(employeeId);
+            var init = workingDays.Where(i => (i.RequestStatus == RequestStatus.Permission || i.RequestStatus == RequestStatus.Leave) && i.ApprovalStatus == ApprovalStatus.Initialized);
 
-            if (workingDays == null)
+            foreach (var item in init)
             {
-                return new BaseResponse<bool>
-                {
-                    IsSuccess = false,
-                    Message = "User not found",
-                    Data = false
-                };
+                item.ApprovalStatus = ApprovalStatus.Accept;
             }
+            await _workingDaysRepository.UpdateAsync(init.ToList());
 
-            foreach (var item in workingDays)
+            return new BaseResponse<bool>
             {
-                if(model.ApprovalStatus == ApprovalStatus.Accept && item.RequestStatus == RequestStatus.Permission)
-                {
-                    item.ApprovalStatus = ApprovalStatus.Accept;
-                    item.WorkStatus = WorkStatus.Permission;
-                }
-                if(model.ApprovalStatus == ApprovalStatus.Accept && item.RequestStatus == RequestStatus.Leave)
-                {
-                    item.ApprovalStatus = ApprovalStatus.Accept;
-                    item.WorkStatus = WorkStatus.OnLeave;
-                }
-                if(model.ApprovalStatus == ApprovalStatus.Reject && item.RequestStatus == RequestStatus.Permission)
-                {
-                    item.ApprovalStatus = ApprovalStatus.Reject;
-                    item.WorkStatus = WorkStatus.Abscent;
-                }
-                if(model.ApprovalStatus == ApprovalStatus.Reject && item.RequestStatus == RequestStatus.Leave)
-                {
-                    item.ApprovalStatus = ApprovalStatus.Reject;
-                    item.WorkStatus = WorkStatus.Abscent;
-                }
+                IsSuccess = true,
+                Message = "Request Submitted",
+                Data = true
+            };
+        }
+        public async Task<BaseResponse<bool>> RejectRequestAsync(int employeeId)
+        {
+            var workingDays = await _workingDaysRepository.GetAsync(employeeId);
+            var init = workingDays.Where(i => (i.RequestStatus == RequestStatus.Permission || i.RequestStatus == RequestStatus.Leave) && i.ApprovalStatus == ApprovalStatus.Initialized);
+
+            foreach (var item in init)
+            {
+                item.ApprovalStatus = ApprovalStatus.Reject;
+                item.WorkStatus = WorkStatus.Abscent;
             }
-            await _workingDaysRepository.UpdateAsync(workingDays.ToList());
+            await _workingDaysRepository.UpdateAsync(init.ToList());
 
             return new BaseResponse<bool>
             {
@@ -82,13 +64,13 @@ namespace PayxApi.Implementations.Services
             {
                 IsSuccess = true,
                 Message = "Successful",
-                Data = calendar    
+                Data = calendar
             };
         }
 
-        public async Task<BaseResponse<bool>> MakeRequestAsync(int userId, MakeRequsetModel model)
+        public async Task<BaseResponse<bool>> MakeRequestAsync(string userCardId, MakeRequsetModel model)
         {
-            var workings = await _workingDaysRepository.GetAsync(userId);
+            var workings = await _workingDaysRepository.GetAsync(userCardId);
             if (workings == null)
             {
                 return new BaseResponse<bool>
@@ -101,12 +83,12 @@ namespace PayxApi.Implementations.Services
 
             var wDays = workings.Where(w => w.WorkDate >= model.From.Date && w.WorkDate <= model.To.Date);
 
-            foreach (var day in wDays) 
+            foreach (var day in wDays)
             {
                 day.RequestStatus = model.RequestStatus;
                 day.Request = model.Request;
             }
-            
+
 
             await _workingDaysRepository.UpdateAsync(wDays.ToList());
 
@@ -131,7 +113,7 @@ namespace PayxApi.Implementations.Services
                     Data = false
                 };
             }
-            if(workDay.WorkStatus == WorkStatus.OnLeave)
+            if (workDay.WorkStatus == WorkStatus.OnLeave)
             {
                 var calendar = await _workingDaysRepository.GetAsync(cardId);
                 var addLeavePlusOne = calendar.LastOrDefault(u => u.WorkStatus == WorkStatus.OnLeave);
@@ -172,6 +154,67 @@ namespace PayxApi.Implementations.Services
                 IsSuccess = true,
                 Message = "Updated Successfully",
                 Data = true
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<WorkingDaysDTO>>> GetAllRequestAsync()
+        {
+            var request = await _workingDaysRepository.GetAllRequestAsync();
+            return new BaseResponse<IEnumerable<WorkingDaysDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = request
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<WorkingDaysDTO>>> ViewMyCalendar(string userCardId)
+        {
+            var emp = await _workingDaysRepository.GetAsync(userCardId);
+            return new BaseResponse<IEnumerable<WorkingDaysDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = emp.Select(w => new WorkingDaysDTO
+                {
+                    Id = w.Id,
+                    EmployeeFullName = w.EmployeeFullName,
+                    EmployeeCardId = w.EmployeeCardId,
+                    EmployeeId = w.EmployeeId,
+                    WorkDate = w.WorkDate,
+                    WorkStatus = w.WorkStatus,
+                    DayStatus = w.DayStatus,
+                    SignInTime = w.SignInTime,
+                    SigOutTime = w.SigOutTime,
+                    RequestStatus = w.RequestStatus,
+                    Request = w.Request
+                }).ToList()
+            };
+        }
+
+        public async Task<BaseResponse<int>> CalcPermissionDays(int employeeId)
+        {
+            var employee = await _workingDaysRepository.GetAsync(employeeId);
+
+            var requestDays = employee.Where(e => e.Request != null && e.ApprovalStatus == ApprovalStatus.Accept && e.RequestStatus == RequestStatus.Permission).Count();
+            return new BaseResponse<int>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = requestDays
+            };
+        }
+
+        public async Task<BaseResponse<int>> CalcLeaveDays(int employeeId)
+        {
+            var employee = await _workingDaysRepository.GetAsync(employeeId);
+
+            var leaveDays = employee.Where(e => e.Request != null && e.ApprovalStatus == ApprovalStatus.Accept && e.RequestStatus == RequestStatus.Leave).Count();
+            return new BaseResponse<int>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = leaveDays
             };
         }
     }

@@ -16,7 +16,8 @@
         <div class="form-body">
             <div class="upper">CREATE ALLOWANCE</div>
             <div class="lower">
-                <form asp-action="CreateAllowance">
+                <form asp-action="CreateAllowance">                    
+                <div style="color: green;">@ViewBag.Success</div>
                         <div class="row">
                             <div class="input">
                                 <div><label for="">Allowance Name: </label></div>

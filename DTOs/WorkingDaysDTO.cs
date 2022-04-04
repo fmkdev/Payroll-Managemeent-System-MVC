@@ -6,6 +6,8 @@ namespace PayxApi.DTOs
 {
     public class WorkingDaysDTO
     {
+        public int Id { get; set; }
+        
         public string EmployeeCardId { get; set; }
 
         public int EmployeeId { get; set; }

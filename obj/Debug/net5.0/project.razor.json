@@ -15619,6 +15619,31 @@
   "RootNamespace": "PayxApi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\EmployeeIndex.cshtml",
+      "TargetPath": "Views\\User\\EmployeeIndex.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\ViewMyCalendar.cshtml",
+      "TargetPath": "Views\\WorkingDays\\ViewMyCalendar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Bonus\\CreateBonus.cshtml",
+      "TargetPath": "Views\\Bonus\\CreateBonus.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\AccountDetails\\UpdateAccountDetails.cshtml",
+      "TargetPath": "Views\\AccountDetails\\UpdateAccountDetails.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetAllEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\GetAllEmployee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Index.cshtml",
       "TargetPath": "Views\\User\\Index.cshtml",
       "FileKind": "mvc"
@@ -15629,8 +15654,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Allowance\\GetAllAllowance.cshtml",
+      "TargetPath": "Views\\Allowance\\GetAllAllowance.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Shared\\_PayxLayout.cshtml",
       "TargetPath": "Views\\Shared\\_PayxLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\TodaysAttendance.cshtml",
+      "TargetPath": "Views\\WorkingDays\\TodaysAttendance.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15639,13 +15674,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\UpdateEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\UpdateEmployee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Department\\CreateDepartment.cshtml",
       "TargetPath": "Views\\Department\\CreateDepartment.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\OtherDeduction\\CreateOtherDeduction.cshtml",
+      "TargetPath": "Views\\OtherDeduction\\CreateOtherDeduction.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Role\\CreateRole.cshtml",
       "TargetPath": "Views\\Role\\CreateRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Bonus\\AllEmployee.cshtml",
+      "TargetPath": "Views\\Bonus\\AllEmployee.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15656,6 +15706,21 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\PayLevel\\CreatePayLevel.cshtml",
       "TargetPath": "Views\\PayLevel\\CreatePayLevel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Payroll\\PresentMonthPayroll.cshtml",
+      "TargetPath": "Views\\Payroll\\PresentMonthPayroll.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Profile.cshtml",
+      "TargetPath": "Views\\User\\Profile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\Details.cshtml",
+      "TargetPath": "Views\\Employee\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15674,6 +15739,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Payroll\\ViewMyPayrolls.cshtml",
+      "TargetPath": "Views\\Payroll\\ViewMyPayrolls.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\OtherDeduction\\AllEmployee.cshtml",
+      "TargetPath": "Views\\OtherDeduction\\AllEmployee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Position\\CreatePosition.cshtml",
       "TargetPath": "Views\\Position\\CreatePosition.cshtml",
       "FileKind": "mvc"
@@ -15681,6 +15756,16 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Login.cshtml",
       "TargetPath": "Views\\User\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\SignOrSignOut.cshtml",
+      "TargetPath": "Views\\WorkingDays\\SignOrSignOut.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\ViewAllRequest.cshtml",
+      "TargetPath": "Views\\WorkingDays\\ViewAllRequest.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15694,8 +15779,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\WorkingDays\\MakeRequest.cshtml",
+      "TargetPath": "Views\\WorkingDays\\MakeRequest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Address\\UpdateAddress.cshtml",
+      "TargetPath": "Views\\Address\\UpdateAddress.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetDeletedEmployee.cshtml",
+      "TargetPath": "Views\\Employee\\GetDeletedEmployee.cshtml",
       "FileKind": "mvc"
     }
   ],

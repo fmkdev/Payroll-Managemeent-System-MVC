@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "xwsqQLe3y6pKowG3ya7UcYwisufyK9dNIAeWbfVEvyJ9Jax5PEG/oiI5eYHE+K6VD/Wda5EECJ6J+nNCCiWSAA==",
+  "dgSpecHash": "q1rXOv0RJmsjkAbctKj8z6gKwIw3hZvNv2pDY30JX0EwUOIHY2+1i6B9AjzWdGV+8MkgrZ75Q/8Y4iOlaJV7+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\PayxApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fmkDev\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
+    "C:\\Users\\fmkDev\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
@@ -37,6 +38,7 @@
     "C:\\Users\\fmkDev\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\mysql.entityframeworkcore\\5.0.10\\mysql.entityframeworkcore.5.0.10.nupkg.sha512",
+    "C:\\Users\\fmkDev\\.nuget\\packages\\ncrontab.signed\\3.3.2\\ncrontab.signed.3.3.2.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\fmkDev\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",

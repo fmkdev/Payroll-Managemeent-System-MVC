@@ -16,10 +16,24 @@ namespace PayxApi.Interfaces.Repositories
 
         Task<EmployeeDTO> GetDtoAsync(int id);
 
+        Task<EmployeeDTO> GetAsync(string UserCardId);
+
         Task<Employee> GetAsync(int id);
 
+        Task<Employee> GetDeletedAsync(int id);
+
         Task<IEnumerable<EmployeeDTO>> GetAsync();
+
+        Task<int> GetAllNumberOfEmployeeAsync();
         
         Task<IEnumerable<EmployeeDTO>> GetAllPaysAsync();
+
+        Task<IEnumerable<EmployeeDTO>> GetLastBiWeekReinBursement();
+
+        Task<IEnumerable<EmployeeDTO>> GetLastWeekReinBursement();
+        
+        Task<IEnumerable<EmployeeDTO>> GetLastMonthReinBursement();
+
+        Task<IEnumerable<EmployeeDTO>> GetDeletedEmployee();
     }
 }

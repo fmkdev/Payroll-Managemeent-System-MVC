@@ -19,4 +19,10 @@ namespace PayxApi.DTOs
 
         public string Token { get; set; }
     }
+    public class Datas<T>
+    {
+        public int TotalEmployee { get; set; }
+        public decimal TotalBiWeekly { get; set; }
+        public T Act { get; set; }
+    }
 }

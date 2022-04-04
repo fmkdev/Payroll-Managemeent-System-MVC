@@ -58,5 +58,15 @@ namespace PayxApi.Implementations.Repositories
                 Description = r.Description
             }).ToListAsync();
         }
+
+        public async Task<IEnumerable<DepartmentDTO>> GetEmployeeByDepartmentAsync()
+        {
+            return await _context.Departments.Include(e => e.Employees).Select(dept => new DepartmentDTO
+            {
+                Id = dept.Id,
+                Name = dept.Name,
+                NumberOfEmployees = dept.Employees.Count()
+            }).ToListAsync();
+        }
     }
 }

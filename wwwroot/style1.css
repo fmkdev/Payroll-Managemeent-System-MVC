@@ -1,0 +1,212 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.shadowed{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.hidden{
+    display: none;
+}
+.container{
+    height: 98vh;
+    width: 98vw;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    border-radius: 25px;
+}
+#pay{
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Supermercado One', cursive;
+      font-style: italic;
+      font-size:  30px;
+      color: #004751;
+      text-shadow: px 5px 2px rgba(32, 36, 29, 0.741); 
+      -webkit-text-fill-color: #e8f44a;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: #004751;
+  }
+  #wallet{
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Supermercado One', cursive;
+    font-size: large;
+    color: #004751;
+    font-size: large;
+    /* text-shadow: -1px 5px 2px rgba(32, 36, 29, 0.741);  */
+  }
+  .icon{
+      height: 30px;
+      width: 30px;
+      color: #004751;
+  }
+.up{
+    flex: 0 0 10%;
+}
+.real{
+    flex: 1;
+    width: 100%;
+    background-color: rgb(238, 233, 233);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.header{
+    margin: 15px 0px;
+    flex: 0 0 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #004751;
+}
+.form-body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.form-row{
+    flex: 1;
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+.asd{
+    flex: 0 0 50%;
+
+}
+.asd1{
+    flex: 0 0 50%;
+}
+input{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #004751;
+    border-radius: 10px;
+    outline: none;
+    margin: 0 7px;
+}
+#input>input{
+    width: 300px;
+    height: 40px;
+}
+#input>label{
+    margin: 0px 8px;
+    color: #004751;
+    font-weight: bold;
+}
+.form-column{
+    margin: 15px;
+}
+input:focus{
+    outline: 2px solid #e8f44a;
+}
+label{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.footer{
+    flex: 0 0 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    height: 35px;
+    border-radius: 25px;
+    margin: 35px;
+}
+.btn-sbt{
+    width: 50%;
+    height: 30px;
+    margin-top: 7px;
+    margin-left: 80px;
+}
+.btn{
+    align-items: center;
+    outline: none;
+    background-color:#e8f44a;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #004751;
+}
+.btn:hover{
+    background-color: #004751;
+    color: #e8f44a;
+}
+.down{
+    flex: 0 0 10%;
+}
+/* .form-inputs{
+    margin-top: 80px;
+    background-color: #d1d1d14b;;
+    min-height: 70vh;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    flex-direction: row;
+    border: 1px solid blue;
+    max-width: 97%;
+    flex: 1;
+} */
+/* .form-inputs>h1{
+    text-align: center;
+    font-weight: bold;
+    color: #004751;
+    border: none;
+} */
+/* #form{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.row{
+    display: flex;
+    
+} */
+/* .row>.input{
+    padding: 5px;
+    flex: 1;
+    max-width: 95%;
+}
+.form-inputs form label{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+} */
+/* .form-inputs form input{
+    outline: none;
+    border: 1px solid #004751;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 5px 0px;
+} */
+
+
+/* .register{
+    flex: 1;
+    flex-direction: column;
+}
+.form-inputs .register>h6{
+    margin: 20px 0 5px 45px;
+    font-weight: bold;
+    color: #004751;
+    border: none;
+}
+.form-inputs .register>button{
+    margin-left: 65px;
+} */
+

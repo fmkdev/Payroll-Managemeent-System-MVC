@@ -36,15 +36,38 @@ namespace PayxApi.Implementations.Repositories
             var employee = await _context.Employees
             .Include(a => a.Position)
             .Include(d => d.Department)
-            .SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment).SingleOrDefaultAsync(b => b.Id == id && b.IsDeleted == false);
+
             return new EmployeeDTO
             {
+                Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
                 PhoneNumber = employee.PhoneNumber,
                 Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
                 PositionName = employee.Position.Name,
-                DepartmentName = employee.Department.Name
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
             };
         }
 
@@ -88,14 +111,162 @@ namespace PayxApi.Implementations.Repositories
         {
             return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
         }
+        public async Task<Employee> GetDeletedAsync(int id)
+        {
+            return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == true);
+        }
 
         public async Task<IEnumerable<EmployeeDTO>> GetAsync()
         {
             return await _context.Employees
             .Include(a => a.Position)
             .Include(d => d.Department)
-            .Where(e => e.IsDeleted == false).Select( employee => new EmployeeDTO
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment)
+            .Where(e => e.IsDeleted == false).Select(employee => new EmployeeDTO
             {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
+                PositionName = employee.Position.Name,
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
+            }).ToListAsync();
+
+        }
+
+        public async Task<EmployeeDTO> GetAsync(string UserCardId)
+        {
+            var employee = await _context.Employees
+            .Include(a => a.Position)
+            .Include(d => d.Department)
+            .Include(b => b.AccountDetails)
+            .Include(c => c.Address)
+            .Include(e => e.PayLevel)
+            .Include(f => f.Appointment)
+            .SingleOrDefaultAsync(e => e.CardId == UserCardId && e.IsDeleted == false);
+
+            return new EmployeeDTO
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                EmployeeCardId = employee.CardId,
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.Email,
+                Gender = employee.Gender,
+                MaritalStatus = employee.MaritalStatus,
+                AppointmentName = employee.Appointment.AppointmentName,
+                PaymentType = employee.PaymentType,
+                PayLevelName = employee.PayLevel.LevelName,
+                PositionName = employee.Position.Name,
+                DepartmentName = employee.Department.Name,
+
+                BankName = employee.AccountDetails.BankName,
+                AccountNumber = employee.AccountDetails.AccountNumber,
+
+                HouseNumber = employee.Address.HomeNumber,
+                StreetName = employee.Address.StreetName,
+                City = employee.Address.City,
+                State = employee.Address.City,
+                Nationality = employee.Address.Nationality,
+                HomeNumber = employee.Address.HomeNumber,
+                LocalGovernment = employee.Address.LocalGovernment
+            };
+        }
+
+        public async Task<int> GetAllNumberOfEmployeeAsync()
+        {
+            return await _context.Employees.CountAsync();
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastBiWeekReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.BiWeekly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.BiWeekly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
+
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastWeekReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.weekly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.weekly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetLastMonthReinBursement()
+        {
+            var ANY = await _context.Employees.Include(p => p.Payrolls)
+            .Where(p => p.PaymentType == PaymentType.Monthly && p.Payrolls.Count() > 0)
+            .AnyAsync();
+            
+            if (ANY == true)
+            {
+                var amp = await _context.Employees.Include(p => p.Payrolls)
+                .Where(pa => pa.PaymentType == PaymentType.Monthly)
+                .Select(emp => new EmployeeDTO
+                {
+                    BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
+                }).ToListAsync();
+                return amp;
+            }
+            return null;
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetDeletedEmployee()
+        {
+            return await _context.Employees.Where(b => b.IsDeleted == true)
+            .Select(employee => new EmployeeDTO
+            {
+                Id = employee.Id,
+                EmployeeCardId = employee.CardId,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
                 PhoneNumber = employee.PhoneNumber,
@@ -103,7 +274,6 @@ namespace PayxApi.Implementations.Repositories
                 PositionName = employee.Position.Name,
                 DepartmentName = employee.Department.Name
             }).ToListAsync();
-           
         }
     }
 }

@@ -2,8 +2,8 @@ namespace PayxApi.Enum
 {
     public enum RequestStatus
     {
-        Permission = 1,
+        None = 1,
+        Permission,
         Leave,
-        None
     }
 }

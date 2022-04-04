@@ -1,0 +1,39 @@
+@model PayxApi.DTOs.OtherDeductionDTO
+@{
+    Layout = "_PayxLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/styles/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-body">
+            <div class="upper">DEDUCTION</div>
+            <div class="lower">
+                <form asp-action="CreateOtherDeduction">
+                <div style="color: green;">@ViewBag.Success</div>
+                        <div class="row">
+                            <div class="input">
+                                <div><label for="">Deduction Name: </label></div>
+                                <div><input asp-for="DeductionName" id="allowance-name" class="tInput" required></div>
+                            </div>
+                            <div class="input">
+                                <div><label for="">Amount: </label></div>
+                                <div><input asp-for="Amount" id="amount" class="tInput" required></div>
+                            </div>
+                        </div>
+                        <div class="submit"><input type="submit" value="Create"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/register.js"></script>
+</body>
+</html>
