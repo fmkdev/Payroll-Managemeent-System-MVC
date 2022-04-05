@@ -17,5 +17,7 @@ namespace PayxApi.Interfaces.Services
         Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync();
 
         Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync(string EmployeeCardId);
+
+        Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync(DateTime date);
     }
 }

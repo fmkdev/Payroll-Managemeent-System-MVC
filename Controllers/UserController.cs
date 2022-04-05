@@ -111,11 +111,8 @@ namespace PayxApi.Controllers
                 var authenticationProperties = new AuthenticationProperties();
                 var principal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authenticationProperties);
-                if(checkRole == "Staff" || checkRole == "Attendant")
-                {
-                    return RedirectToAction("EmployeeIndex", "User");
-                }
-                return RedirectToAction("Index", "User");
+                
+                return RedirectToAction("EmployeeIndex", "User");
             }
             else
             {
@@ -132,6 +129,7 @@ namespace PayxApi.Controllers
             return View(user.Data);
         }
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int userId)
         {
             var user = await _userService.DeleteAsync(userId);
@@ -153,7 +151,7 @@ namespace PayxApi.Controllers
             var user = await _employeeService.GetAsync(userId);
             return View(user.Data);
         }
-
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

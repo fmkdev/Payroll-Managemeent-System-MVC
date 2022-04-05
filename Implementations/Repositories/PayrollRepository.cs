@@ -25,10 +25,24 @@ namespace PayxApi.Implementations.Repositories
             return true;
         }
 
-        public Task<IEnumerable<PayrollDTO>> GetAsync(DateTime month)
-        {
-           return null;
+        public async Task<IEnumerable<PayrollDTO>> GetAsync(DateTime date)
+        { 
+            var actualDate = date.Date;
+           return await _context.Payrolls.Where(b => b.ReinbursementDate.Date == actualDate).Select(payroll => new PayrollDTO
+            {
+                Id = payroll.Id,
+                TransactionId = payroll.TransactionId,
+                EmployeeCardId = payroll.EmployeeCardId,
+                EmployeeBasicPay = payroll.EmployeeBasicPay,
+                OtherDeduction = payroll.OtherDeduction,
+                Tax = payroll.Tax,
+                TotalAllowance = payroll.TotalAllowance,
+                TotalBonus = payroll.TotalBonus,
+                GrossPay = payroll.GrossPay,
+                ReinbursementDate = payroll.ReinbursementDate  
+            }).ToListAsync();
         }
+        
 
         public async Task<IEnumerable<PayrollDTO>> GetAsync()
         { 

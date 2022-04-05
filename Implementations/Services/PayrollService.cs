@@ -22,7 +22,7 @@ namespace PayxApi.Implementations.Services
             _employeeRepository = employeeRepository;
             _taxRepository = taxRepository;
         }
-
+        
         public async Task<BaseResponse<bool>> GeneratePayrollForBiWeeklyPayee()
         {
             var employees = await _employeeRepository.GetAllPaysAsync();
@@ -253,6 +253,17 @@ namespace PayxApi.Implementations.Services
         public async Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync(string EmployeeCardId)
         {
             var pay = await _payrollRepository.GetAsync(EmployeeCardId);
+            return new BaseResponse<IEnumerable<PayrollDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = pay
+            };
+        }
+
+        public async Task<BaseResponse<IEnumerable<PayrollDTO>>> GetAsync(DateTime date)
+        {
+            var pay = await _payrollRepository.GetAsync(date);
             return new BaseResponse<IEnumerable<PayrollDTO>>
             {
                 IsSuccess = true,

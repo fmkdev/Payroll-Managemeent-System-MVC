@@ -20,6 +20,7 @@ namespace PayxApi
         }
         
         [HttpGet("CreateOtherDeduction/{employeeId}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateOtherDeduction()
         {
             return View();

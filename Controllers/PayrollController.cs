@@ -1,3 +1,4 @@
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -27,6 +28,14 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> ViewMyPayrolls()
         {
             var pay = await _payrollService.GetAsync(User.FindFirstValue(ClaimTypes.GivenName));
+            return View(pay.Data);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetPayrollByDate(DateTime Date)
+        {
+            var pay = await _payrollService.GetAsync(Date);
             return View(pay.Data);
         }
         

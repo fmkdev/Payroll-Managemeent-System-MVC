@@ -15,6 +15,7 @@ namespace PayxApi.Controllers
             _roleService = roleService;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateRole()
         {
             return View();
@@ -27,7 +28,7 @@ namespace PayxApi.Controllers
             var role = await _roleService.CreateAsync(model);
             if(role.IsSuccess == true)
             {
-                ViewBag.Success = " Created Successfully";
+                ViewBag.Success = "Created Successfully";
             }
             ViewBag.Success = "Not Created";
             return View();

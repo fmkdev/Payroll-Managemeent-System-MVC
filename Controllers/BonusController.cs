@@ -20,6 +20,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("CreateBonus/{employeeId}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateBonus()
         {
             return View();

@@ -109,11 +109,11 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<Employee> GetAsync(int id)
         {
-            return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+            return await _context.Employees.Include(b => b.WorkingDays).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
         }
         public async Task<Employee> GetDeletedAsync(int id)
         {
-            return await _context.Employees.SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == true);
+            return await _context.Employees.Include(b => b.WorkingDays).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == true);
         }
 
         public async Task<IEnumerable<EmployeeDTO>> GetAsync()
@@ -199,7 +199,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<int> GetAllNumberOfEmployeeAsync()
         {
-            return await _context.Employees.CountAsync();
+            return await _context.Employees.CountAsync(b => b.IsDeleted == false);
         }
 
         public async Task<IEnumerable<EmployeeDTO>> GetLastBiWeekReinBursement()
@@ -211,7 +211,7 @@ namespace PayxApi.Implementations.Repositories
             if (ANY == true)
             {
                 var amp = await _context.Employees.Include(p => p.Payrolls)
-                .Where(pa => pa.PaymentType == PaymentType.BiWeekly)
+                .Where(pa => pa.PaymentType == PaymentType.BiWeekly && pa.IsDeleted == false)
                 .Select(emp => new EmployeeDTO
                 {
                     BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
@@ -231,7 +231,7 @@ namespace PayxApi.Implementations.Repositories
             if (ANY == true)
             {
                 var amp = await _context.Employees.Include(p => p.Payrolls)
-                .Where(pa => pa.PaymentType == PaymentType.weekly)
+                .Where(pa => pa.PaymentType == PaymentType.weekly && pa.IsDeleted == false)
                 .Select(emp => new EmployeeDTO
                 {
                     BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
@@ -250,7 +250,7 @@ namespace PayxApi.Implementations.Repositories
             if (ANY == true)
             {
                 var amp = await _context.Employees.Include(p => p.Payrolls)
-                .Where(pa => pa.PaymentType == PaymentType.Monthly)
+                .Where(pa => pa.PaymentType == PaymentType.Monthly && pa.IsDeleted == false)
                 .Select(emp => new EmployeeDTO
                 {
                     BiWeeklyReinbursementAmount = emp.Payrolls.OrderBy(b => b.Id).LastOrDefault().GrossPay
