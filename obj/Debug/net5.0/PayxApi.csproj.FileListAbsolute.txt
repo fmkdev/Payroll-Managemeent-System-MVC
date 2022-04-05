@@ -94,3 +94,5 @@ C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Payroll\Pre
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Payroll\ViewMyPayrolls.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Employee\GetDeletedEmployee.cshtml.g.cs
 C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Employee\Details.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Allowance\GetAllAllowance.cshtml.g.cs
+C:\Users\fmkDev\Desktop\Testing\PayxApi\obj\Debug\net5.0\Razor\Views\Payroll\GetPayrollByDate.cshtml.g.cs

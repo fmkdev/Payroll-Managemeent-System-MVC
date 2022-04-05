@@ -65,7 +65,7 @@ namespace PayxApi.Implementations.Repositories
             {
                 Id = dept.Id,
                 Name = dept.Name,
-                NumberOfEmployees = dept.Employees.Count()
+                NumberOfEmployees = dept.Employees.Count(b => b.IsDeleted == false)
             }).ToListAsync();
         }
     }

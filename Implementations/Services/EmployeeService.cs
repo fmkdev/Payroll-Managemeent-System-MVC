@@ -150,8 +150,17 @@ namespace PayxApi.Implementations.Services
         {
             var emp = await _employeeRepository.GetAsync(id);
             var user = await _userRepository.GetAsync(emp.UserId);
+
+            var works = emp.WorkingDays;
+            foreach(var item in works)
+            {
+                item.IsDeleted = true;
+            }
+        
             emp.IsDeleted = true;
             user.IsDeleted = true;
+
+            await _workingDaysRepository.UpdateAsync(works.ToList());
             await _employeeRepository.UpdateAsync(emp);
             await _userRepository.UpdateAsync(user);
             return new BaseResponse<bool>
@@ -289,8 +298,17 @@ namespace PayxApi.Implementations.Services
         {
             var emp = await _employeeRepository.GetDeletedAsync(id);
             var user = await _userRepository.GetAsync(emp.UserId);
+
+            var works = emp.WorkingDays;
+            foreach(var item in works)
+            {
+                item.IsDeleted = false;
+            }
+
             emp.IsDeleted = false;
             user.IsDeleted = false;
+
+            await _workingDaysRepository.UpdateAsync(works.ToList());
             await _employeeRepository.UpdateAsync(emp);
             await _userRepository.UpdateAsync(user);
             return new BaseResponse<bool>

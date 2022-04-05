@@ -34,7 +34,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<WorkingDays> GetAsync(string cardId, DateTime date)
         {
-            return await _context.workingDays.SingleOrDefaultAsync(u => u.EmployeeCardId == cardId && u.WorkDate == date.Date);
+            return await _context.workingDays.SingleOrDefaultAsync(u => u.EmployeeCardId == cardId && u.WorkDate == date.Date && u.IsDeleted == false);
         }
 
         public async Task<IEnumerable<WorkingDays>> GetAsync(string cardId)
@@ -44,7 +44,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<IEnumerable<WorkingDaysDTO>> GetAsync(DateTime date)
         {
-            return await _context.workingDays.Where(c => c.WorkDate == date.Date && c.IsDeleted ==false)
+            return await _context.workingDays.Where(c => c.WorkDate == date.Date && c.IsDeleted == false)
             .Select(w => new WorkingDaysDTO
             {
                 Id = w.Id,

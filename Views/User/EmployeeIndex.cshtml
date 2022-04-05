@@ -1,24 +1,15 @@
 @{
     Layout = "_PayxLayout";
 }
-<head>
-    <style>
-        .my-index{
-            border: 1px solid red;
-            background-image: url("");
-            background-color: blue;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-    </style>
-</head>
-<body>
 
-<div class="my-index">
-    <buttton class="my-btn"></buttton>
-    <buttton class="my-btn"></buttton>
-    <buttton class="my-btn"></buttton>
-</div>
-    
-</body>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1><i class="bi bi-person-check-fill"></i> Welcome @User.Identity.Name</h1>
+        @* <nav>
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            </nav> *@
+    </div><!-- End Page Title -->
+</main>
