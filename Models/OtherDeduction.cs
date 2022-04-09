@@ -1,4 +1,5 @@
 using System;
+using PayxApi.Enum;
 
 namespace PayxApi.Models
 {
@@ -15,5 +16,7 @@ namespace PayxApi.Models
         public DateTime Date { get; set; }
 
         public int Month { get; set; }
+
+        public BDStatus BDStatus { get; set; }
     }
 }

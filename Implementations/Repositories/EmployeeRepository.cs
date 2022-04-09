@@ -275,5 +275,41 @@ namespace PayxApi.Implementations.Repositories
                 DepartmentName = employee.Department.Name
             }).ToListAsync();
         }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetEmployeeBonus(int id)
+        {
+            var bonus = await _context.Employees.Include(b => b.Bonus)
+            .Where(e => e.Id == id && e.IsDeleted == false)
+            .Select(employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                Bonuses = employee.Bonus.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new BonusDTO
+                {
+                    BonusName = bonus.BonusName,
+                    Amount = bonus.Amount
+                }).ToList()
+            }).ToListAsync();
+            return bonus;
+        }
+
+        public async Task<IEnumerable<EmployeeDTO>> GetEmployeeDeductions(int id)
+        {
+            var bonus = await _context.Employees.Include(b => b.OtherDeductions)
+            .Where(e => e.Id == id && e.IsDeleted == false)
+            .Select(employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                OtherDeductions = employee.OtherDeductions.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new OtherDeductionDTO
+                {
+                    DeductionName = bonus.DeductionName,
+                    Amount = bonus.Amount
+                }).ToList()
+            }).ToListAsync();
+            return bonus;
+        }
     }
 }
