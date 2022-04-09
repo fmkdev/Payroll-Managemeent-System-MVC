@@ -27,6 +27,7 @@ namespace PayxApi.Implementations.Services
                 Employee = employee,
                 DeductionName = model.DeductionName,
                 Amount = model.Amount,
+                BDStatus = Enum.BDStatus.Given,
                 Date = DateTime.UtcNow,
                 Month = DateTime.UtcNow.Month
             };

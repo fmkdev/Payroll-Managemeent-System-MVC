@@ -90,6 +90,10 @@ namespace PayxApi.DTOs
         public string LocalGovernment { get; set; }
 
         public string HomeNumber { get; set; }
+
+        public ICollection<BonusDTO> Bonuses { get; set; } = new List<BonusDTO>();
+
+        public ICollection<OtherDeductionDTO> OtherDeductions { get; set; } = new List<OtherDeductionDTO>();
     }
     public class CreateEmployeeRequestModel
     {

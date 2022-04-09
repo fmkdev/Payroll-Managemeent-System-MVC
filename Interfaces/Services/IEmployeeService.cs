@@ -29,5 +29,9 @@ namespace PayxApi.Interfaces.Services
         Task<BaseResponse<decimal?>> GetWeeklyReinbursement();
         
         Task<BaseResponse<decimal?>> GetMonthlyReinbursement();
+
+        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeBonus(int id);
+
+        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeDeductions(int id);
     }
 }
