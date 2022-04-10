@@ -15679,6 +15679,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetEmployeeDeductions.cshtml",
+      "TargetPath": "Views\\Employee\\GetEmployeeDeductions.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Department\\CreateDepartment.cshtml",
       "TargetPath": "Views\\Department\\CreateDepartment.cshtml",
       "FileKind": "mvc"
@@ -15756,6 +15761,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Position\\CreatePosition.cshtml",
       "TargetPath": "Views\\Position\\CreatePosition.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetEmployeeBonus.cshtml",
+      "TargetPath": "Views\\Employee\\GetEmployeeBonus.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -139,6 +140,36 @@ namespace PayxApi.Controllers
         {
             var emp = await _employeeService.GetAsync(employeeId);
             return View(emp.Data);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetEmployeeBonus(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeeBonus(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeeBonus(id);
+            return View(bonus.Data);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetEmployeeDeduction(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeeDeductions(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeeBonus(id);
+            return View(bonus.Data);
         }
     
     }
