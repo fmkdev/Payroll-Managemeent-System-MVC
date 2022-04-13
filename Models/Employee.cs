@@ -57,5 +57,7 @@ namespace PayxApi.Models
         public ICollection<OtherDeduction> OtherDeductions { get; set; } = new List<OtherDeduction>();
 
         public ICollection<Tax> Taxes { get; set; } = new List<Tax>();
+
+        public ICollection<Ledger> Ledgers { get; set; } = new List<Ledger>();
     }
 }
