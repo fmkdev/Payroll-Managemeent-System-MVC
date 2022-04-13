@@ -8,5 +8,7 @@ namespace PayxApi.Interfaces.Repositories
         Task<bool> CreateAsync(Ledger Ledger);
 
         Task<bool> UpdateAsync(Ledger Ledger);
+
+        Task<Ledger> GetAsync(int ledgerId);
     }
 }

@@ -24,4 +24,10 @@ namespace PayxApi.DTOs
 
         public ICollection<BonusDTO> Bonus = new List<BonusDTO>();
     }
+    public class PutOnLedgerRequestModel
+    {
+        public string Narration { get; set; }
+
+        public decimal Balance { get; set; }
+    }
 }

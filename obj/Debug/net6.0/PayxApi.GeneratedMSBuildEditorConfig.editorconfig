@@ -8,165 +8,165 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PayxApi
 build_property.RootNamespace = PayxApi
-build_property.ProjectDir = c:\Users\fmkDev\Desktop\Testing\PayxApi\
+build_property.ProjectDir = C:\Users\fmkDev\Desktop\Testing\PayxApi\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\fmkDev\Desktop\Testing\PayxApi
+build_property.MSBuildProjectDirectory = C:\Users\fmkDev\Desktop\Testing\PayxApi
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/AccountDetails/UpdateAccountDetails.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/AccountDetails/UpdateAccountDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudERldGFpbHNcVXBkYXRlQWNjb3VudERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Address/UpdateAddress.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Address/UpdateAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc1xVcGRhdGVBZGRyZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Allowance/CreateAllowance.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Allowance/CreateAllowance.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsb3dhbmNlXENyZWF0ZUFsbG93YW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Allowance/GetAllAllowance.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Allowance/GetAllAllowance.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsb3dhbmNlXEdldEFsbEFsbG93YW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Appointment/CreateAppointment.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Appointment/CreateAppointment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcQ3JlYXRlQXBwb2ludG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Bonus/AllEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Bonus/AllEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9udXNcQWxsRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Bonus/CreateBonus.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Bonus/CreateBonus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9udXNcQ3JlYXRlQm9udXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Department/CreateDepartment.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Department/CreateDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxDcmVhdGVEZXBhcnRtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/CreateEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/CreateEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/Details.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetAllEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetAllEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcR2V0QWxsRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetDeletedEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetDeletedEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcR2V0RGVsZXRlZEVtcGxveWVlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetEmployeeBonus.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetEmployeeBonus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcR2V0RW1wbG95ZWVCb251cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetEmployeeDeductions.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/GetEmployeeDeductions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcR2V0RW1wbG95ZWVEZWR1Y3Rpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/UpdateEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Employee/UpdateEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXBkYXRlRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Home/Index.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Home/Privacy.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/OtherDeduction/AllEmployee.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/OtherDeduction/AllEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJEZWR1Y3Rpb25cQWxsRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/OtherDeduction/CreateOtherDeduction.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/OtherDeduction/CreateOtherDeduction.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJEZWR1Y3Rpb25cQ3JlYXRlT3RoZXJEZWR1Y3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/PayLevel/CreatePayLevel.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/PayLevel/CreatePayLevel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5TGV2ZWxcQ3JlYXRlUGF5TGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/GetPayrollByDate.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/GetPayrollByDate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5cm9sbFxHZXRQYXlyb2xsQnlEYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/PresentMonthPayroll.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/PresentMonthPayroll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5cm9sbFxQcmVzZW50TW9udGhQYXlyb2xsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/ViewMyPayrolls.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Payroll/ViewMyPayrolls.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5cm9sbFxWaWV3TXlQYXlyb2xscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Position/CreatePosition.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Position/CreatePosition.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cQ3JlYXRlUG9zaXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Role/CreateRole.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Role/CreateRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGVSb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_Layout.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_PayxLayout.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_PayxLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYXl4TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/EmployeeIndex.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/EmployeeIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFbXBsb3llZUluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Index.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Login.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Profile.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/User/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/MakeRequest.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/MakeRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ0RheXNcTWFrZVJlcXVlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/SignOrSignOut.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/SignOrSignOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ0RheXNcU2lnbk9yU2lnbk91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/TodaysAttendance.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/TodaysAttendance.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ0RheXNcVG9kYXlzQXR0ZW5kYW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/ViewAllRequest.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/ViewAllRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ0RheXNcVmlld0FsbFJlcXVlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/ViewMyCalendar.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/WorkingDays/ViewMyCalendar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ0RheXNcVmlld015Q2FsZW5kYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/_ViewImports.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/fmkDev/Desktop/Testing/PayxApi/Views/_ViewStart.cshtml]
+[C:/Users/fmkDev/Desktop/Testing/PayxApi/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

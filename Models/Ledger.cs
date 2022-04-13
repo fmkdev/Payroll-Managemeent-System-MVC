@@ -18,8 +18,8 @@ namespace PayxApi.Models
 
         public bool IsPaid { get; set; } = false;
 
-        public ICollection<OtherDeduction> OtherDeductions = new List<OtherDeduction>();
+        public ICollection<LedgerAdd> LedgerAdds = new List<LedgerAdd>();
 
-        public ICollection<Bonus> Bonus = new List<Bonus>();
+        public ICollection<LedgerDeduction> LedgerDeductions = new List<LedgerDeduction>();
     }
 }

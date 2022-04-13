@@ -33,5 +33,7 @@ namespace PayxApi.ContextDb
         public DbSet<OtherDeduction> OtherDeductions { get; set; }
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<Ledger> Ledgers { get; set; }
+        public DbSet<LedgerAdd> LedgerAdds { get; set; }
+        public DbSet<LedgerDeduction> LedgerDeductions { get; set; }
     }
 }

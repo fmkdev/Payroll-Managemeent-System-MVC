@@ -97,6 +97,15 @@ namespace PayxApi
             services.AddScoped<ITaxRepository, TaxRepository>();
             services.AddScoped<ITaxService, TaxService>();
 
+            services.AddScoped<ILedgerRepository, LedgerRepository>();
+            services.AddScoped<ILedgerService, LedgerService>();
+
+            services.AddScoped<ILedgerAddRepository, LedgerAddRepository>();
+            services.AddScoped<ILedgerAddService, LedgerAddService>();
+
+            services.AddScoped<ILedgerDeductionsRepository, LedgerDeductionsRepository>();
+            services.AddScoped<ILedgerDeductionsService, LedgerDeductionsService>();
+
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(config =>

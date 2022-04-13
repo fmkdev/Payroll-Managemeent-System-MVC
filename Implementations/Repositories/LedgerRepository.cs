@@ -1,4 +1,6 @@
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using PayxApi.ContextDb;
 using PayxApi.Interfaces.Repositories;
 using PayxApi.Models;
@@ -17,6 +19,12 @@ namespace PayxApi.Implementations.Repositories
             await _context.Ledgers.AddAsync(Ledger);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Ledger> GetAsync(int ledgerId)
+        {
+            return await _context.Ledgers.Include(e => e.Employee)
+            .Where(l => l.Id == ledgerId).SingleOrDefaultAsync();
         }
 
         public async Task<bool> UpdateAsync(Ledger Ledger)
