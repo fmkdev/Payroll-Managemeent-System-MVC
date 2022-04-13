@@ -32,5 +32,6 @@ namespace PayxApi.ContextDb
         public DbSet<Bonus> Bonus { get; set; }
         public DbSet<OtherDeduction> OtherDeductions { get; set; }
         public DbSet<Tax> Taxes { get; set; }
+        public DbSet<Ledger> Ledgers { get; set; }
     }
 }
