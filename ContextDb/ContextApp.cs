@@ -35,5 +35,6 @@ namespace PayxApi.ContextDb
         public DbSet<Ledger> Ledgers { get; set; }
         public DbSet<LedgerAdd> LedgerAdds { get; set; }
         public DbSet<LedgerDeduction> LedgerDeductions { get; set; }
+        public DbSet<Salary> Salaries { get; set; }
     }
 }

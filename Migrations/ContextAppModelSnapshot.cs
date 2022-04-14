@@ -386,27 +386,16 @@ namespace PayxApi.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Narration")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
 
                     b.ToTable("Ledgers");
                 });
@@ -765,6 +754,52 @@ namespace PayxApi.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("PayxApi.Models.Salary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("LedgerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Narration")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LedgerId");
+
+                    b.ToTable("Salaries");
+                });
+
             modelBuilder.Entity("PayxApi.Models.Tax", b =>
                 {
                     b.Property<int>("Id")
@@ -1047,8 +1082,8 @@ namespace PayxApi.Migrations
             modelBuilder.Entity("PayxApi.Models.Ledger", b =>
                 {
                     b.HasOne("PayxApi.Models.Employee", "Employee")
-                        .WithMany("Ledgers")
-                        .HasForeignKey("EmployeeId")
+                        .WithOne("Ledger")
+                        .HasForeignKey("PayxApi.Models.Ledger", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1122,6 +1157,15 @@ namespace PayxApi.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("PayxApi.Models.Salary", b =>
+                {
+                    b.HasOne("PayxApi.Models.Ledger", "Ledger")
+                        .WithMany()
+                        .HasForeignKey("LedgerId");
+
+                    b.Navigation("Ledger");
+                });
+
             modelBuilder.Entity("PayxApi.Models.Tax", b =>
                 {
                     b.HasOne("PayxApi.Models.Employee", "Employee")
@@ -1188,7 +1232,7 @@ namespace PayxApi.Migrations
 
                     b.Navigation("Bonus");
 
-                    b.Navigation("Ledgers");
+                    b.Navigation("Ledger");
 
                     b.Navigation("OtherDeductions");
 

@@ -27,7 +27,7 @@ namespace PayxApi.Controllers
             _payLevelService = payLevelService;
             _roleService = roleService;
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEmployee()
         {
             var department = await _departmentService.GetAsync();
@@ -49,7 +49,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeRequestModel model)
         {
             var employee = await _employeeService.CreateAsync(model);

@@ -9,8 +9,8 @@ using PayxApi.ContextDb;
 namespace PayxApi.Migrations
 {
     [DbContext(typeof(ContextApp))]
-    [Migration("20220316212401_Initialize")]
-    partial class Initialize
+    [Migration("20220414132105_enteyau")]
+    partial class enteyau
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -219,6 +219,9 @@ namespace PayxApi.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<int>("BDStatus")
+                        .HasColumnType("int");
+
                     b.Property<string>("BonusName")
                         .HasColumnType("text");
 
@@ -364,6 +367,133 @@ namespace PayxApi.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("PayxApi.Models.Ledger", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("Balance")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
+                    b.ToTable("Ledgers");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.LedgerAdd", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AddName")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("BDStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("LedgerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LedgerId");
+
+                    b.ToTable("LedgerAdds");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.LedgerDeduction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("BDStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DeductionName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("LedgerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LedgerId");
+
+                    b.ToTable("LedgerDeductions");
+                });
+
             modelBuilder.Entity("PayxApi.Models.OtherDeduction", b =>
                 {
                     b.Property<int>("Id")
@@ -372,6 +502,9 @@ namespace PayxApi.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("BDStatus")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
@@ -472,11 +605,14 @@ namespace PayxApi.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("GrossPay")
+                    b.Property<decimal?>("GrossPay")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("LedgerId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
@@ -511,6 +647,8 @@ namespace PayxApi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("LedgerId");
 
                     b.ToTable("Payrolls");
                 });
@@ -616,6 +754,52 @@ namespace PayxApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.Salary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("LedgerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Narration")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LedgerId");
+
+                    b.ToTable("Salaries");
                 });
 
             modelBuilder.Entity("PayxApi.Models.Tax", b =>
@@ -897,6 +1081,39 @@ namespace PayxApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("PayxApi.Models.Ledger", b =>
+                {
+                    b.HasOne("PayxApi.Models.Employee", "Employee")
+                        .WithOne("Ledger")
+                        .HasForeignKey("PayxApi.Models.Ledger", "EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.LedgerAdd", b =>
+                {
+                    b.HasOne("PayxApi.Models.Ledger", "Ledger")
+                        .WithMany()
+                        .HasForeignKey("LedgerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ledger");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.LedgerDeduction", b =>
+                {
+                    b.HasOne("PayxApi.Models.Ledger", "Ledger")
+                        .WithMany()
+                        .HasForeignKey("LedgerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ledger");
+                });
+
             modelBuilder.Entity("PayxApi.Models.OtherDeduction", b =>
                 {
                     b.HasOne("PayxApi.Models.Employee", "Employee")
@@ -915,6 +1132,12 @@ namespace PayxApi.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PayxApi.Models.Ledger", "Ledger")
+                        .WithMany()
+                        .HasForeignKey("LedgerId");
+
+                    b.Navigation("Ledger");
                 });
 
             modelBuilder.Entity("PayxApi.Models.PositionAllowance", b =>
@@ -934,6 +1157,15 @@ namespace PayxApi.Migrations
                     b.Navigation("Allowance");
 
                     b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("PayxApi.Models.Salary", b =>
+                {
+                    b.HasOne("PayxApi.Models.Ledger", "Ledger")
+                        .WithMany()
+                        .HasForeignKey("LedgerId");
+
+                    b.Navigation("Ledger");
                 });
 
             modelBuilder.Entity("PayxApi.Models.Tax", b =>
@@ -1001,6 +1233,8 @@ namespace PayxApi.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("Bonus");
+
+                    b.Navigation("Ledger");
 
                     b.Navigation("OtherDeductions");
 

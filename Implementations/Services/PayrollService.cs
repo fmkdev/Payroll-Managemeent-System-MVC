@@ -15,14 +15,16 @@ namespace PayxApi.Implementations.Services
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ITaxRepository _taxRepository;
         private readonly ILedgerRepository _ledgerRepository;
+        private readonly ISalaryRepository _salary;
 
         public PayrollService(IPayrollRepository payrollRepository, IEmployeeRepository employeeRepository,
-        ITaxRepository taxRepository, ILedgerRepository ledgerRepository)
+        ITaxRepository taxRepository, ILedgerRepository ledgerRepository, ISalaryRepository salary)
         {
             _payrollRepository = payrollRepository;
             _employeeRepository = employeeRepository;
             _taxRepository = taxRepository;
             _ledgerRepository = ledgerRepository;
+            _salary = salary;
         }
 
         public async Task<BaseResponse<bool>> GeneratePayrollForBiWeeklyPayee()
@@ -93,7 +95,10 @@ namespace PayxApi.Implementations.Services
 
                 await _payrollRepository.CreateAsync(payroll);
                 await _taxRepository.CreateAsync(tax);
+                await _salary.CreateAsync(salary);
 
+                emp.Ledger.Balance = salary.Amount;
+                emp.Ledger.Salaries.Add(salary);
                 emp.Payrolls.Add(payroll);
                 emp.Taxes.Add(tax);
 
@@ -162,10 +167,22 @@ namespace PayxApi.Implementations.Services
                     TaxPercentage = employee.EmployeeTaxPercentage,
                     Month = DateTime.UtcNow.Month
                 };
+                var salary = new Salary
+                {
+                    LedgerId = emp.Ledger.Id,
+                    Ledger = emp.Ledger,
+                    Narration = $"The amount entering {emp.FirstName} {emp.LastName} ledger account for the Month: {payroll.Month}, Year: {payroll.Year} is {payroll.GrossPay}",
+                    Month = payroll.Month,
+                    Year = payroll.Year,
+                    Date = payroll.ReinbursementDate
+                };
 
                 await _payrollRepository.CreateAsync(payroll);
                 await _taxRepository.CreateAsync(tax);
+                await _salary.CreateAsync(salary);
 
+                emp.Ledger.Balance = salary.Amount;
+                emp.Ledger.Salaries.Add(salary);
                 emp.Payrolls.Add(payroll);
                 emp.Taxes.Add(tax);
 
@@ -234,10 +251,22 @@ namespace PayxApi.Implementations.Services
                     TaxPercentage = employee.EmployeeTaxPercentage,
                     Month = DateTime.UtcNow.Month
                 };
+                var salary = new Salary
+                {
+                    LedgerId = emp.Ledger.Id,
+                    Ledger = emp.Ledger,
+                    Narration = $"The amount entering {emp.FirstName} {emp.LastName} ledger account for the Month: {payroll.Month}, Year: {payroll.Year} is {payroll.GrossPay}",
+                    Month = payroll.Month,
+                    Year = payroll.Year,
+                    Date = payroll.ReinbursementDate
+                };
 
                 await _payrollRepository.CreateAsync(payroll);
                 await _taxRepository.CreateAsync(tax);
+                await _salary.CreateAsync(salary);
 
+                emp.Ledger.Balance = salary.Amount;
+                emp.Ledger.Salaries.Add(salary);
                 emp.Payrolls.Add(payroll);
                 emp.Taxes.Add(tax);
 
