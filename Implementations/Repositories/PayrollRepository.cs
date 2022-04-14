@@ -50,6 +50,7 @@ namespace PayxApi.Implementations.Repositories
             return await _context.Payrolls.Where(b => b.Month == month).Select(payroll => new PayrollDTO
             {
                 Id = payroll.Id,
+                LedgerId = payroll.LedgerId,
                 TransactionId = payroll.TransactionId,
                 EmployeeCardId = payroll.EmployeeCardId,
                 EmployeeBasicPay = payroll.EmployeeBasicPay,
@@ -58,7 +59,8 @@ namespace PayxApi.Implementations.Repositories
                 TotalAllowance = payroll.TotalAllowance,
                 TotalBonus = payroll.TotalBonus,
                 GrossPay = payroll.GrossPay,
-                ReinbursementDate = payroll.ReinbursementDate  
+                ReinbursementDate = payroll.ReinbursementDate,
+                
             }).ToListAsync();
         }
 
@@ -77,6 +79,13 @@ namespace PayxApi.Implementations.Repositories
                 GrossPay = payroll.GrossPay,
                 ReinbursementDate = payroll.ReinbursementDate  
             }).ToListAsync();
+        }
+
+        public async Task<bool> UpdateAsync(Payroll payroll)
+        {
+            _context.Payrolls.Update(payroll);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

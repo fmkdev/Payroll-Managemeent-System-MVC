@@ -16398,6 +16398,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Ledger\\GetLedger.cshtml",
+      "TargetPath": "Views\\Ledger\\GetLedger.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Profile.cshtml",
       "TargetPath": "Views\\User\\Profile.cshtml",
       "FileKind": "mvc"

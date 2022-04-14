@@ -18,9 +18,10 @@ namespace PayxApi.Implementations.Services
         private readonly IWorkingDaysRepository _workingDaysRepository;
         private readonly IAddressRepository _addressRepository;
         private readonly IAccountDetailsRepository _accountDetailsRepository;
+        private readonly ILedgerRepository _ledgerRepository;
         public EmployeeService(IEmployeeRepository employeeRepository, IUserRepository userRepository,
         IRoleRepository roleRepository, IAccountDetailsRepository accountDetailsRepository,
-        IWorkingDaysRepository workingDaysRepository, IAddressRepository addressRepository)
+        IWorkingDaysRepository workingDaysRepository, IAddressRepository addressRepository, ILedgerRepository ledgerRepository)
         {
             _employeeRepository = employeeRepository;
             _userRepository = userRepository;
@@ -28,6 +29,7 @@ namespace PayxApi.Implementations.Services
             _workingDaysRepository = workingDaysRepository;
             _addressRepository = addressRepository;
             _accountDetailsRepository = accountDetailsRepository;
+            _ledgerRepository = ledgerRepository;
         }
 
         public async Task<BaseResponse<bool>> CreateAsync(CreateEmployeeRequestModel model)
@@ -138,6 +140,16 @@ namespace PayxApi.Implementations.Services
             us.Employee = employee;
             us.EmployeeCardId = employee.CardId;
             await _userRepository.UpdateAsync(us);
+
+            var ledger = new Ledger
+            {
+                EmployeeId = employee.Id,
+                Employee = employee
+            };
+            await _ledgerRepository.CreateAsync(ledger);
+
+            employee.Ledger = ledger;
+            await _employeeRepository.UpdateAsync(employee);
 
             return new BaseResponse<bool>
             {

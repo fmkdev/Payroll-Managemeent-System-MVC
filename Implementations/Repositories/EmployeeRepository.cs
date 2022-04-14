@@ -109,7 +109,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<Employee> GetAsync(int id)
         {
-            return await _context.Employees.Include(b => b.WorkingDays).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+            return await _context.Employees.Include(b => b.WorkingDays).Include(l => l.Ledger).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
         }
         public async Task<Employee> GetDeletedAsync(int id)
         {

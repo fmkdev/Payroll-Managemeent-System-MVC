@@ -48,6 +48,8 @@ namespace PayxApi.Models
 
         public PayLevel PayLevel { get; set; }
 
+        public Ledger Ledger { get; set; }
+
         public ICollection<WorkingDays> WorkingDays { get; set; } = new List<WorkingDays>();
 
         public ICollection<Payroll> Payrolls { get; set; } = new List<Payroll>();
@@ -57,7 +59,5 @@ namespace PayxApi.Models
         public ICollection<OtherDeduction> OtherDeductions { get; set; } = new List<OtherDeduction>();
 
         public ICollection<Tax> Taxes { get; set; } = new List<Tax>();
-
-        public ICollection<Ledger> Ledgers { get; set; } = new List<Ledger>();
     }
 }
