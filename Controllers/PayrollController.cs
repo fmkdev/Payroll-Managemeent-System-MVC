@@ -23,12 +23,17 @@ namespace PayxApi.Controllers
             return View(pay.Data);
         }
 
-        [HttpGet("ViewMyPayrolls")]
+        [HttpGet("Payroll/ViewMyPayrolls/{employeeId}")]
         [Authorize]
-        public async Task<IActionResult> ViewMyPayrolls()
+        public async Task<IActionResult> ViewMyPayrolls(string CardId)
         {
-            var pay = await _payrollService.GetAsync(User.FindFirstValue(ClaimTypes.GivenName));
-            return View(pay.Data);
+            if (CardId == null)
+            {
+                var pay = await _payrollService.GetAsync(User.FindFirstValue(ClaimTypes.GivenName));
+                return View(pay.Data);
+            }
+            var pays = await _payrollService.GetAsync(CardId);
+            return View(pays.Data);
         }
 
         [HttpPost]
@@ -38,6 +43,6 @@ namespace PayxApi.Controllers
             var pay = await _payrollService.GetAsync(Date);
             return View(pay.Data);
         }
-        
+
     }
 }

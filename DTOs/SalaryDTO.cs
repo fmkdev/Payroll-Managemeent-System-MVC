@@ -1,13 +1,13 @@
 using System;
 using PayxApi.Enum;
 
-namespace PayxApi.Models
+namespace PayxApi.DTOs
 {
-    public class Salary : BaseEntity
+    public class SalaryDTO
     {
-        public int? LedgerId { get; set; }  
+        public int Id { get; set; }
 
-        public Ledger Ledger { get; set; }
+        public LedgerDTO Ledger { get; set; }
 
         public string Narration { get; set; }
 

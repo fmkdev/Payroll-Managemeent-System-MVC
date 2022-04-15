@@ -74,6 +74,8 @@ namespace PayxApi.DTOs
         public int UserId { get; set; }
 
         public User User { get; set; }
+        
+        public int LedgerId { get; set; }
 
 
 

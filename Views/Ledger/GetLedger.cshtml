@@ -36,16 +36,34 @@
                                 <!-- List group with active and disabled items -->
                                 <ul class="list-group">
                                     <li class="list-group-item active" aria-current="true">LEDGER</li>
-                                    <li class="list-group-item"><b>FIRST NAME: </b> @Model.Narration</li>
-                                    <li class="list-group-item"><b>LAST NAME: </b> @Model.Balance</li>
-                                    <li class="list-group-item"><b>GENDER: </b> @Model.IsPaid</li>
-                                    <li class="list-group-item"><b>MARITAL STATUS: </b> @Model.Month</li>
-                                    <li class="list-group-item"><b>EMAIL: </b> @Model.Year</li>
+                                    <li class="list-group-item"><b>BALANCE: </b> @Model.Balance</li>
                                     <li class="list-group-item" aria-disabled="true"></li>
                                 </ul><!-- End ist group with active and disabled items -->
 
                             </div>
                         </div>
+
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- List group with active and disabled items -->
+                                <ul class="list-group">
+                                    <li class="list-group-item active" aria-current="true">SALARIES</li>
+                                    @foreach (var item in Model.Salaries)
+                                    {
+                                        <li class="list-group-item"><b>NARATION: </b> @item.Narration</li>
+                                        <li class="list-group-item"><b>AMOUNT: </b> @item.Amount</li>
+                                        <li class="list-group-item"><b>STATUS: </b> @item.BDStatus</li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                    }
+                                </ul><!-- End ist group with active and disabled items -->
+
+                            </div>
+                        </div>
+                        <!-- End Table with stripped rows -->
 
                         <div class="card">
                             <div class="card-body">

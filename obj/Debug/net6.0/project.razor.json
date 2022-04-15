@@ -16318,6 +16318,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\FinancialLife.cshtml",
+      "TargetPath": "Views\\Employee\\FinancialLife.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetAllEmployee.cshtml",
       "TargetPath": "Views\\Employee\\GetAllEmployee.cshtml",
       "FileKind": "mvc"

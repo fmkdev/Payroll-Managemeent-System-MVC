@@ -144,33 +144,66 @@ namespace PayxApi.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetEmployeeBonus(int id)
+        public async Task<IActionResult> GivenBonus(int id)
         {
             var empId = 0;
             if(id == 0)
             {
                 empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var bonusEmp = await _employeeService.GetEmployeeBonus(empId);
+                var bonusEmp = await _employeeService.GetEmployeeGivenBonus(empId);
                 return View(bonusEmp.Data);
             }
-            var bonus = await _employeeService.GetEmployeeBonus(id);
+            var bonus = await _employeeService.GetEmployeeGivenBonus(id);
             return View(bonus.Data);
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetEmployeeDeduction(int id)
+        public async Task<IActionResult> GivenDeduction(int id)
         {
             var empId = 0;
             if(id == 0)
             {
                 empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var bonusEmp = await _employeeService.GetEmployeeDeductions(empId);
+                var bonusEmp = await _employeeService.GetEmployeeGivenDeductions(empId);
                 return View(bonusEmp.Data);
             }
-            var bonus = await _employeeService.GetEmployeeBonus(id);
+            var bonus = await _employeeService.GetEmployeeGivenBonus(id);
             return View(bonus.Data);
         }
-    
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PaidDeduction(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeePaidDeductions(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeePaidBonus(id);
+            return View(bonus.Data);
+        }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PaidBonus(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeePaidDeductions(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeePaidBonus(id);
+            return View(bonus.Data);
+        }
+
+        public async Task<IActionResult> FinancialLife()
+        {
+            var emp = await _employeeService.GetAsync();
+            return View(emp.Data);
+        }
     }
 }

@@ -14,52 +14,53 @@ namespace PayxApi.Implementations.Services
             _ledgerRepository = ledgerRepository;
         }
 
-        public Task<BaseResponse<LedgerDTO>> GetAsync(int ledgerId)
+        public async Task<BaseResponse<LedgerDTO>> GetAsync(int ledgerId)
         {
-            throw new System.NotImplementedException();
+            var ledger = await _ledgerRepository.GetAsync(ledgerId);
+            if(ledger == null)
+            {
+                return new BaseResponse<LedgerDTO>
+                {
+                    IsSuccess = false,
+                    Message = "Ledger not found"
+                };
+            }
+            return new BaseResponse<LedgerDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = new LedgerDTO
+                {
+                    Id = ledger.Id,
+                    Balance = ledger.Balance,
+                    Employee = new EmployeeDTO
+                    {
+                        Id = ledger.Employee.Id,
+                        FullName = $"{ledger.Employee.FirstName} {ledger.Employee.LastName}"
+                    },
+                    LedgerAdds = ledger.LedgerAdds.Where(b => b.BDStatus == Enum.BDStatus.Given).Select(a => new LedgerAddDTO
+                    {
+                        Id = a.Id,
+                        Amount = a.Amount,
+                        AddName = a.AddName,
+                        BDStatus = a.BDStatus,
+                    }).ToList(),
+                    LedgerDeductions = ledger.LedgerDeductions.Where(b => b.BDStatus == Enum.BDStatus.Given).Select(d => new LedgerDeductionDTO
+                    {
+                        Id = d.Id,
+                        Amount = d.Amount,
+                        DeductionName = d.DeductionName,
+                        BDStatus = d.BDStatus,
+                    }).ToList(),
+                    Salaries = ledger.Salaries.Where(b => b.BDStatus == Enum.BDStatus.Given).Select(s => new SalaryDTO
+                    {
+                        Id = s.Id,
+                        Amount = s.Amount,
+                        Narration = s.Narration,
+                        BDStatus = s.BDStatus
+                    }).ToList()
+                }
+            };
         }
-
-        // public async Task<BaseResponse<LedgerDTO>> GetAsync(int ledgerId)
-        // {
-        //     var ledger = await _ledgerRepository.GetAsync(ledgerId);
-        //     if (ledger == null)
-        //     {
-        //         return new BaseResponse<LedgerDTO>
-        //         {
-        //             IsSuccess = false,
-        //             Message = "Not Found",
-        //             Data = null
-        //         };
-        //     }
-        //     return new BaseResponse<LedgerDTO>
-        //     {
-        //         IsSuccess = true,
-        //         Message = "Success",
-        //         Data = new LedgerDTO
-        //         {
-        //             Id = ledger.Id,
-        //             Narration = ledger.Narration,
-        //             Balance = ledger.Balance,
-        //             LedgerAdds = ledger.LedgerAdds.Select(adds => new LedgerAddDTO
-        //             {
-        //                 Id = adds.Id,
-        //                 AddName = adds.AddName,
-        //                 Amount = adds.Amount,
-        //                 BDStatus = adds.BDStatus,
-        //                 Month = adds.Month,
-        //                 Year = adds.Year
-        //             }).ToList(),
-        //             LedgerDeductions = ledger.LedgerDeductions.Select(deductions => new LedgerDeductionDTO
-        //             {
-        //                 Id = deductions.Id,
-        //                 DeductionName = deductions.DeductionName,
-        //                 Amount = deductions.Amount,
-        //                 BDStatus = deductions.BDStatus,
-        //                 Month = deductions.Month,
-        //                 Year = deductions.Year
-        //             }).ToList()
-        //         }
-        //     };
-        // }
     }
 }

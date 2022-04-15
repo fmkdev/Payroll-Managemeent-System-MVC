@@ -24,6 +24,8 @@ namespace PayxApi.DTOs
         public ICollection<LedgerAddDTO> LedgerAdds = new List<LedgerAddDTO>();
 
         public ICollection<LedgerDeductionDTO> LedgerDeductions = new List<LedgerDeductionDTO>();
+
+        public ICollection<SalaryDTO> Salaries = new List<SalaryDTO>();
     }
     public class PutOnLedgerRequestModel
     {
