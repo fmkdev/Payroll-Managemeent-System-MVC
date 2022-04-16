@@ -37,5 +37,7 @@ namespace PayxApi.Interfaces.Services
         Task<BaseResponse<EmployeeDTO>> GetEmployeePaidBonus(int id);
 
         Task<BaseResponse<EmployeeDTO>> GetEmployeePaidDeductions(int id);
+
+        Task<BaseResponse<EmployeeDTO>> GetGivenDeductionsAndBonus(int id);
     }
 }

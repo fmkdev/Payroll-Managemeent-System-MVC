@@ -349,5 +349,29 @@ namespace PayxApi.Implementations.Repositories
             }).SingleOrDefaultAsync();
             return bonus;
         }
+
+        public async Task<EmployeeDTO> GetGivenDeductionsAndBonus(int id)
+        {
+            var emp = await _context.Employees.Include(b => b.Bonus).Include(b => b.OtherDeductions)
+            .Include(p => p.PayLevel).ThenInclude(a => a.AllowancePayLevels).Include(po => po.Position)
+            .ThenInclude(pos => pos.PositionAllowances).Where(e => e.Id == id).Select(employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                Bonuses = employee.Bonus.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new BonusDTO
+                {
+                    BonusName = bonus.BonusName,
+                    Amount = bonus.Amount
+                }).ToList(),
+                OtherDeductions = employee.OtherDeductions.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new OtherDeductionDTO
+                {
+                    DeductionName = bonus.DeductionName,
+                    Amount = bonus.Amount
+                }).ToList()
+            }).SingleOrDefaultAsync();
+            return emp;
+        }
     }
 }

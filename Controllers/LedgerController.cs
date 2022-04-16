@@ -35,14 +35,14 @@ namespace PayxApi
         public async Task<IActionResult> AddToLedger(int ledgerId, PutOnLedgerRequestModel request)
         {
             var result = await _ledgerAddService.AddToLedgerAsync(ledgerId, request);
-            return View(result.Data);
+            return RedirectToAction("FinancialLife", "Employee");
         }
         
         [HttpPost]
         public async Task<IActionResult> DeductFromLedger(int ledgerId, PutOnLedgerRequestModel request)
         {
             var result = await _ledgerDeductions.DeductOnLedgerAsync(ledgerId, request);
-            return View(result.Data);
+            return RedirectToAction("FinancialLife", "Employee");
         }
         
     }

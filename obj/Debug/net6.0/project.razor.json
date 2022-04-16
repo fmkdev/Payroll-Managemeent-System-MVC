@@ -16448,6 +16448,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\BonusAndDeduction.cshtml",
+      "TargetPath": "Views\\Employee\\BonusAndDeduction.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\OtherDeduction\\AllEmployee.cshtml",
       "TargetPath": "Views\\OtherDeduction\\AllEmployee.cshtml",
       "FileKind": "mvc"

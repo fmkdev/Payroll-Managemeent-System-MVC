@@ -205,5 +205,18 @@ namespace PayxApi.Controllers
             var emp = await _employeeService.GetAsync();
             return View(emp.Data);
         }
+
+        public async Task<IActionResult> BonusAndDeduction(int employeeId)
+        {
+            var me = 0;
+            if(employeeId == 0)
+            {
+                me = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var meD = await _employeeService.GetGivenDeductionsAndBonus(me);
+                return View(meD.Data);
+            }
+            var emp = await _employeeService.GetGivenDeductionsAndBonus(employeeId);
+            return View(emp.Data);
+        }
     }
 }
