@@ -20,7 +20,7 @@ namespace PayxApi.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateAllowance(CreateAllowanceRequestModel model)
         {
@@ -33,7 +33,7 @@ namespace PayxApi.Controllers
             return View();
         }
         
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAllAllowance()
         {

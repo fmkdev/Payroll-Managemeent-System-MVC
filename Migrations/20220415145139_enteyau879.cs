@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace PayxApi.Migrations
 {
-    public partial class enteyau : Migration
+    public partial class enteyau879 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -618,6 +618,7 @@ namespace PayxApi.Migrations
                     Date = table.Column<DateTime>(type: "datetime", nullable: false),
                     Month = table.Column<int>(type: "int", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true),

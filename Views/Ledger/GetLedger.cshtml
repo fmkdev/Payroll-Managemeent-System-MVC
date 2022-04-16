@@ -22,12 +22,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Datatables</h5>
-                        <p>Add lightweight datatables to your project with using the <a
-                                href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
-                                DataTables</a> library. Just add <code>.datatable</code> class name to any table you
-                            wish to conver to a datatable</p>
-
+                        <h5 class="card-title">LEDGER TABLE</h5>
+                        <p>The ledger account of: @Model.Employee.FullName</p>
+                        <li><a asp-action="PutOnLedger" asp-controller="Ledger" asp-route-ledgerId="@Model.Id"
+                                            class="btn btn-primary">ADD TO / DEDUCT FROM</a></li>
                         <!-- Table with stripped rows -->
                         <div class="card">
                             <div class="card-body">
@@ -43,7 +41,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>

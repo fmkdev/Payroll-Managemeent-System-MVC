@@ -15,14 +15,14 @@ namespace PayxApi.Controllers
             _roleService = roleService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateRole()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole(CreateRoleRequestModel model)
         {
             var role = await _roleService.CreateAsync(model);
@@ -35,7 +35,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllRole()
         {
             var role = await _roleService.GetAsync();

@@ -18,12 +18,14 @@ namespace PayxApi
             _ledgerDeductions = ledgerDeductions;
         }
 
+        [HttpGet("Ledger/GetLedger/")]
         public async Task<IActionResult> GetLedger(int ledgerId)
         {
             var ledger = await _ledgerService.GetAsync(ledgerId);
             return View(ledger.Data);
         }
 
+        [HttpGet("Ledger/PutOnLedger/")]
         public IActionResult PutOnLedger()
         {
             return View();

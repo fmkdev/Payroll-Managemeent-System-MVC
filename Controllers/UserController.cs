@@ -27,7 +27,7 @@ namespace PayxApi.Controllers
             _departmentService = departmentService;
         }
 
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var weekly = await _employeeService.GetWeeklyReinbursement();
@@ -64,14 +64,14 @@ namespace PayxApi.Controllers
             return View();
         }
 
-        [Authorize]
+        // [Authorize]
         public IActionResult EmployeeIndex()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetASync(FindUserRequestModel model)
         {
             var user = await _userService.GetAsync(model);
@@ -122,28 +122,28 @@ namespace PayxApi.Controllers
 
         }
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUser(int userId)
         {
             var user = await _userService.GetAsync(userId);
             return View(user.Data);
         }
         [HttpDelete]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int userId)
         {
             var user = await _userService.DeleteAsync(userId);
             return View();
         }
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllUser()
         {
             var user = await _userService.GetAsync();
             return View(user.Data);
         }
    
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
@@ -151,7 +151,7 @@ namespace PayxApi.Controllers
             var user = await _employeeService.GetAsync(userId);
             return View(user.Data);
         }
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

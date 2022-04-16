@@ -16,7 +16,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("PresentMonthPayroll")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> PresentMonthPayroll()
         {
             var pay = await _payrollService.GetAsync();
@@ -24,7 +24,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("Payroll/ViewMyPayrolls/{employeeId}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> ViewMyPayrolls(string CardId)
         {
             if (CardId == null)
@@ -37,7 +37,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPayrollByDate(DateTime Date)
         {
             var pay = await _payrollService.GetAsync(Date);

@@ -20,14 +20,14 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("CreateBonus/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateBonus()
         {
             return View();
         }
 
         [HttpPost("CreateBonus/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateBonus(int employeeId, CreateBonusRequestModel model)
         {
             var bonus = await _bonusService.CreateAsync(employeeId, model);
@@ -40,14 +40,14 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost("{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEmployeeBonusByMonth(int employeeId)
         {
             var month = DateTime.UtcNow;
             return View(await _bonusService.GetAsync(employeeId, month.Month));
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> AllEmployee()
         {

@@ -15,14 +15,14 @@ namespace PayxApi.Controllers
             _appointmentService = appointmentService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateAppointment()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAppointment(CreateAppointmentRequestModel model)
         { 
             var appo = await _appointmentService.CreateAsync(model);
