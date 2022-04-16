@@ -27,7 +27,7 @@ namespace PayxApi.Controllers
             _payLevelService = payLevelService;
             _roleService = roleService;
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEmployee()
         {
             var department = await _departmentService.GetAsync();
@@ -49,7 +49,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeRequestModel model)
         {
             var employee = await _employeeService.CreateAsync(model);
@@ -62,7 +62,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int id)
         {
             var emp = await _employeeService.GetAsync(id);
@@ -70,7 +70,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEmployee()
         {
             var emp = await _employeeService.GetAsync();
@@ -78,7 +78,7 @@ namespace PayxApi.Controllers
         }
     
         [HttpGet("UpdateEmployee/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEmployee(int employeeId)
         {
             var department = await _departmentService.GetAsync();
@@ -101,7 +101,7 @@ namespace PayxApi.Controllers
             return View(employee.Data);
         }
         [HttpPost("UpdateEmployee/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEmployee(int employeeId, UpdateEmployeeRequestModel model)
         {
             var acc = await _employeeService.UpdateAsync(employeeId, model);
@@ -109,7 +109,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("Delete/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int employeeId)
         {
             var emp = await _employeeService.DeleteAsync(employeeId);
@@ -118,7 +118,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("UnDelete/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UnDelete(int employeeId)
         {
             var emp = await _employeeService.UnDeleteAsync(employeeId);
@@ -127,7 +127,7 @@ namespace PayxApi.Controllers
         }
     
         [HttpGet("GetDeletedEmployee")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDeletedEmployee()
         {
             var emp = await _employeeService.GetDeletedAsync();
@@ -135,7 +135,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet("Details/{employeeId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int employeeId)
         {
             var emp = await _employeeService.GetAsync(employeeId);
@@ -143,34 +143,67 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetEmployeeBonus(int id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GivenBonus(int id)
         {
             var empId = 0;
             if(id == 0)
             {
                 empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var bonusEmp = await _employeeService.GetEmployeeBonus(empId);
+                var bonusEmp = await _employeeService.GetEmployeeGivenBonus(empId);
                 return View(bonusEmp.Data);
             }
-            var bonus = await _employeeService.GetEmployeeBonus(id);
+            var bonus = await _employeeService.GetEmployeeGivenBonus(id);
             return View(bonus.Data);
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetEmployeeDeduction(int id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GivenDeduction(int id)
         {
             var empId = 0;
             if(id == 0)
             {
                 empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var bonusEmp = await _employeeService.GetEmployeeDeductions(empId);
+                var bonusEmp = await _employeeService.GetEmployeeGivenDeductions(empId);
                 return View(bonusEmp.Data);
             }
-            var bonus = await _employeeService.GetEmployeeBonus(id);
+            var bonus = await _employeeService.GetEmployeeGivenBonus(id);
             return View(bonus.Data);
         }
-    
+        [HttpGet]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PaidDeduction(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeePaidDeductions(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeePaidBonus(id);
+            return View(bonus.Data);
+        }
+        [HttpGet]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PaidBonus(int id)
+        {
+            var empId = 0;
+            if(id == 0)
+            {
+                empId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var bonusEmp = await _employeeService.GetEmployeePaidDeductions(empId);
+                return View(bonusEmp.Data);
+            }
+            var bonus = await _employeeService.GetEmployeePaidBonus(id);
+            return View(bonus.Data);
+        }
+
+        public async Task<IActionResult> FinancialLife()
+        {
+            var emp = await _employeeService.GetAsync();
+            return View(emp.Data);
+        }
     }
 }

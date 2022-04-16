@@ -16,12 +16,12 @@ namespace PayxApi.Controllers
         {
             _workingDaysService = workingDaysService;
         }
-        [Authorize]
+        // [Authorize]
         public IActionResult MakeRequest()
         {
             return View();
         }
-        [Authorize]
+        // [Authorize]
         [HttpPost]
         public async Task<IActionResult> MakeRequest( MakeRequsetModel model)
         {
@@ -29,14 +29,14 @@ namespace PayxApi.Controllers
             var user = await _workingDaysService.MakeRequestAsync(userCardId, model);
             return RedirectToAction("Index", "User");
         }
-        [Authorize(Roles = "Attendant")]
+        // [Authorize(Roles = "Attendant")]
         public IActionResult SignOrSignOut()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Attendant")]
+        // [Authorize(Roles = "Attendant")]
         public async Task<IActionResult> SignIn(SignRequestModel model)
         {
 
@@ -44,7 +44,7 @@ namespace PayxApi.Controllers
         }
         
         [HttpPost]
-        [Authorize(Roles = "Attendant")]
+        // [Authorize(Roles = "Attendant")]
         public async Task<IActionResult> SignOut(SignRequestModel model)
         {
 
@@ -52,7 +52,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ApproveRequest(int employeeId)
         {
             var us = await _workingDaysService.ApproveRequestAsync(employeeId);
@@ -60,7 +60,7 @@ namespace PayxApi.Controllers
             return RedirectToAction("ViewAllRequest");
         }
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RejectRequest(int employeeId)
         {
             var us = await _workingDaysService.RejectRequestAsync(employeeId);
@@ -69,14 +69,14 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> TodaysAttendance()
         {
             var users = await _workingDaysService.GetAsync(DateTime.UtcNow);
             return View(users.Data);
         }
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ViewAllRequest()
         {
             var users = await _workingDaysService.GetAllRequestAsync();
@@ -84,7 +84,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> ViewMyCalendar()
         {
             var cal = await _workingDaysService.ViewMyCalendar(User.FindFirstValue(ClaimTypes.GivenName));

@@ -15,14 +15,14 @@ namespace PayxApi.Controllers
         {
             _accountDetailsService = accountDetailsService;
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet("UpdateAccountDetails/{employeeId}")]
         public async Task<IActionResult> UpdateAccountDetails(int employeeId)
         {
             var employee = await _accountDetailsService.GetAsync(employeeId);
             return View(employee.Data);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("UpdateAccountDetails/{employeeId}")]
         public async Task<IActionResult> UpdateAccountDetails(int employeeId, UpdateAccountDetailsRequestModel model)
         {

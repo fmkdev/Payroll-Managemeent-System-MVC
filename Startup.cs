@@ -106,6 +106,9 @@ namespace PayxApi
             services.AddScoped<ILedgerDeductionsRepository, LedgerDeductionsRepository>();
             services.AddScoped<ILedgerDeductionsService, LedgerDeductionsService>();
 
+            services.AddScoped<ISalaryRepository, SalaryRepository>();
+            services.AddScoped<ISalaryService, SalaryService>();
+
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(config =>

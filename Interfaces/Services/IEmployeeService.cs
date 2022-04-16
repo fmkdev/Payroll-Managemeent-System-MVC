@@ -18,7 +18,7 @@ namespace PayxApi.Interfaces.Services
 
         Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId);
         
-        Task<IEnumerable<EmployeeDTO>> GetAsync();
+        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetAsync();
 
         Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetDeletedAsync();
 
@@ -30,8 +30,12 @@ namespace PayxApi.Interfaces.Services
         
         Task<BaseResponse<decimal?>> GetMonthlyReinbursement();
 
-        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeBonus(int id);
+        Task<BaseResponse<EmployeeDTO>> GetEmployeeGivenBonus(int id);
 
-        Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeDeductions(int id);
+        Task<BaseResponse<EmployeeDTO>> GetEmployeeGivenDeductions(int id);
+
+        Task<BaseResponse<EmployeeDTO>> GetEmployeePaidBonus(int id);
+
+        Task<BaseResponse<EmployeeDTO>> GetEmployeePaidDeductions(int id);
     }
 }

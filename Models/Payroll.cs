@@ -12,6 +12,10 @@ namespace PayxApi.Models
 
         public decimal EmployeeBasicPay { get; set; }
 
+        public int? LedgerId { get; set; } 
+
+        public Ledger Ledger { get; set; }
+
         public decimal TotalAllowance { get; set; }
 
         public decimal TotalBonus { get; set; }

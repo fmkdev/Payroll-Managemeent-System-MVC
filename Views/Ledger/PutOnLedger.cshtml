@@ -1,0 +1,72 @@
+@{
+    Layout = "_PayxLayout";
+}
+@model PayxApi.DTOs.PutOnLedgerRequestModel
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Data Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">ledger</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DEDUCT FROM LEDGER</h5>
+
+                        <!-- Vertical Form -->
+                        <form asp-action="AddToLedger" asp-controller="Ledger" class="row g-3">
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label">Narration</label>
+                                <input type="text" class="form-control" name="Narration" id="inputNanme4">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label">Amount</label>
+                                <input type="number" class="form-control" name="Balance" id="inputNanme4">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form><!-- Vertical Form -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ADD TO LEDGER</h5>
+
+                        <!-- Vertical Form -->
+                        <form asp-action="DeductFromLedger" asp-controller="Ledger" class="row g-3">
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label">Narration</label>
+                                <input type="text" class="form-control" name="Narration" id="inputNanme4">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label">Amount</label>
+                                <input type="number" class="form-control" name="Balance" id="inputNanme4">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form><!-- Vertical Form -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

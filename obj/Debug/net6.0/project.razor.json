@@ -16318,6 +16318,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\FinancialLife.cshtml",
+      "TargetPath": "Views\\Employee\\FinancialLife.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Employee\\GetAllEmployee.cshtml",
       "TargetPath": "Views\\Employee\\GetAllEmployee.cshtml",
       "FileKind": "mvc"
@@ -16398,6 +16403,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Ledger\\GetLedger.cshtml",
+      "TargetPath": "Views\\Ledger\\GetLedger.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\User\\Profile.cshtml",
       "TargetPath": "Views\\User\\Profile.cshtml",
       "FileKind": "mvc"
@@ -16405,6 +16415,11 @@
     {
       "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Payroll\\GetPayrollByDate.cshtml",
       "TargetPath": "Views\\Payroll\\GetPayrollByDate.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\fmkDev\\Desktop\\Testing\\PayxApi\\Views\\Ledger\\PutOnLedger.cshtml",
+      "TargetPath": "Views\\Ledger\\PutOnLedger.cshtml",
       "FileKind": "mvc"
     },
     {

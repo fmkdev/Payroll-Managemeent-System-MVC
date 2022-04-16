@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace PayxApi.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class enteyau879 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -371,6 +371,7 @@ namespace PayxApi.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime", nullable: false),
                     Month = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true),
@@ -389,6 +390,31 @@ namespace PayxApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Ledgers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    Balance = table.Column<decimal>(type: "decimal(18, 2)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ledgers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ledgers_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OtherDeductions",
                 columns: table => new
                 {
@@ -399,6 +425,7 @@ namespace PayxApi.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime", nullable: false),
                     Month = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true),
@@ -410,42 +437,6 @@ namespace PayxApi.Migrations
                     table.PrimaryKey("PK_OtherDeductions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_OtherDeductions_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Payrolls",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    TransactionId = table.Column<string>(type: "text", nullable: true),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeCardId = table.Column<string>(type: "text", nullable: true),
-                    EmployeeBasicPay = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    TotalAllowance = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    TotalBonus = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Tax = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    OtherDeduction = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    GrossPay = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    ReinbursementDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Day = table.Column<int>(type: "int", nullable: false),
-                    Month = table.Column<int>(type: "int", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
-                    CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payrolls", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Payrolls_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
@@ -514,6 +505,137 @@ namespace PayxApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LedgerAdds",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    LedgerId = table.Column<int>(type: "int", nullable: false),
+                    AddName = table.Column<string>(type: "text", nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LedgerAdds", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LedgerAdds_Ledgers_LedgerId",
+                        column: x => x.LedgerId,
+                        principalTable: "Ledgers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LedgerDeductions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    LedgerId = table.Column<int>(type: "int", nullable: false),
+                    DeductionName = table.Column<string>(type: "text", nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LedgerDeductions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LedgerDeductions_Ledgers_LedgerId",
+                        column: x => x.LedgerId,
+                        principalTable: "Ledgers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payrolls",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    TransactionId = table.Column<string>(type: "text", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeCardId = table.Column<string>(type: "text", nullable: true),
+                    EmployeeBasicPay = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    LedgerId = table.Column<int>(type: "int", nullable: true),
+                    TotalAllowance = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    TotalBonus = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Tax = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    OtherDeduction = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    GrossPay = table.Column<decimal>(type: "decimal(18, 2)", nullable: true),
+                    ReinbursementDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Day = table.Column<int>(type: "int", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payrolls", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payrolls_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Payrolls_Ledgers_LedgerId",
+                        column: x => x.LedgerId,
+                        principalTable: "Ledgers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Salaries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    LedgerId = table.Column<int>(type: "int", nullable: true),
+                    Narration = table.Column<string>(type: "text", nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    BDStatus = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Salaries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Salaries_Ledgers_LedgerId",
+                        column: x => x.LedgerId,
+                        principalTable: "Ledgers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AccountDetails_EmployeeId",
                 table: "AccountDetails",
@@ -568,6 +690,22 @@ namespace PayxApi.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_LedgerAdds_LedgerId",
+                table: "LedgerAdds",
+                column: "LedgerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LedgerDeductions_LedgerId",
+                table: "LedgerDeductions",
+                column: "LedgerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ledgers_EmployeeId",
+                table: "Ledgers",
+                column: "EmployeeId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OtherDeductions_EmployeeId",
                 table: "OtherDeductions",
                 column: "EmployeeId");
@@ -578,6 +716,11 @@ namespace PayxApi.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Payrolls_LedgerId",
+                table: "Payrolls",
+                column: "LedgerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PositionAllowances_AllowanceId",
                 table: "PositionAllowances",
                 column: "AllowanceId");
@@ -586,6 +729,11 @@ namespace PayxApi.Migrations
                 name: "IX_PositionAllowances_PositionId",
                 table: "PositionAllowances",
                 column: "PositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Salaries_LedgerId",
+                table: "Salaries",
+                column: "LedgerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Taxes_EmployeeId",
@@ -623,6 +771,12 @@ namespace PayxApi.Migrations
                 name: "Bonus");
 
             migrationBuilder.DropTable(
+                name: "LedgerAdds");
+
+            migrationBuilder.DropTable(
+                name: "LedgerDeductions");
+
+            migrationBuilder.DropTable(
                 name: "OtherDeductions");
 
             migrationBuilder.DropTable(
@@ -630,6 +784,9 @@ namespace PayxApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "PositionAllowances");
+
+            migrationBuilder.DropTable(
+                name: "Salaries");
 
             migrationBuilder.DropTable(
                 name: "Taxes");
@@ -642,6 +799,9 @@ namespace PayxApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Allowances");
+
+            migrationBuilder.DropTable(
+                name: "Ledgers");
 
             migrationBuilder.DropTable(
                 name: "Roles");

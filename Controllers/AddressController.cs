@@ -15,7 +15,7 @@ namespace PayxApi.Controllers
             _addressService = addressService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet("UpdateAddress/{employeeId}")]
         public async Task<IActionResult> UpdateAddress(int employeeId)
         {
@@ -23,7 +23,7 @@ namespace PayxApi.Controllers
             return View(emp.Data);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("UpdateAddress/{employeeId}")]
         public async Task<IActionResult> UpdateAddress(int employeeId, UpdateAddressRequestModel model)
         {

@@ -18,7 +18,7 @@ namespace PayxApi.Controllers
             _allowanceService =allowanceService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePayLevel()
         {
             var allowance = await _allowanceService.GetAsync();
@@ -28,7 +28,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePayLevel(CreatePayLevelRequestModel model)
         {
             var pl = await _payLevelService.CreateAsync(model);
@@ -41,7 +41,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPayLevel()
         {
             var pl = await _payLevelService.GetAsync();

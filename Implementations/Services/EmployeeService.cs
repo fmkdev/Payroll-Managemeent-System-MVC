@@ -18,9 +18,10 @@ namespace PayxApi.Implementations.Services
         private readonly IWorkingDaysRepository _workingDaysRepository;
         private readonly IAddressRepository _addressRepository;
         private readonly IAccountDetailsRepository _accountDetailsRepository;
+        private readonly ILedgerRepository _ledgerRepository;
         public EmployeeService(IEmployeeRepository employeeRepository, IUserRepository userRepository,
         IRoleRepository roleRepository, IAccountDetailsRepository accountDetailsRepository,
-        IWorkingDaysRepository workingDaysRepository, IAddressRepository addressRepository)
+        IWorkingDaysRepository workingDaysRepository, IAddressRepository addressRepository, ILedgerRepository ledgerRepository)
         {
             _employeeRepository = employeeRepository;
             _userRepository = userRepository;
@@ -28,6 +29,7 @@ namespace PayxApi.Implementations.Services
             _workingDaysRepository = workingDaysRepository;
             _addressRepository = addressRepository;
             _accountDetailsRepository = accountDetailsRepository;
+            _ledgerRepository = ledgerRepository;
         }
 
         public async Task<BaseResponse<bool>> CreateAsync(CreateEmployeeRequestModel model)
@@ -139,6 +141,16 @@ namespace PayxApi.Implementations.Services
             us.EmployeeCardId = employee.CardId;
             await _userRepository.UpdateAsync(us);
 
+            var ledger = new Ledger
+            {
+                EmployeeId = employee.Id,
+                Employee = employee
+            };
+            await _ledgerRepository.CreateAsync(ledger);
+
+            employee.Ledger = ledger;
+            await _employeeRepository.UpdateAsync(employee);
+
             return new BaseResponse<bool>
             {
                 IsSuccess = true,
@@ -202,9 +214,15 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public async Task<IEnumerable<EmployeeDTO>> GetAsync()
+        public async Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetAsync()
         {
-            return await _employeeRepository.GetAsync();
+            var emp = await _employeeRepository.GetAsync();
+            return new BaseResponse<IEnumerable<EmployeeDTO>>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = emp
+            };
         }
 
         public async Task<BaseResponse<EmployeeDTO>> GetAsync(string UserCardId)
@@ -251,10 +269,10 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public async Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeBonus(int id)
+        public async Task<BaseResponse<EmployeeDTO>> GetEmployeeGivenBonus(int id)
         {
-            var deduction = await _employeeRepository.GetEmployeeBonus(id);
-            return new BaseResponse<IEnumerable<EmployeeDTO>>
+            var deduction = await _employeeRepository.GetGivenBonus(id);
+            return new BaseResponse<EmployeeDTO>
             {
                 IsSuccess = true,
                 Message = "Success",
@@ -262,10 +280,32 @@ namespace PayxApi.Implementations.Services
             };
         }
 
-        public async Task<BaseResponse<IEnumerable<EmployeeDTO>>> GetEmployeeDeductions(int id)
+        public async Task<BaseResponse<EmployeeDTO>> GetEmployeeGivenDeductions(int id)
         {
-            var deduction = await _employeeRepository.GetEmployeeDeductions(id);
-            return new BaseResponse<IEnumerable<EmployeeDTO>>
+            var deduction = await _employeeRepository.GetGivenDeductions(id);
+            return new BaseResponse<EmployeeDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = deduction
+            };
+        }
+
+        public async Task<BaseResponse<EmployeeDTO>> GetEmployeePaidBonus(int id)
+        {
+            var deduction = await _employeeRepository.GetGivenDeductions(id);
+            return new BaseResponse<EmployeeDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = deduction
+            };
+        }
+
+        public async Task<BaseResponse<EmployeeDTO>> GetEmployeePaidDeductions(int id)
+        {
+            var deduction = await _employeeRepository.GetGivenDeductions(id);
+            return new BaseResponse<EmployeeDTO>
             {
                 IsSuccess = true,
                 Message = "Success",

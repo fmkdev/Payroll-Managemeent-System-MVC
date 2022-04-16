@@ -18,7 +18,7 @@ namespace PayxApi.Controllers
             _allowanceService = allowanceService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePosition()
         {
             var allowance = await _allowanceService.GetAsync();
@@ -28,7 +28,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreatePosition(CreatePositionRequestModel model)
         { 
             var pos = await _positionService.CreateAsync(model);
@@ -40,7 +40,7 @@ namespace PayxApi.Controllers
             return View();
         }
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPosition()
         {
             var pos = await _positionService.GetAsync();

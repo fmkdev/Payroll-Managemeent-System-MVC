@@ -15,14 +15,14 @@ namespace PayxApi.Controllers
             _departmentService = departmentService;
         }
         
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateDepartment()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateDepartment(CreateDepartmentRequestModel model)
         { 
             var dept = await _departmentService.CreateAsync(model);
@@ -35,7 +35,7 @@ namespace PayxApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllDepartment()
         {
             var dept = await _departmentService.GetAsync();

@@ -109,7 +109,7 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<Employee> GetAsync(int id)
         {
-            return await _context.Employees.Include(b => b.WorkingDays).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
+            return await _context.Employees.Include(b => b.WorkingDays).Include(l => l.Ledger).SingleOrDefaultAsync(e => e.Id == id && e.IsDeleted == false);
         }
         public async Task<Employee> GetDeletedAsync(int id)
         {
@@ -125,8 +125,10 @@ namespace PayxApi.Implementations.Repositories
             .Include(c => c.Address)
             .Include(e => e.PayLevel)
             .Include(f => f.Appointment)
+            .Include(l => l.Ledger)
             .Where(e => e.IsDeleted == false).Select(employee => new EmployeeDTO
             {
+                LedgerId = employee.Ledger.Id,
                 Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
@@ -276,7 +278,7 @@ namespace PayxApi.Implementations.Repositories
             }).ToListAsync();
         }
 
-        public async Task<IEnumerable<EmployeeDTO>> GetEmployeeBonus(int id)
+        public async Task<EmployeeDTO> GetGivenBonus(int id)
         {
             var bonus = await _context.Employees.Include(b => b.Bonus)
             .Where(e => e.Id == id && e.IsDeleted == false)
@@ -290,11 +292,11 @@ namespace PayxApi.Implementations.Repositories
                     BonusName = bonus.BonusName,
                     Amount = bonus.Amount
                 }).ToList()
-            }).ToListAsync();
+            }).SingleOrDefaultAsync();
             return bonus;
         }
 
-        public async Task<IEnumerable<EmployeeDTO>> GetEmployeeDeductions(int id)
+        public async Task<EmployeeDTO> GetGivenDeductions(int id)
         {
             var bonus = await _context.Employees.Include(b => b.OtherDeductions)
             .Where(e => e.Id == id && e.IsDeleted == false)
@@ -308,7 +310,43 @@ namespace PayxApi.Implementations.Repositories
                     DeductionName = bonus.DeductionName,
                     Amount = bonus.Amount
                 }).ToList()
-            }).ToListAsync();
+            }).SingleOrDefaultAsync();
+            return bonus;
+        }
+
+        public async Task<EmployeeDTO> GetPaidBonus(int id)
+        {
+            var bonus = await _context.Employees.Include(b => b.OtherDeductions)
+            .Where(e => e.Id == id && e.IsDeleted == false)
+            .Select(employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                OtherDeductions = employee.OtherDeductions.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new OtherDeductionDTO
+                {
+                    DeductionName = bonus.DeductionName,
+                    Amount = bonus.Amount
+                }).ToList()
+            }).SingleOrDefaultAsync();
+            return bonus;
+        }
+
+        public async Task<EmployeeDTO> GetPaidDeductions(int id)
+        {
+            var bonus = await _context.Employees.Include(b => b.OtherDeductions)
+            .Where(e => e.Id == id && e.IsDeleted == false)
+            .Select(employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                OtherDeductions = employee.OtherDeductions.Where(s => s.BDStatus == Enum.BDStatus.Given)
+                .Select(bonus => new OtherDeductionDTO
+                {
+                    DeductionName = bonus.DeductionName,
+                    Amount = bonus.Amount
+                }).ToList()
+            }).SingleOrDefaultAsync();
             return bonus;
         }
     }

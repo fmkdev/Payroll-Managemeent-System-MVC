@@ -1,0 +1,115 @@
+@model PayxApi.DTOs.LedgerDTO
+@{
+    Layout = "_PayxLayout";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Data Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">LEDGER TABLE</h5>
+                        <p>The ledger account of: @Model.Employee.FullName</p>
+                        <li><a asp-action="PutOnLedger" asp-controller="Ledger" asp-route-ledgerId="@Model.Id"
+                                            class="btn btn-primary">ADD TO / DEDUCT FROM</a></li>
+                        <!-- Table with stripped rows -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- List group with active and disabled items -->
+                                <ul class="list-group">
+                                    <li class="list-group-item active" aria-current="true">LEDGER</li>
+                                    <li class="list-group-item"><b>BALANCE: </b> @Model.Balance</li>
+                                    <li class="list-group-item" aria-disabled="true"></li>
+                                </ul><!-- End ist group with active and disabled items -->
+
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- List group with active and disabled items -->
+                                <ul class="list-group">
+                                    <li class="list-group-item active" aria-current="true">SALARIES</li>
+                                    @foreach (var item in Model.Salaries)
+                                    {
+                                        <li class="list-group-item"><b>NARATION: </b> @item.Narration</li>
+                                        <li class="list-group-item"><b>AMOUNT: </b> @item.Amount</li>
+                                        <li class="list-group-item"><b>STATUS: </b> @item.BDStatus</li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                    }
+                                </ul><!-- End ist group with active and disabled items -->
+
+                            </div>
+                        </div>
+                        <!-- End Table with stripped rows -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- List group with active and disabled items -->
+                                <ul class="list-group">
+                                    <li class="list-group-item active" aria-current="true">DEDUCTIONS</li>
+                                    @foreach (var item in Model.LedgerDeductions)
+                                    {
+                                        <li class="list-group-item"><b>FIRST NAME: </b> @item.DeductionName</li>
+                                        <li class="list-group-item"><b>LAST NAME: </b> @item.Amount</li>
+                                        <li class="list-group-item"><b>GENDER: </b> @item.BDStatus</li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                    }
+
+                                </ul><!-- End ist group with active and disabled items -->
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- List group with active and disabled items -->
+                                <ul class="list-group">
+                                    <li class="list-group-item active" aria-current="true">ADDs</li>
+                                    @foreach (var item in Model.LedgerAdds)
+                                    {
+                                        <li class="list-group-item"><b>FIRST NAME: </b> @item.AddName</li>
+                                        <li class="list-group-item"><b>LAST NAME: </b> @item.Amount</li>
+                                        <li class="list-group-item"><b>GENDER: </b> @item.BDStatus</li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                        <li class="list-group-item" aria-disabled="true"></li>
+                                    }
+                                </ul><!-- End ist group with active and disabled items -->
+
+                            </div>
+                        </div>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->

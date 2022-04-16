@@ -23,8 +23,9 @@ namespace PayxApi.Implementations.Repositories
 
         public async Task<Ledger> GetAsync(int ledgerId)
         {
-            return await _context.Ledgers.Include(e => e.Employee)
-            .Where(l => l.Id == ledgerId).SingleOrDefaultAsync();
+            var ledger = await _context.Ledgers.Include(e => e.Employee).Where(l => l.Id == ledgerId)
+            .SingleOrDefaultAsync();
+            return ledger;
         }
 
         public async Task<bool> UpdateAsync(Ledger Ledger)
