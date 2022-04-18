@@ -9,8 +9,8 @@ using PayxApi.ContextDb;
 namespace PayxApi.Migrations
 {
     [DbContext(typeof(ContextApp))]
-    [Migration("20220415145139_enteyau879")]
-    partial class enteyau879
+    [Migration("20220418172324_one")]
+    partial class one
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

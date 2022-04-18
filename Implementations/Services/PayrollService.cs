@@ -171,6 +171,7 @@ namespace PayxApi.Implementations.Services
                 {
                     LedgerId = emp.Ledger.Id,
                     Ledger = emp.Ledger,
+                    Amount = (decimal)payroll.GrossPay,
                     Narration = $"The amount entering {emp.FirstName} {emp.LastName} ledger account for the Month: {payroll.Month}, Year: {payroll.Year} is {payroll.GrossPay}",
                     Month = payroll.Month,
                     Year = payroll.Year,
@@ -181,7 +182,7 @@ namespace PayxApi.Implementations.Services
                 await _taxRepository.CreateAsync(tax);
                 await _salary.CreateAsync(salary);
 
-                emp.Ledger.Balance = salary.Amount;
+                emp.Ledger.Balance += salary.Amount;
                 emp.Ledger.Salaries.Add(salary);
                 emp.Payrolls.Add(payroll);
                 emp.Taxes.Add(tax);

@@ -39,8 +39,9 @@ namespace PayxApi.Controllers
         // [Authorize(Roles = "Attendant")]
         public async Task<IActionResult> SignIn(SignRequestModel model)
         {
-
-            return Ok(await _workingDaysService.SignInAsync(model.UserCardId));
+            var SIn = await _workingDaysService.SignInAsync(model.UserCardId);
+            ViewBag.Success = $"Staff Sign In SUccessfully";
+            return RedirectToAction("SignOrSignOut");
         }
         
         [HttpPost]
@@ -48,7 +49,9 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> SignOut(SignRequestModel model)
         {
 
-            return Ok(await _workingDaysService.SignOutAsync(model.UserCardId));
+            var Sout = await _workingDaysService.SignOutAsync(model.UserCardId);
+            ViewBag.Success = $"Staff Sign In SUccessfully";
+            return RedirectToAction("SignOrSignOut");
         }
 
         [HttpGet]

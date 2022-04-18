@@ -282,13 +282,19 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      <li class="nav-item">
-        <a class="nav-link " asp-action="Index" asp-controller="User">
-          <i class="bi bi-grid"></i>
-          <span>Stats</span>
-        </a>
+        <li class="nav-item">
+          @if(User.FindFirstValue(ClaimTypes.Role) == "Admin")
+        {
+          <a class="nav-link " asp-action="Index" asp-controller="User">
+            <i class="bi bi-grid"></i>
+            <span>Stats</span>
+          </a> }
+        
+        
       </li><!-- End Dashboard Nav -->
 
+      @if(User.FindFirstValue(ClaimTypes.Role) == "Admin")
+      {
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Employee Management</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -336,22 +342,32 @@
           </li>
         </ul>
       </li><!-- End Components Nav -->
-
+      }
+      
       <li class="nav-item">
+        @if(User.FindFirstValue(ClaimTypes.Role) == "Attendant" || User.FindFirstValue(ClaimTypes.Role) == "Admin")
+      {
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Calendar</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+      }
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        @if(User.FindFirstValue(ClaimTypes.Role) == "Admin")
+        {
           <li>
             <a asp-action="TodaysAttendance" asp-controller="WorkingDays">
               <i class="bi bi-circle"></i><span>Today's Attendance</span>
             </a>
           </li>
+        }
+          @if(User.FindFirstValue(ClaimTypes.Role) == "Attendant")
+          {
           <li>
             <a asp-action="SignOrSignOut" asp-controller="WorkingDays">
               <i class="bi bi-circle"></i><span>Mark Attendance</span>
             </a>
           </li>
+          }
           @* <li>
             <a href="forms-layouts.html">
               <i class="bi bi-circle"></i><span>Form Layouts</span>
@@ -397,7 +413,8 @@
           </li>
         </ul>
       </li><!-- End Tables Nav -->
-
+      @if(User.FindFirstValue(ClaimTypes.Role) == "Admin")
+      {
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -435,29 +452,18 @@
           </li>
         </ul>
       </li><!-- End Charts Nav -->
-
+      }
+      @if(User.FindFirstValue(ClaimTypes.Role) == "Admin")
+      {
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Manage Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          @* <li>
-            <a href="icons-bootstrap.html">
-              <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-            </a>
-          </li>
-          <li>
-            <a href="icons-remix.html">
-              <i class="bi bi-circle"></i><span>Remix Icons</span>
-            </a>
-          </li>
-          <li>
-            <a href="icons-boxicons.html">
-              <i class="bi bi-circle"></i><span>Boxicons</span>
-            </a>
-          </li> *@
+          
         </ul>
       </li><!-- End Icons Nav -->
+      }
 
       <li class="nav-heading">Pages</li>
 

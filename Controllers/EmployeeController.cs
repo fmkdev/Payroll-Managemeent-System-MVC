@@ -74,7 +74,7 @@ namespace PayxApi.Controllers
         public async Task<IActionResult> GetAllEmployee()
         {
             var emp = await _employeeService.GetAsync();
-            return View(emp);
+            return View(emp.Data);
         }
     
         [HttpGet("UpdateEmployee/{employeeId}")]

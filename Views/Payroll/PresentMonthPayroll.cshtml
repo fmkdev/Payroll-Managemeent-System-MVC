@@ -54,8 +54,8 @@
                     <td>@Html.DisplayFor(e => employee.TotalBonus)</td>
                     <td>@Html.DisplayFor(e => employee.GrossPay)</td>
                     <td>@Html.DisplayFor(e => employee.ReinbursementDate)</td>
-                    <td><a asp-action="GetLedger" asp-controller="Ledger" asp-route-employeeId="@employee.LedgerId" type="button" class="btn btn-danger">View Ledger</a></td>
-                    <td><a asp-action="Employee" asp-controller="BonusAndDeduction" asp-route-employeeId="@employee.Id" type="button" class="btn btn-danger">View Bonuses and Deductions</a></td>
+                    <td><a asp-action="GetLedger" asp-controller="Ledger" asp-route-ledgerId="@employee.LedgerId" type="button" class="btn btn-danger">View Ledger</a></td>
+                    <td><a asp-action="BonusAndDeduction" asp-controller="Employee" asp-route-employeeId="@employee.Id" type="button" class="btn btn-danger">View Bonuses and Deductions</a></td>
                   </tr>
             }
                 </tbody>

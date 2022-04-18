@@ -10,10 +10,10 @@ namespace PayxApi.Models
 
         public decimal? Balance { get; set; }
 
-        public ICollection<Salary> Salaries = new List<Salary>();
+        public ICollection<Salary> Salaries { get; set; } = new List<Salary>();
 
-        public ICollection<LedgerAdd> LedgerAdds = new List<LedgerAdd>();
+        public ICollection<LedgerAdd> LedgerAdds { get; set; } = new List<LedgerAdd>();
 
-        public ICollection<LedgerDeduction> LedgerDeductions = new List<LedgerDeduction>();
+        public ICollection<LedgerDeduction> LedgerDeductions { get; set; } = new List<LedgerDeduction>();
     }
 }

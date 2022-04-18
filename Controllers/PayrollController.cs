@@ -23,7 +23,7 @@ namespace PayxApi.Controllers
             return View(pay.Data);
         }
 
-        [HttpGet("Payroll/ViewMyPayrolls/{employeeId}")]
+        [HttpGet("ViewMyPayrolls/{employeeId}")]
         //[Authorize]
         public async Task<IActionResult> ViewMyPayrolls(string CardId)
         {
