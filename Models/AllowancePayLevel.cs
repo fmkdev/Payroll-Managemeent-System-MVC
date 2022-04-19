@@ -1,3 +1,5 @@
+using System;
+
 namespace PayxApi.Models
 {
     public class AllowancePayLevel : BaseEntity
@@ -9,5 +11,10 @@ namespace PayxApi.Models
         public int AllowanceId { get; set; }
 
         public Allowance Allowance { get; set; }
+
+        public static implicit operator decimal(AllowancePayLevel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -45,5 +45,7 @@ namespace PayxApi.Interfaces.Repositories
         Task<EmployeeDTO> GetPaidDeductions(int id);
 
         Task<EmployeeDTO> GetGivenDeductionsAndBonus(int id);
+
+        Task<EmployeeDTO> GetEmployeeAllowance(int id);
     }
 }

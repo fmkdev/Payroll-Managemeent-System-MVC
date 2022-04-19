@@ -269,6 +269,17 @@ namespace PayxApi.Implementations.Services
             };
         }
 
+        public async Task<BaseResponse<EmployeeDTO>> GetEmployeeAllowance(int id)
+        {
+            var emp = await _employeeRepository.GetEmployeeAllowance(id);
+            return new BaseResponse<EmployeeDTO>
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Data = emp
+            };
+        }
+
         public async Task<BaseResponse<EmployeeDTO>> GetEmployeeGivenBonus(int id)
         {
             var deduction = await _employeeRepository.GetGivenBonus(id);

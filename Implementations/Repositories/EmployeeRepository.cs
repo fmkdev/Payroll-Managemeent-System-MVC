@@ -373,5 +373,28 @@ namespace PayxApi.Implementations.Repositories
             }).SingleOrDefaultAsync();
             return emp;
         }
+
+        public async Task<EmployeeDTO> GetEmployeeAllowance(int id)
+        {
+            var emp = await _context.Employees.Include(pl => pl.PayLevel)
+            .ThenInclude(al => al.AllowancePayLevels).ThenInclude(alo => alo.Allowance)
+            .Include(Po => Po.Position).ThenInclude(pos => pos.PositionAllowances)
+            .ThenInclude(a => a.Allowance).Where(e => e.Id == id).Select( employee => new EmployeeDTO
+            {
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                EmployeeCardId = employee.CardId,
+                Allowances = employee.PayLevel.AllowancePayLevels.Select(a => new AllowanceDTO
+                {
+                    AllowanceName = a.Allowance.AllowanceName,
+                    Amount = a.Allowance.Amount
+                }).ToList(),
+                Allowances1 = employee.Position.PositionAllowances.Select(a => new AllowanceDTO
+                {
+                    AllowanceName = a.Allowance.AllowanceName,
+                    Amount = a.Allowance.Amount
+                }).ToList()
+            }).SingleOrDefaultAsync();
+            return emp;
+        }
     }
 }

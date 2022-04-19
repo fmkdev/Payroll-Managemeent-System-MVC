@@ -97,6 +97,8 @@ namespace PayxApi.DTOs
 
         public ICollection<AllowanceDTO> Allowances { get; set; } = new List<AllowanceDTO>();
 
+        public ICollection<AllowanceDTO> Allowances1 { get; set; } = new List<AllowanceDTO>();
+
         public ICollection<OtherDeductionDTO> OtherDeductions { get; set; } = new List<OtherDeductionDTO>();
     }
     public class CreateEmployeeRequestModel
