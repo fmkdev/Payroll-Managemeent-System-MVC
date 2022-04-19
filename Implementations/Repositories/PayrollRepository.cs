@@ -43,14 +43,14 @@ namespace PayxApi.Implementations.Repositories
             }).ToListAsync();
         }
         
-
         public async Task<IEnumerable<PayrollDTO>> GetAsync()
         { 
             var month = DateTime.UtcNow.Month;
             return await _context.Payrolls.Where(b => b.Month == month).Select(payroll => new PayrollDTO
             {
                 Id = payroll.Id,
-                LedgerId = payroll.LedgerId,
+                EmployeeId = payroll.EmployeeId,
+                LedgerId = (int)payroll.LedgerId,
                 TransactionId = payroll.TransactionId,
                 EmployeeCardId = payroll.EmployeeCardId,
                 EmployeeBasicPay = payroll.EmployeeBasicPay,

@@ -51,7 +51,8 @@ namespace PayxApi.Controllers
         [HttpGet]
         public async Task<IActionResult> AllEmployee()
         {
-            return View(await _employeeService.GetAsync());
+            var emp = await _employeeService.GetAsync();
+            return View(emp.Data);
         }
     }
 }

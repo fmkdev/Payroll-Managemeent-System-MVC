@@ -3,65 +3,79 @@
     Layout = "_PayxLayout";
 }
 
+<main id="main" class="main">
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"></h5>
+    <div class="pagetitle">
+        <h1>DETAILS</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
-        <!-- List group with active and disabled items -->
-        <ul class="list-group">
-            <li class="list-group-item active" aria-current="true">PERSONAL DETAILS</li>
-            <li class="list-group-item"><b>FIRST NAME: </b> @Model.FirstName</li>
-            <li class="list-group-item"><b>LAST NAME: </b> @Model.LastName</li>
-            <li class="list-group-item"><b>GENDER: </b> @Model.Gender</li>
-            <li class="list-group-item"><b>MARITAL STATUS: </b> @Model.MaritalStatus</li>
-            <li class="list-group-item"><b>EMAIL: </b> @Model.Email)</li>
-            <li class="list-group-item"><b>PHONE NUMBER: </b> @Model.PhoneNumber</li>
-            <li class="list-group-item"><b>POSITION: </b> @Model.PositionName</li>
-            <li class="list-group-item"><b>DEPARTMENT: </b> @Model.DepartmentName</li>
-            <li class="list-group-item"><b>APPOINTMENT: </b> @Model.AppointmentName</li>
-            <li class="list-group-item"><b>PAY LEVEL: </b> @Model.PayLevelName</li>
-            <li class="list-group-item"><b>PAYMENT TYPE: </b> @Model.PaymentType</li>
-            <li class="list-group-item" aria-disabled="true">
-            </li>
-        </ul><!-- End ist group with active and disabled items -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+
+            <!-- List group with active and disabled items -->
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">PERSONAL DETAILS</li>
+                <li class="list-group-item"><b>FIRST NAME: </b> @Model.FirstName</li>
+                <li class="list-group-item"><b>LAST NAME: </b> @Model.LastName</li>
+                <li class="list-group-item"><b>GENDER: </b> @Model.Gender</li>
+                <li class="list-group-item"><b>MARITAL STATUS: </b> @Model.MaritalStatus</li>
+                <li class="list-group-item"><b>EMAIL: </b> @Model.Email)</li>
+                <li class="list-group-item"><b>PHONE NUMBER: </b> @Model.PhoneNumber</li>
+                <li class="list-group-item"><b>POSITION: </b> @Model.PositionName</li>
+                <li class="list-group-item"><b>DEPARTMENT: </b> @Model.DepartmentName</li>
+                <li class="list-group-item"><b>APPOINTMENT: </b> @Model.AppointmentName</li>
+                <li class="list-group-item"><b>PAY LEVEL: </b> @Model.PayLevelName</li>
+                <li class="list-group-item"><b>PAYMENT TYPE: </b> @Model.PaymentType</li>
+                <li class="list-group-item" aria-disabled="true">
+                </li>
+            </ul><!-- End ist group with active and disabled items -->
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+
+            <!-- List group with active and disabled items -->
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">ADDRESS</li>
+                <li class="list-group-item"><b>HOUSE NUMBER: </b> @Model.HouseNumber</li>
+                <li class="list-group-item"><b>STREET NAME: </b> @Model.StreetName</li>
+                <li class="list-group-item"><b>L/G: </b> @Model.LocalGovernment</li>
+                <li class="list-group-item"><b>CITY: </b> @Model.City</li>
+                <li class="list-group-item"><b>STATE: </b> @Model.State</li>
+                <li class="list-group-item"><b>NATIONALITY: </b> @Model.Nationality</li>
+                <li class="list-group-item"><b>HOME NUMBER: </b> @Model.HomeNumber</li>
+
+            </ul><!-- End ist group with active and disabled items -->
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+
+            <!-- List group with active and disabled items -->
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">ADDRESS</li>
+                <li class="list-group-item"><b>ACCOUNT NUMBER: </b> @Model.AccountNumber</li>
+                <li class="list-group-item"><b>BANK NAME: </b> @Model.BankName</li>
+
+            </ul><!-- End ist group with active and disabled items -->
+
+        </div>
+    </div>
 
     </div>
-</div>
-
-
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"></h5>
-
-        <!-- List group with active and disabled items -->
-        <ul class="list-group">
-            <li class="list-group-item active" aria-current="true">ADDRESS</li>
-            <li class="list-group-item"><b>HOUSE NUMBER: </b> @Model.HouseNumber</li>
-            <li class="list-group-item"><b>STREET NAME: </b> @Model.StreetName</li>
-            <li class="list-group-item"><b>L/G: </b> @Model.LocalGovernment</li>
-            <li class="list-group-item"><b>CITY: </b> @Model.City</li>
-            <li class="list-group-item"><b>STATE: </b> @Model.State</li>
-            <li class="list-group-item"><b>NATIONALITY: </b> @Model.Nationality</li>
-            <li class="list-group-item"><b>HOME NUMBER: </b> @Model.HomeNumber</li>
-
-        </ul><!-- End ist group with active and disabled items -->
-
-    </div>
-</div>
-
-</div>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"></h5>
-
-        <!-- List group with active and disabled items -->
-        <ul class="list-group">
-            <li class="list-group-item active" aria-current="true">ADDRESS</li>
-            <li class="list-group-item"><b>ACCOUNT NUMBER: </b> @Model.AccountNumber</li>
-            <li class="list-group-item"><b>BANK NAME: </b> @Model.BankName</li>
-
-        </ul><!-- End ist group with active and disabled items -->
-
-    </div>
-</div>
+</main>
+    

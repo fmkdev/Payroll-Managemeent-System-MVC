@@ -10,7 +10,7 @@ namespace PayxApi.DTOs
 
         public int EmployeeId { get; set; }
 
-        public int? LedgerId { get; set; }
+        public int LedgerId { get; set; }
 
         public string EmployeeCardId { get; set; }
 

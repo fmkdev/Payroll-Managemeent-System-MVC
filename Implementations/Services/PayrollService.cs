@@ -146,6 +146,8 @@ namespace PayxApi.Implementations.Services
                 {
                     TransactionId = $"EMP-PAY-{Guid.NewGuid().ToString().Substring(0, 9).Replace("-", "").Trim()}",
                     EmployeeId = emp.Id,
+                    LedgerId = emp.Ledger.Id,
+                    Ledger = emp.Ledger,
                     EmployeeCardId = emp.CardId,
                     EmployeeBasicPay = employee.BasicPay,
                     TotalAllowance = employee.PayLevelAllowance + employee.PositionAllowance,
